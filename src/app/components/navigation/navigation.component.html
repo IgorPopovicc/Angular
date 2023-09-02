@@ -1,0 +1,31 @@
+<nav class="navigation">
+  <div class="sandwitch-bar">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <fa-icon [icon]="icons.faBars"></fa-icon>
+    </button>
+  </div>
+  <div class="logo">
+    <img src="../../../assets/images/logo/logo.png" alt="Angular logo" />
+  </div>
+  <ul class="navigation-menu">
+    <li><a routerLink="/">Početna</a></li>
+    <li><a routerLink="/o-nama">Dokumentacija</a></li>
+    <li><a routerLink="/proizvodi">Komponente</a></li>
+    <li><a routerLink="/kontakt">Kontakt</a></li>
+  </ul>
+  <div class="social-media">
+    <fa-icon [icon]="icons.faGithub"></fa-icon>
+    <fa-icon [icon]="icons.faLinkedin"></fa-icon>
+    <fa-icon [icon]="icons.faInstagram"></fa-icon>
+  </div>
+</nav>
+
+<mat-drawer-container class="sidenav-main-menu-container" autosize>
+  <mat-drawer #drawer class="sidenav-main-menu" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+</mat-drawer-container>
