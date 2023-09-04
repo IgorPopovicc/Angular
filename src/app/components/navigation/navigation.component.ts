@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faChevronRight, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'navigation',
@@ -16,6 +16,34 @@ export class NavigationComponent implements OnInit {
     faBars: faBars
   }
 
+  dropdownIcon = {
+    open: faChevronRight,
+    close: faChevronDown
+  }
+
+  isOpen: { [key: string]: any } = {
+    uvod: {
+      icon: this.dropdownIcon.open,
+      isOpened: false
+    },
+    upoznavanje: {
+      icon: this.dropdownIcon.open,
+      isOpened: false
+    },
+    vodicZaProgramere: {
+      icon: this.dropdownIcon.open,
+      isOpened: false
+    },
+    tutorijali: {
+      icon: this.dropdownIcon.open,
+      isOpened: false
+    },
+    dokumentacija: {
+      icon: this.dropdownIcon.open,
+      isOpened: false
+    },
+  };
+
   showFiller = false;
 
   constructor() { }
@@ -23,5 +51,19 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  toggleDropdown(identifier: string): void {
+    if ((this.isOpen[identifier].isOpen === undefined)) {
+      this.isOpen[identifier].isOpen = true;
+      this.isOpen[identifier].icon = this.dropdownIcon.close;
+    } else if (this.isOpen[identifier].isOpen === false) {
+      this.isOpen[identifier].isOpen = true;
+      this.isOpen[identifier].icon = this.dropdownIcon.close;
+    } else {
+      this.isOpen[identifier].isOpen = false;
+      this.isOpen[identifier].icon = this.dropdownIcon.open;
+    }
+  }
+
 
 }
