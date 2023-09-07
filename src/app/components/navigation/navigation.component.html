@@ -5,7 +5,7 @@
     </button>
   </div>
   <div class="logo">
-    <img src="../../../assets/images/logo/logo.png" alt="Angular logo" />
+    <img src="../../../assets/images/logo/angular_white-logo.png" alt="Angular logo" />
   </div>
   <ul class="navigation-menu">
     <li><a routerLink="/">Početna</a></li>
@@ -14,9 +14,9 @@
     <li><a routerLink="/kontakt">Kontakt</a></li>
   </ul>
   <div class="social-media">
-    <fa-icon [icon]="icons.faGithub"></fa-icon>
-    <fa-icon [icon]="icons.faLinkedin"></fa-icon>
-    <fa-icon [icon]="icons.faInstagram"></fa-icon>
+    <a href=""><fa-icon [icon]="icons.faGithub" target="_blank"></fa-icon></a>
+    <a href="https://www.linkedin.com/in/igor-popovic-774ab822b/" target="_blank"><fa-icon [icon]="icons.faLinkedin"></fa-icon></a>
+    <a href=""><fa-icon [icon]="icons.faInstagram" target="_blank"></fa-icon></a>
   </div>
 </nav>
 
@@ -33,7 +33,7 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['uvod'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Šta je Angularu?</a></li>
+          <li><a href="">Šta je Angular?</a></li>
           <li><a href="">Kako započeti?</a></li>
           <li><a href="">Angular CLI</a></li>
           <li><a href="">Postavka projekta</a></li>
@@ -47,7 +47,6 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['upoznavanje'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Šta je Angularu?</a></li>
           <li><a href="">Komponente</a></li>
           <li><a href="">Templates (Šabloni)</a></li>
           <li><a href="">Direktive</a></li>
