@@ -38,10 +38,10 @@ export class NavigationComponent implements OnInit {
       icon: this.dropdownIcon.open,
       isOpened: false
     },
-    dokumentacija: {
+    najboljaPraksa: {
       icon: this.dropdownIcon.open,
       isOpened: false
-    },
+    }
   };
 
   showFiller = false;

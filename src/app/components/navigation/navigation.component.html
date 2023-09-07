@@ -23,40 +23,86 @@
 <mat-drawer-container class="sidenav-main-menu-container" autosize>
   <mat-drawer #drawer class="sidenav-main-menu" mode="side"
     ><br />
+    <div class="sidenav-dropdown">
+      <span class="sidenav-dropdown-text">Početna</span>
+    </div>
     <div class="sidenav-dropdown" (click)="toggleDropdown('uvod')">
       <span class="sidenav-dropdown-text">Uvod</span>
       <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['uvod'].icon"></fa-icon>
     </div>
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['uvod'].isOpen">
-      <h3>Hello</h3>
+      <div class="dropdown-content-menu">
+        <ul>
+          <li><a href="">Šta je Angularu?</a></li>
+          <li><a href="">Kako započeti?</a></li>
+          <li><a href="">Angular CLI</a></li>
+          <li><a href="">Postavka projekta</a></li>
+        </ul>
+      </div>
     </div>
     <div class="sidenav-dropdown" (click)="toggleDropdown('upoznavanje')">
       <span class="sidenav-dropdown-text">Upoznavanje sa Angularom</span>
       <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['upoznavanje'].icon"></fa-icon>
     </div>
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['upoznavanje'].isOpen">
-      <h3>Hello</h3>
+      <div class="dropdown-content-menu">
+        <ul>
+          <li><a href="">Šta je Angularu?</a></li>
+          <li><a href="">Komponente</a></li>
+          <li><a href="">Templates (Šabloni)</a></li>
+          <li><a href="">Direktive</a></li>
+          <li><a href="">Dependency injection</a></li>
+          <li><a href="">Kreiranje prve Angular aplikacije</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sidenav-dropdown" (click)="toggleDropdown('najboljaPraksa')">
+      <span class="sidenav-dropdown-text">Najbolja praksa</span>
+      <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['najboljaPraksa'].icon"></fa-icon>
+    </div>
+    <div class="sidenav-dropdown-content" [hidden]="!isOpen['najboljaPraksa'].isOpen">
+      <div class="dropdown-content-menu">
+        <ul>
+          <li><a href="">Sigurnost</a></li>
+          <li><a href="">Pristupacnost</a></li>
+          <li><a href="">Održavanje verzije</a></li>
+          <li><a href="">Lazy Loading</a></li>
+        </ul>
+      </div>
     </div>
     <div class="sidenav-dropdown" (click)="toggleDropdown('vodicZaProgramere')">
       <span class="sidenav-dropdown-text">Vodič za programere</span>
       <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['vodicZaProgramere'].icon"></fa-icon>
     </div>
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['vodicZaProgramere'].isOpen">
-      <h3>Hello</h3>
+      <div class="dropdown-content-menu">
+        <ul>
+          <li><a href="">Uvod</a></li>
+          <li><a href="">Detektovanje promena</a></li>
+          <li><a href="">Rutiranje i navigacija</a></li>
+          <li><a href="">Forme</a></li>
+          <li><a href="">HTTP klijent</a></li>
+          <li><a href="">Renderovanje na serverskoj strani</a></li>
+          <li><a href="">Testiranje</a></li>
+          <li><a href="">Angular biblioteke</a></li>
+        </ul>
+      </div>
     </div>
     <div class="sidenav-dropdown" (click)="toggleDropdown('tutorijali')">
       <span class="sidenav-dropdown-text">Tutorijali</span>
       <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['tutorijali'].icon"></fa-icon>
     </div>
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['tutorijali'].isOpen">
-      <h3>Hello</h3>
+      <div class="dropdown-content-menu">
+        <ul>
+          <li><a href="">Tutorijal: Vaša prva aplikacija</a></li>
+          <li><a href="">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
+          <li><a href="">Tutorijal: Pokretanje Vaše aplikacije</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="sidenav-dropdown" (click)="toggleDropdown('dokumentacija')">
+    <div class="sidenav-dropdown">
       <span class="sidenav-dropdown-text">Dokumentacija</span>
-      <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['dokumentacija'].icon"></fa-icon>
-    </div>
-    <div class="sidenav-dropdown-content" [hidden]="!isOpen['dokumentacija'].isOpen">
-      <h3>Hello</h3>
     </div>
   </mat-drawer>
 </mat-drawer-container>
