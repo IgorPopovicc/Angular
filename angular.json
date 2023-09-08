@@ -29,8 +29,7 @@
               "src/styles.css",
               "node_modules/font-awesome/css/font-awesome.min.css"
             ],
-            "scripts": [],
-            "baseHref": "/Angular/"
+            "scripts": []
           },
           "configurations": {
             "production": {
