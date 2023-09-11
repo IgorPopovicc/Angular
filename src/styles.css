@@ -35,3 +35,26 @@ body {
   font-size: 18px !important;
   line-height: 30px !important;
 }
+
+/* TELEFON */
+@media (max-width: 767px) {
+
+  .content-main-title {
+    font-size: 34px;
+  }
+
+  .content-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .content-image img {
+    width: 80%;
+    margin: 30px 10%;
+  }
+
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {}
