@@ -40,20 +40,14 @@ body {
 @media (max-width: 767px) {
 
   .content-main-title {
-    font-size: 34px;
+    font-size: 34px !important;
   }
 
   .content-text {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
   }
-
-  .content-image img {
-    width: 80%;
-    margin: 30px 10%;
-  }
-
 }
 
 /* TABLET */
