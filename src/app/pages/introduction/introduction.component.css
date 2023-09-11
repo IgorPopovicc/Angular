@@ -1,101 +1,83 @@
-.content {
-    position: relative;
-    width: 80%;
-    margin: auto;
-}
-
-.content-main-title {
-    font-weight: 400;
-    font-size: 48px;
-    margin: 1em 0;
-}
-
-.content-text {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 30px;
-}
-
 .content-image {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
-.content-image img{
-    width: 60%;
-    margin: 50px 20%;
+.content-image img {
+  width: 60%;
+  margin: 50px 20%;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .card {
-    width: calc(33.33% - 20px); 
-    margin: 20px 0; 
-    background-color: #f0f0f0;
-    box-sizing: border-box;
+  width: calc(33.33% - 20px);
+  margin: 20px 0;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
 }
 
 .card-title {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .card-text {
-    text-align: left;
-    width: 80%;
-    margin: 20px auto;
+  text-align: left;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .card-link {
-    display: flex;
-    height: 50px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: #3f51b5;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #3f51b5;
 }
 
 .card-link a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .card-link a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* TELEFON */
 @media (max-width: 767px) {
-    
-    .content-main-title {
-        font-size: 34px;
-    }
 
-    .content-text {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-    }
+  .content-main-title {
+    font-size: 34px;
+  }
 
-    .content-image img{
-        width: 80%;
-        margin: 30px 10%;
-    }
+  .content-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
 
-    .container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .card {
-        width: 100%;
-        margin: 10px 0;
-    }
-    
+  .content-image img {
+    width: 80%;
+    margin: 30px 10%;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
 }
 
 /* TABLET */

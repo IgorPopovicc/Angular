@@ -22,7 +22,7 @@
 
 <mat-drawer-container class="sidenav-main-menu-container" autosize>
   <mat-drawer #drawer class="sidenav-main-menu" mode="side"><br />
-    <div routerLink="home" class="sidenav-dropdown">
+    <div routerLink="home" (click)="drawer.toggle()" class="sidenav-dropdown">
       <span class="sidenav-dropdown-text">Početna</span>
     </div>
     <div class="sidenav-dropdown" (click)="toggleDropdown('uvod')">
@@ -32,10 +32,10 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['uvod'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="introduction">Šta je Angular?</a></li>
-          <li><a routerLink="how-to-start">Kako započeti?</a></li>
-          <li><a routerLink="angular-cli">Angular CLI</a></li>
-          <li><a routerLink="project-structure">Postavka projekta</a></li>
+          <li><a routerLink="introduction" (click)="drawer.toggle()">Šta je Angular?</a></li>
+          <li><a routerLink="how-to-start" (click)="drawer.toggle()">Kako započeti?</a></li>
+          <li><a routerLink="angular-cli" (click)="drawer.toggle()">Angular CLI</a></li>
+          <li><a routerLink="project-structure" (click)="drawer.toggle()">Postavka projekta</a></li>
         </ul>
       </div>
     </div>
@@ -46,11 +46,11 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['upoznavanje'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="components">Komponente</a></li>
-          <li><a routerLink="templates">Templates (Šabloni)</a></li>
-          <li><a routerLink="directive">Direktive</a></li>
-          <li><a routerLink="dependency-injection">Dependency injection</a></li>
-          <li><a routerLink="first-angular-app">Kreiranje prve Angular aplikacije</a></li>
+          <li><a routerLink="components" (click)="drawer.toggle()">Komponente</a></li>
+          <li><a routerLink="templates" (click)="drawer.toggle()">Templates (Šabloni)</a></li>
+          <li><a routerLink="directive" (click)="drawer.toggle()">Direktive</a></li>
+          <li><a routerLink="dependency-injection" (click)="drawer.toggle()">Dependency injection</a></li>
+          <li><a routerLink="first-angular-app" (click)="drawer.toggle()">Kreiranje prve Angular aplikacije</a></li>
         </ul>
       </div>
     </div>
@@ -61,10 +61,10 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['najboljaPraksa'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="security">Sigurnost</a></li>
-          <li><a routerLink="accessibility">Pristupacnost</a></li>
-          <li><a routerLink="version-supporting">Održavanje verzije</a></li>
-          <li><a routerLink="lazy=loading">Lazy Loading</a></li>
+          <li><a routerLink="security" (click)="drawer.toggle()">Sigurnost</a></li>
+          <li><a routerLink="accessibility" (click)="drawer.toggle()">Pristupacnost</a></li>
+          <li><a routerLink="version-supporting" (click)="drawer.toggle()">Održavanje verzije</a></li>
+          <li><a routerLink="lazy=loading" (click)="drawer.toggle()">Lazy Loading</a></li>
         </ul>
       </div>
     </div>
@@ -75,14 +75,14 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['vodicZaProgramere'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="introduction-developers">Uvod</a></li>
-          <li><a routerLink="change-detection">Detektovanje promena</a></li>
-          <li><a routerLink="routing">Rutiranje i navigacija</a></li>
-          <li><a routerLink="forms">Forme</a></li>
-          <li><a routerLink="http-client">HTTP klijent</a></li>
-          <li><a routerLink="server-side-rendering">Renderovanje na serverskoj strani</a></li>
-          <li><a routerLink="testing">Testiranje</a></li>
-          <li><a routerLink="library">Angular biblioteke</a></li>
+          <li><a routerLink="introduction-developers" (click)="drawer.toggle()">Uvod</a></li>
+          <li><a routerLink="change-detection" (click)="drawer.toggle()">Detektovanje promena</a></li>
+          <li><a routerLink="routing" (click)="drawer.toggle()">Rutiranje i navigacija</a></li>
+          <li><a routerLink="forms" (click)="drawer.toggle()">Forme</a></li>
+          <li><a routerLink="http-client" (click)="drawer.toggle()">HTTP klijent</a></li>
+          <li><a routerLink="server-side-rendering" (click)="drawer.toggle()">Renderovanje na serverskoj strani</a></li>
+          <li><a routerLink="testing" (click)="drawer.toggle()">Testiranje</a></li>
+          <li><a routerLink="library" (click)="drawer.toggle()">Angular biblioteke</a></li>
         </ul>
       </div>
     </div>
@@ -93,9 +93,9 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['tutorijali'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="tutorial-one">Tutorijal: Vaša prva aplikacija</a></li>
-          <li><a routerLink="tutorial-two">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
-          <li><a routerLink="tutorial-three">Tutorijal: Pokretanje Vaše aplikacije</a></li>
+          <li><a routerLink="tutorial-one" (click)="drawer.toggle()">Tutorijal: Vaša prva aplikacija</a></li>
+          <li><a routerLink="tutorial-two" (click)="drawer.toggle()">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
+          <li><a routerLink="tutorial-three" (click)="drawer.toggle()">Tutorijal: Pokretanje Vaše aplikacije</a></li>
         </ul>
       </div>
     </div>
