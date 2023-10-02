@@ -1,0 +1,21 @@
+<div *ngIf="isCode" class="code-display">
+  <div class="copy-section">
+    <div class="copy-section">
+      <p>Console</p>
+      <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Copy</span>
+    </div>
+    <div class="code-section">
+      <ngx-highlightjs [highlight]="code" [languages]="['typescript']"></ngx-highlightjs>
+    </div>
+  </div>
+  <ngx-highlightjs [highlight]="code" [languages]="['typescript']"></ngx-highlightjs>
+</div>
+<div *ngIf="!isCode" class="code-display">
+  <div class="copy-section">
+    <p>Console</p>
+    <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Copy</span>
+  </div>
+  <div class="code-section">
+    <p class="casual-text">{{ code }}</p>
+  </div>
+</div>

@@ -27,9 +27,12 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "node_modules/font-awesome/css/font-awesome.min.css"
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/highlight.js/styles/default.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/highlight.js/lib/index.js"
+            ]
           },
           "configurations": {
             "production": {

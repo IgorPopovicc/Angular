@@ -8,22 +8,21 @@
     <a routerLink="home"><img src="./assets/images/logo/angular_white-logo.png" alt="Angular logo" /></a>
   </div>
   <ul class="navigation-menu">
-    <li><a routerLink="introduction">Početna</a></li>
-    <li><a routerLink="o-nama">Dokumentacija</a></li>
-    <li><a routerLink="proizvodi">Komponente</a></li>
-    <li><a routerLink="kontakt">Kontakt</a></li>
+    <li><a routerLink="home">Početna</a></li>
+    <li><a routerLink="documentation">Dokumentacija</a></li>
+    <li><a routerLink="components">Komponente</a></li>
+    <li><a routerLink="contact">Kontakt</a></li>
   </ul>
   <div class="social-media">
-    <a href=""><fa-icon [icon]="icons.faGithub" target="_blank"></fa-icon></a>
+    <a href="https://github.com/IgorPopovicc" target="_blank"><fa-icon [icon]="icons.faGithub"></fa-icon></a>
     <a href="https://www.linkedin.com/in/igor-popovic-774ab822b/" target="_blank"><fa-icon [icon]="icons.faLinkedin"></fa-icon></a>
-    <a href=""><fa-icon [icon]="icons.faInstagram" target="_blank"></fa-icon></a>
+    <a href="https://www.instagram.com/igor_popovic99/" target="_blank"><fa-icon [icon]="icons.faInstagram"></fa-icon></a>
   </div>
 </nav>
 
 <mat-drawer-container class="sidenav-main-menu-container" autosize>
-  <mat-drawer #drawer class="sidenav-main-menu" mode="side"
-    ><br />
-    <div class="sidenav-dropdown">
+  <mat-drawer #drawer class="sidenav-main-menu" mode="side"><br />
+    <div routerLink="home" (click)="drawer.toggle()" class="sidenav-dropdown">
       <span class="sidenav-dropdown-text">Početna</span>
     </div>
     <div class="sidenav-dropdown" (click)="toggleDropdown('uvod')">
@@ -33,10 +32,10 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['uvod'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Šta je Angular?</a></li>
-          <li><a href="">Kako započeti?</a></li>
-          <li><a href="">Angular CLI</a></li>
-          <li><a href="">Postavka projekta</a></li>
+          <li><a routerLink="introduction" (click)="drawer.toggle()">Šta je Angular?</a></li>
+          <li><a routerLink="how-to-start" (click)="drawer.toggle()">Kako započeti?</a></li>
+          <li><a routerLink="angular-cli" (click)="drawer.toggle()">Angular CLI</a></li>
+          <li><a routerLink="project-structure" (click)="drawer.toggle()">Postavka projekta</a></li>
         </ul>
       </div>
     </div>
@@ -47,11 +46,11 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['upoznavanje'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Komponente</a></li>
-          <li><a href="">Templates (Šabloni)</a></li>
-          <li><a href="">Direktive</a></li>
-          <li><a href="">Dependency injection</a></li>
-          <li><a href="">Kreiranje prve Angular aplikacije</a></li>
+          <li><a routerLink="components" (click)="drawer.toggle()">Komponente</a></li>
+          <li><a routerLink="templates" (click)="drawer.toggle()">Templates (Šabloni)</a></li>
+          <li><a routerLink="directive" (click)="drawer.toggle()">Direktive</a></li>
+          <li><a routerLink="dependency-injection" (click)="drawer.toggle()">Dependency injection</a></li>
+          <li><a routerLink="first-angular-app" (click)="drawer.toggle()">Kreiranje prve Angular aplikacije</a></li>
         </ul>
       </div>
     </div>
@@ -62,10 +61,10 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['najboljaPraksa'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Sigurnost</a></li>
-          <li><a href="">Pristupacnost</a></li>
-          <li><a href="">Održavanje verzije</a></li>
-          <li><a href="">Lazy Loading</a></li>
+          <li><a routerLink="security" (click)="drawer.toggle()">Sigurnost</a></li>
+          <li><a routerLink="accessibility" (click)="drawer.toggle()">Pristupacnost</a></li>
+          <li><a routerLink="version-supporting" (click)="drawer.toggle()">Održavanje verzije</a></li>
+          <li><a routerLink="lazy=loading" (click)="drawer.toggle()">Lazy Loading</a></li>
         </ul>
       </div>
     </div>
@@ -76,14 +75,14 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['vodicZaProgramere'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Uvod</a></li>
-          <li><a href="">Detektovanje promena</a></li>
-          <li><a href="">Rutiranje i navigacija</a></li>
-          <li><a href="">Forme</a></li>
-          <li><a href="">HTTP klijent</a></li>
-          <li><a href="">Renderovanje na serverskoj strani</a></li>
-          <li><a href="">Testiranje</a></li>
-          <li><a href="">Angular biblioteke</a></li>
+          <li><a routerLink="introduction-developers" (click)="drawer.toggle()">Uvod</a></li>
+          <li><a routerLink="change-detection" (click)="drawer.toggle()">Detektovanje promena</a></li>
+          <li><a routerLink="routing" (click)="drawer.toggle()">Rutiranje i navigacija</a></li>
+          <li><a routerLink="forms" (click)="drawer.toggle()">Forme</a></li>
+          <li><a routerLink="http-client" (click)="drawer.toggle()">HTTP klijent</a></li>
+          <li><a routerLink="server-side-rendering" (click)="drawer.toggle()">Renderovanje na serverskoj strani</a></li>
+          <li><a routerLink="testing" (click)="drawer.toggle()">Testiranje</a></li>
+          <li><a routerLink="library" (click)="drawer.toggle()">Angular biblioteke</a></li>
         </ul>
       </div>
     </div>
@@ -94,13 +93,13 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['tutorijali'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a href="">Tutorijal: Vaša prva aplikacija</a></li>
-          <li><a href="">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
-          <li><a href="">Tutorijal: Pokretanje Vaše aplikacije</a></li>
+          <li><a routerLink="tutorial-one" (click)="drawer.toggle()">Tutorijal: Vaša prva aplikacija</a></li>
+          <li><a routerLink="tutorial-two" (click)="drawer.toggle()">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
+          <li><a routerLink="tutorial-three" (click)="drawer.toggle()">Tutorijal: Pokretanje Vaše aplikacije</a></li>
         </ul>
       </div>
     </div>
-    <div class="sidenav-dropdown">
+    <div routerLink="documentation" class="sidenav-dropdown">
       <span class="sidenav-dropdown-text">Dokumentacija</span>
     </div>
   </mat-drawer>

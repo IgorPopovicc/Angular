@@ -1,8 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.page {
-    position: relative;
-    min-height: 100vh;
-    height: fit-content;
+@import "~highlight.js/styles/default.css";
+@import "~highlight.js/styles/monokai-sublime.css";
+
+html,
+body {
+  height: 100%;
 }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  height: fit-content;
+}
+
+.content {
+  position: relative;
+  width: 80%;
+  margin: auto;
+}
+
+.content-main-title {
+  font-weight: 400 !important;
+  font-size: 48px !important;
+  margin: 1em 0 !important;
+}
+
+.content-text {
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 30px !important;
+}
+
+/* TELEFON */
+@media (max-width: 767px) {
+
+  .content-main-title {
+    font-size: 34px !important;
+  }
+
+  .content-text {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {}
