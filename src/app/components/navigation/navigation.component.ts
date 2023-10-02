@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faChevronRight, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'navigation',
@@ -46,7 +47,7 @@ export class NavigationComponent implements OnInit {
 
   showFiller = false;
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
 
@@ -65,5 +66,8 @@ export class NavigationComponent implements OnInit {
     }
   }
 
+  scrollToTop() {
+    this.sharedService.scrollToTop();
+  }
 
 }

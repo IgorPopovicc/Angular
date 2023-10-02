@@ -17,6 +17,7 @@ import { CodeDisplayComponent } from './components/code-display/code-display.com
 import { HIGHLIGHT_OPTIONS, HighlightOptions, HighlightModule } from 'ngx-highlightjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,8 +48,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         languages: {
           javascript: () => import('highlight.js/lib/languages/javascript'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
-          // Dodajte ostale jezike po potrebi
         },
+        theme: 'monokai-sublime'
       },
     },
   ],

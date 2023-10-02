@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { SharedService } from 'src/app/services/shared.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class CodeDisplayComponent implements OnInit {
   @Input() code!: string;
   @Input() isCode!: boolean;
 
-  constructor(private clipboardService: ClipboardService, private _snackBar: MatSnackBar) { }
+  constructor(private clipboardService: ClipboardService, private _snackBar: MatSnackBar, private sanitizer: DomSanitizer, private sharedService: SharedService) { }
 
   ngOnInit() {
   }
@@ -28,5 +30,13 @@ export class CodeDisplayComponent implements OnInit {
     });
   }
 
+  sanitizeCode(code: string): SafeHtml {
+    const sanitizedCode = code.replace(/\n/g, '<br>');
+    return this.sanitizer.bypassSecurityTrustHtml(sanitizedCode);
+  }
+
+  scrollToTop() {
+    this.sharedService.scrollToTop();
+  }
 
 }
