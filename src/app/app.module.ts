@@ -16,6 +16,8 @@ import { AngularCliComponent } from './pages/angular-cli/angular-cli.component';
 import { CodeDisplayComponent } from './components/code-display/code-display.component';
 import { HIGHLIGHT_OPTIONS, HighlightOptions, HighlightModule } from 'ngx-highlightjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HowToStartComponent } from './pages/how-to-start/how-to-start.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HomeComponent,
     IntroductionComponent,
     AngularCliComponent,
-    CodeDisplayComponent
+    CodeDisplayComponent,
+    HowToStartComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSidenavModule,
     MatCardModule,
     HighlightModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [
     {
