@@ -24,6 +24,12 @@ body {
   margin: auto;
 }
 
+.content-center {
+  position: relative;
+  width: 70%;
+  margin: auto;
+}
+
 .content-main-title {
   font-weight: 400 !important;
   font-size: 48px !important;
@@ -47,6 +53,12 @@ body {
     font-weight: 400 !important;
     font-size: 14px !important;
     line-height: 20px !important;
+  }
+
+  .content-center {
+    position: relative;
+    width: 80%;
+    margin: auto;
   }
 }
 

@@ -1,3 +1,4 @@
+import { SharedService } from './../../services/shared.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
+  constructor(private sharedService: SharedService) { }
+
+  scrollToTop() {
+    this.sharedService.scrollToTop();
+  }
 
 }

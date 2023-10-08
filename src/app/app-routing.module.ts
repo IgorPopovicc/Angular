@@ -5,7 +5,7 @@ import { IntroductionComponent } from './pages/introduction/introduction.compone
 import { AngularCliComponent } from './pages/angular-cli/angular-cli.component';
 
 const routes: Routes = [
-  { path: '', component: IntroductionComponent },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'introduction', component: IntroductionComponent },
   { path: 'angular-cli', component: AngularCliComponent }
