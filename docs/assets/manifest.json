@@ -1,0 +1,16 @@
+{
+  "name": "Angular Učenje",
+  "short_name": "Angular",
+  "description": "Naučite sve o Angularu",
+  "start_url": "https://igorpopovicc.github.io/Angular/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "./images/icons/angular.svg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

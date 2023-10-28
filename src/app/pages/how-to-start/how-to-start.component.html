@@ -1,0 +1,57 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Instaliranje potrebnih alatki</h1>
+    <p class="content-text">Da biste počeli sa razvojem Angular aplikacija, treba vam sledeće:<br><br>
+      <b>Node.js i npm: </b>Node.js je JavaScript runtime okruženje koje vam omogućava da izvršavate JavaScript na serverskoj strani. npm
+      (Node Package Manager) je alat za upravljanje JavaScript bibliotekama i paketima.
+    </p>
+    <ul>
+      <li class="content-text">Možete preuzeti Node.js sa <a href="https://nodejs.org/en" target="_blank">zvanične Node.js stranice</a>, a npm će biti automatski instaliran zajedno sa Node.js.</li>
+    </ul>
+    <p class="content-text">Proverite da li su Node.js i npm uspešno instalirani tako što ćete pokrenuti sledeće komande u terminalu:</p>
+    <code-display [type]="'console'" code="node -v&nbsp;&nbsp;&nbsp;&nbsp;npm -v"></code-display>
+    <p class="content-text"><b>Angular CLI: </b>Angular CLI (Command Line Interface) je alat koji olakšava kreiranje, razvoj i upravljanje Angular aplikacijama.
+    </p>
+    <ul>
+      <li class="content-text">Možete instalirati Angular CLI globalno putem npm komande:</li>
+    </ul>
+    <code-display [type]="'console'" code="npm install -g @angular/cli"></code-display>
+    <ul>
+      <li class="content-text">Možete instalirati Angular CLI globalno putem npm komande:</li>
+    </ul>
+    <code-display [type]="'console'" code="ng --version"></code-display>
+    <p class="content-text"><b>Code Editor: </b>Trebaće vam code editor za pisanje Angular koda. Popularni code editori su Visual Studio Code, WebStorm, Sublime Text, i mnogi drugi. Preporučujemo korišćenje
+      Visual Studio Code zbog bogatih mogućnosti i podrške za Angular razvoj.
+    </p><br><br>
+
+    <h1 class="content-main-title">Verzije alatki</h1>
+    <p class="content-text">Važno je da održavate kompatibilnost između različitih verzija alatki kako biste osigurali da svi komponenti i
+      delovi vašeg razvojnog okruženja rade zajedno bez problema. To znači da trebate pažljivo birati i ažurirati verzije različitih alatki,
+      kao što su programski jezik, biblioteke, okviri i dodaci, kako bi se izbegli konflikti i nespojivosti. Kada koristite usklađene verzije alatki,
+      povećava se stabilnost vašeg razvojnog procesa i smanjuje verovatnoća grešaka i problema prilikom razvoja i izgradnje vaših aplikacija.
+    </p>
+    <ul>
+      <li class="content-text"><b>Node.js i npm: </b>Preporučuje se korišćenje LTS (Long-Term Support) verzije Node.js jer obezbeđuje stabilnost. npm će biti automatski instaliran uz Node.js</li><br>
+      <li class="content-text"><b>Angular CLI: </b>Uvek koristite najnoviju stabilnu verziju Angular CLI, koju možete instalirati komandom <b>npm install -g @angular/cli</b></li><br>
+      <li class="content-text"><b>TypeScript (ts): </b>Angular se zasniva na TypeScript-u. Većina projekata koristi najnoviju stabilnu verziju TypeScript-a. U konkretnom projektu, verziju TypeScript-a možete pronaći u <b>package.json</b> datoteci u polju <b>devDependencies</b></li><br>
+    </ul><br>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="angular">
+        <th mat-header-cell *matHeaderCellDef> Angular </th>
+        <td mat-cell *matCellDef="let element"> {{ element.angular }} </td>
+      </ng-container>
+      <ng-container matColumnDef="node">
+        <th mat-header-cell *matHeaderCellDef> Node.js </th>
+        <td mat-cell *matCellDef="let element"> {{ element.node }} </td>
+      </ng-container>
+      <ng-container matColumnDef="typescript">
+        <th mat-header-cell *matHeaderCellDef> Typescript </th>
+        <td mat-cell *matCellDef="let element"> {{ element.typescript }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table><br><br>
+
+  </div>
+</section>

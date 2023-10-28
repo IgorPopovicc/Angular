@@ -16,6 +16,12 @@ import { AngularCliComponent } from './pages/angular-cli/angular-cli.component';
 import { CodeDisplayComponent } from './components/code-display/code-display.component';
 import { HIGHLIGHT_OPTIONS, HighlightOptions, HighlightModule } from 'ngx-highlightjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HowToStartComponent } from './pages/how-to-start/how-to-start.component';
+import { MatTableModule } from '@angular/material/table';
+import { ComponentsPreviewComponent } from './pages/angular-basic/components-preview/components-preview.component';
+import { DirectivesPreviewComponent } from './pages/angular-basic/directives-preview/directives-preview.component';
+import { TemplatesComponent } from './pages/angular-basic/templates/templates.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +31,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HomeComponent,
     IntroductionComponent,
     AngularCliComponent,
-    CodeDisplayComponent
+    CodeDisplayComponent,
+    HowToStartComponent,
+    ComponentsPreviewComponent,
+    DirectivesPreviewComponent,
+    TemplatesComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +46,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSidenavModule,
     MatCardModule,
     HighlightModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [
     {
@@ -47,11 +58,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         languages: {
           javascript: () => import('highlight.js/lib/languages/javascript'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
-          // Dodajte ostale jezike po potrebi
+          html: () => import('highlight.js/lib/languages/gml'),
         },
+        theme: 'monokai-sublime'
       },
     },
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

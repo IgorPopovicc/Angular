@@ -22,16 +22,20 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/highlight.js/styles/default.css"
+              "node_modules/highlight.js/styles/github-dark.css"
             ],
             "scripts": [
               "node_modules/highlight.js/lib/index.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "highlight.js"
             ]
           },
           "configurations": {
@@ -39,7 +43,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "600kb",
+                  "maximumWarning": "800kb",
                   "maximumError": "1mb"
                 },
                 {
@@ -100,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b7eb347a-cff9-4827-b0ac-7b8059e992f4"
   }
 }

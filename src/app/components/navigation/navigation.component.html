@@ -8,10 +8,10 @@
     <a routerLink="home"><img src="./assets/images/logo/angular_white-logo.png" alt="Angular logo" /></a>
   </div>
   <ul class="navigation-menu">
-    <li><a routerLink="home">Početna</a></li>
-    <li><a routerLink="documentation">Dokumentacija</a></li>
-    <li><a routerLink="components">Komponente</a></li>
-    <li><a routerLink="contact">Kontakt</a></li>
+    <li><a (click)="scrollToTop()" routerLink="home">Početna</a></li>
+    <li><a (click)="scrollToTop()" routerLink="documentation">Dokumentacija</a></li>
+    <li><a (click)="scrollToTop()" routerLink="components">Komponente</a></li>
+    <li><a (click)="scrollToTop()" routerLink="contact">Kontakt</a></li>
   </ul>
   <div class="social-media">
     <a href="https://github.com/IgorPopovicc" target="_blank"><fa-icon [icon]="icons.faGithub"></fa-icon></a>
@@ -32,10 +32,9 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['uvod'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="introduction" (click)="drawer.toggle()">Šta je Angular?</a></li>
-          <li><a routerLink="how-to-start" (click)="drawer.toggle()">Kako započeti?</a></li>
-          <li><a routerLink="angular-cli" (click)="drawer.toggle()">Angular CLI</a></li>
-          <li><a routerLink="project-structure" (click)="drawer.toggle()">Postavka projekta</a></li>
+          <li><a (click)="scrollToTop()" routerLink="introduction" (click)="drawer.toggle()">Šta je Angular?</a></li>
+          <li><a (click)="scrollToTop()" routerLink="how-to-start" (click)="drawer.toggle()">Kako započeti?</a></li>
+          <li><a (click)="scrollToTop()" routerLink="angular-cli" (click)="drawer.toggle()">Angular CLI</a></li>
         </ul>
       </div>
     </div>
@@ -46,11 +45,11 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['upoznavanje'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="components" (click)="drawer.toggle()">Komponente</a></li>
-          <li><a routerLink="templates" (click)="drawer.toggle()">Templates (Šabloni)</a></li>
-          <li><a routerLink="directive" (click)="drawer.toggle()">Direktive</a></li>
-          <li><a routerLink="dependency-injection" (click)="drawer.toggle()">Dependency injection</a></li>
-          <li><a routerLink="first-angular-app" (click)="drawer.toggle()">Kreiranje prve Angular aplikacije</a></li>
+          <li><a (click)="scrollToTop()" routerLink="components" (click)="drawer.toggle()">Komponente</a></li>
+          <li><a (click)="scrollToTop()" routerLink="templates" (click)="drawer.toggle()">Templates (Šabloni)</a></li>
+          <li><a (click)="scrollToTop()" routerLink="directive" (click)="drawer.toggle()">Direktive</a></li>
+          <li><a (click)="scrollToTop()" routerLink="dependency-injection" (click)="drawer.toggle()">Dependency injection</a></li>
+          <li><a (click)="scrollToTop()" routerLink="first-angular-app" (click)="drawer.toggle()">Kreiranje prve Angular aplikacije</a></li>
         </ul>
       </div>
     </div>
@@ -61,10 +60,10 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['najboljaPraksa'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="security" (click)="drawer.toggle()">Sigurnost</a></li>
-          <li><a routerLink="accessibility" (click)="drawer.toggle()">Pristupacnost</a></li>
-          <li><a routerLink="version-supporting" (click)="drawer.toggle()">Održavanje verzije</a></li>
-          <li><a routerLink="lazy=loading" (click)="drawer.toggle()">Lazy Loading</a></li>
+          <li><a (click)="scrollToTop()" routerLink="security" (click)="drawer.toggle()">Sigurnost</a></li>
+          <li><a (click)="scrollToTop()" routerLink="accessibility" (click)="drawer.toggle()">Pristupacnost</a></li>
+          <li><a (click)="scrollToTop()" routerLink="version-supporting" (click)="drawer.toggle()">Održavanje verzije</a></li>
+          <li><a (click)="scrollToTop()" routerLink="lazy=loading" (click)="drawer.toggle()">Lazy Loading</a></li>
         </ul>
       </div>
     </div>
@@ -75,14 +74,14 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['vodicZaProgramere'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="introduction-developers" (click)="drawer.toggle()">Uvod</a></li>
-          <li><a routerLink="change-detection" (click)="drawer.toggle()">Detektovanje promena</a></li>
-          <li><a routerLink="routing" (click)="drawer.toggle()">Rutiranje i navigacija</a></li>
-          <li><a routerLink="forms" (click)="drawer.toggle()">Forme</a></li>
-          <li><a routerLink="http-client" (click)="drawer.toggle()">HTTP klijent</a></li>
-          <li><a routerLink="server-side-rendering" (click)="drawer.toggle()">Renderovanje na serverskoj strani</a></li>
-          <li><a routerLink="testing" (click)="drawer.toggle()">Testiranje</a></li>
-          <li><a routerLink="library" (click)="drawer.toggle()">Angular biblioteke</a></li>
+          <li><a (click)="scrollToTop()" routerLink="introduction-developers" (click)="drawer.toggle()">Uvod</a></li>
+          <li><a (click)="scrollToTop()" routerLink="change-detection" (click)="drawer.toggle()">Detektovanje promena</a></li>
+          <li><a (click)="scrollToTop()" routerLink="routing" (click)="drawer.toggle()">Rutiranje i navigacija</a></li>
+          <li><a (click)="scrollToTop()" routerLink="forms" (click)="drawer.toggle()">Forme</a></li>
+          <li><a (click)="scrollToTop()" routerLink="http-client" (click)="drawer.toggle()">HTTP klijent</a></li>
+          <li><a (click)="scrollToTop()" routerLink="server-side-rendering" (click)="drawer.toggle()">Renderovanje na serverskoj strani</a></li>
+          <li><a (click)="scrollToTop()" routerLink="testing" (click)="drawer.toggle()">Testiranje</a></li>
+          <li><a (click)="scrollToTop()" routerLink="library" (click)="drawer.toggle()">Angular biblioteke</a></li>
         </ul>
       </div>
     </div>
@@ -93,9 +92,9 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['tutorijali'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a routerLink="tutorial-one" (click)="drawer.toggle()">Tutorijal: Vaša prva aplikacija</a></li>
-          <li><a routerLink="tutorial-two" (click)="drawer.toggle()">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
-          <li><a routerLink="tutorial-three" (click)="drawer.toggle()">Tutorijal: Pokretanje Vaše aplikacije</a></li>
+          <li><a (click)="scrollToTop()" routerLink="tutorial-one" (click)="drawer.toggle()">Tutorijal: Vaša prva aplikacija</a></li>
+          <li><a (click)="scrollToTop()" routerLink="tutorial-two" (click)="drawer.toggle()">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
+          <li><a (click)="scrollToTop()" routerLink="tutorial-three" (click)="drawer.toggle()">Tutorijal: Pokretanje Vaše aplikacije</a></li>
         </ul>
       </div>
     </div>

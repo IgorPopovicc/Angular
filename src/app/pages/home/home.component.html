@@ -1,3 +1,32 @@
 <section class="page">
-    <h1>Hello</h1>
+  <div class="banner">
+    <img src="./assets/images/logo/logo.png" alt="Logo" class="logo">
+    <h1 class="welcom-text">Razvijajte web aplikacije s pouzdanjem</h1>
+  </div>
+  <div class="content-center">
+    <h1 class="content-header">Web razvojno okruženje za kreiranje budućnosti.</h1>
+    <section class="card-section" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="card">
+        <h3 class="card-title">Radi na svakoj skali</h3>
+        <img class="card-image" src="./assets/images/graphics/all-platform.png" alt="rocket">
+        <p class="card-text">Angular vam omogućava da počnete sa malim projektima i pruža podršku kako vaš tim i aplikacije rastu,
+          postajući tako vaš pouzdan partner u razvoju.</p>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Obožavan od miliona</h3>
+        <img class="card-image" src="./assets/images/graphics/milion-loved.png" alt="rocket">
+        <p class="card-text">Pridružite se milionima programera širom sveta koji koriste Angular i postanite deo rastuće i srdačne zajednice,
+          gde možete zajedno razvijati svoje veštine i kreirati izvanredne aplikacije.</p>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Kreiran za sve korisnike</h3>
+        <img class="card-image" src="./assets/images/graphics/for-everyone.png" alt="rocket">
+        <p class="card-text">Oslonite se na Angularove alate za internacionalizaciju, sigurnost i dostupnost kako biste
+           kreirali aplikacije za sve ljude širom sveta.</p>
+      </div>
+    </section>
+    <div class="start-learning">
+      <button routerLink="/introduction" (click)="scrollToTop()" mat-stroked-button color="primary">Nauči više!</button>
+    </div>
+  </div>
 </section>
