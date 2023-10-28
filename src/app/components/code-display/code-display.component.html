@@ -1,18 +1,29 @@
-<div *ngIf="isCode" class="code-display">
-  <div class="copy-section">
-    <p>Kod</p>
-    <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Kopiraj</span>
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'typescript'" class="code-display">
+    <div class="copy-section">
+      <p>Kod</p>
+      <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Kopiraj</span>
+    </div>
+    <div class="code-section" style="white-space: pre-line; tab-size: 4; margin-left: 20px;">
+      <ngx-highlightjs class="casual-text" [highlight]="code" [languages]="['typescript']"></ngx-highlightjs>
+    </div>
   </div>
-  <div class="code-section" style="white-space: pre-line; tab-size: 4; margin-left: 20px;">
-    <ngx-highlightjs class="casual-text" [highlight]="code" [languages]="['typescript']"></ngx-highlightjs>
+  <div *ngSwitchCase="'html'"  class="code-display">
+    <div class="copy-section">
+      <p>HTML</p>
+      <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Kopiraj</span>
+    </div>
+    <div class="code-section" style="white-space: pre-line; tab-size: 4; margin-left: 20px;">
+      <ngx-highlightjs class="casual-text" [highlight]="code" [languages]="['html']"></ngx-highlightjs>
+    </div>
   </div>
-</div>
-<div *ngIf="!isCode" class="code-display">
-  <div class="copy-section">
-    <p>Konzola</p>
-    <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Kopiraj</span>
-  </div>
-  <div class="code-section">
-    <p class="casual-text">{{ code }}</p>
+  <div *ngSwitchDefault class="code-display">
+    <div class="copy-section">
+      <p>Konzola</p>
+      <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Kopiraj</span>
+    </div>
+    <div class="code-section">
+      <p class="casual-text">{{ code }}</p>
+    </div>
   </div>
 </div>

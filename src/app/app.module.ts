@@ -18,6 +18,9 @@ import { HIGHLIGHT_OPTIONS, HighlightOptions, HighlightModule } from 'ngx-highli
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HowToStartComponent } from './pages/how-to-start/how-to-start.component';
 import { MatTableModule } from '@angular/material/table';
+import { ComponentsPreviewComponent } from './pages/angular-basic/components-preview/components-preview.component';
+import { DirectivesPreviewComponent } from './pages/angular-basic/directives-preview/directives-preview.component';
+import { TemplatesComponent } from './pages/angular-basic/templates/templates.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { MatTableModule } from '@angular/material/table';
     IntroductionComponent,
     AngularCliComponent,
     CodeDisplayComponent,
-    HowToStartComponent
+    HowToStartComponent,
+    ComponentsPreviewComponent,
+    DirectivesPreviewComponent,
+    TemplatesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import { MatTableModule } from '@angular/material/table';
         languages: {
           javascript: () => import('highlight.js/lib/languages/javascript'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
+          html: () => import('highlight.js/lib/languages/gml'),
         },
         theme: 'monokai-sublime'
       },
@@ -59,4 +66,6 @@ import { MatTableModule } from '@angular/material/table';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

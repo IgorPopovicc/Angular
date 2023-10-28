@@ -16,7 +16,7 @@ export class CodeDisplayComponent implements OnInit {
   iconCopy = faCopy;
 
   @Input() code!: string;
-  @Input() isCode!: boolean;
+  @Input() type!: string;
 
   constructor(private clipboardService: ClipboardService, private _snackBar: MatSnackBar, private sanitizer: DomSanitizer, private sharedService: SharedService) { }
 
