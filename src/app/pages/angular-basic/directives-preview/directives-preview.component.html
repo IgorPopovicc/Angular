@@ -1,1 +1,38 @@
-<p>directives-preview works!</p>
+<section class="page">
+    <div class="content">
+        <h1 class="content-main-title">Direktive</h1>
+        <p class="content-text">Direktive predstavljaju moćan alat u Angular frameworku koji omogućava manipulaciju HTML-a, proširenje funkcionalnosti elemenata, kao i dinamičko prilagođavanje korisničkog interfejsa. Osnovna svrha direktiva je da promene ponašanje i izgled HTML elemenata ili pruže dodatnu funkcionalnost njima.</p>
+        <br>
+        <p class="content-text">Postoje 3 vrste direktiva:</p>
+        <ul>
+            <li class="content-text"><b>Strukturne direktive</b>: Promenjuju DOM strukturu tako što dodaju, uklanjaju ili zamjenjuju HTML elemente. Na primer, *ngIf, *ngFor.</li>
+            <code-display [type]="'html'" code='&lt;div *ngIf="isLoggedIn"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Dobrodošli! Prijavljeni ste.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div *ngIf="!isLoggedIn"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Molimo vas da se prijavite.&lt;/p&gt;
+            &lt;/div&gt;'></code-display>
+            <li class="content-text"><b>Atributne direktive</b>: Menjaju izgled ili ponašanje postojećih HTML elemenata dodavanjem novih atributa. Na primer, ngClass, ngStyle.</li>
+            <code-display [type]="'html'" code='&lt;div [ngClass]="{ "active", isActive, "error": hasError }"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;Some content
+            &lt;/div&gt;'></code-display>
+            <li class="content-text"><b>Direktive komponenti</b>: Kreiraju nove komponente ili proširuju postojeće, pružajući njihove posebne funkcionalnosti. Na primer, @Component, @Directive.</li>
+            <code-display [type]="'typescript'" code="@Directive({
+                &nbsp;&nbsp;&nbsp;&nbsp;selector: '[appCustomDirective]'
+            })
+            export class CustomDirective {
+                &nbsp;&nbsp;&nbsp;&nbsp;// Logika direktive
+            }            
+            "></code-display>
+        </ul><br>
+        <h1 class="content-title">Kako se Koriste Direktive</h1>
+        <ul>
+            <li class="content-text"><b>Strukturne direktive</b> poput ngIf i ngFor se koriste za manipulaciju DOM-a u skladu s uslovima ili za iteriranje kroz nizove podataka.</li>
+            <li class="content-text"><b>Atributne direktive</b> kao što su ngClass i ngStyle se koriste za promenu izgleda elemenata na osnovu promenljivih ili uslova.</li>
+            <li class="content-text"><b>Direktive komponenti</b> se koriste za kreiranje prilagođenih direktiva koje omogućavaju specifične funkcionalnosti ili prilagođavanje ponašanja elemenata i komponenti.</li>
+        </ul><br>
+        <info-panel [isLink]="false" [text]="'Kombinacija različitih vrsta direktiva pruža fleksibilnost u prilagođavanju, čime se postiže efikasnost i modularnost u razvoju Angular aplikacija.'" ></info-panel><br>
+        <p class="content-text">Direktive su ključni deo Angulara koji omogućavaju programerima da dinamički manipulišu HTML-om i pruže bogatije korisničko iskustvo, omogućavajući veću fleksibilnost i interaktivnost na stranici. Kombinacija različitih vrsta direktiva pruža veliku moć u razvoju kompleksnih korisničkih interfejsa.</p>
+        <br>
+    </div>
+</section>

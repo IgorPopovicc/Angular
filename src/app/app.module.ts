@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ComponentsPreviewComponent } from './pages/angular-basic/components-preview/components-preview.component';
 import { DirectivesPreviewComponent } from './pages/angular-basic/directives-preview/directives-preview.component';
 import { TemplatesComponent } from './pages/angular-basic/templates/templates.component';
+import { InfoPanelComponent } from './components/info-panel/info-panel.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { TemplatesComponent } from './pages/angular-basic/templates/templates.co
     HowToStartComponent,
     ComponentsPreviewComponent,
     DirectivesPreviewComponent,
-    TemplatesComponent
+    TemplatesComponent,
+    InfoPanelComponent
   ],
   imports: [
     BrowserModule,

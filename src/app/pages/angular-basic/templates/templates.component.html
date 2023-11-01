@@ -1,11 +1,14 @@
 <section class="page">
     <div class="content">
         <h1 class="content-main-title">Template (Šabloni)</h1>
-        <p class="content-text">Template (predložak) u Angularu predstavlja deo komponente koji definiše kako će podaci biti prikazani 
+        <p class="content-text">Template (Šablon) u Angularu predstavlja deo komponente koji definiše kako će podaci biti prikazani 
             korisnicima kroz HTML strukturu. Ovaj HTML predložak obično sadrži dinamičke delove koji će se popuniti podacima koje komponenta prikazuje. Template u Angularu 
             kombinuje HTML sa Angular-ovim direktivama, omogućavajući dinamičko renderovanje podataka i interakciju sa korisnicima.<br>
-        </p><br>
-        <p class="content-text">U okviru predloška, mogu se koristiti Angular direktive, interpolacije <span ngNonBindable><b>{{ }}</b></span>, uslovi <b>ngIf</b>, iteracije <b>ngFor</b>, event binding, two-way binding, kao i pozivanje metoda definisanih u TypeScript kodu komponente.</p>
+        </p>
+        <p class="content-text">U okviru predloška, mogu se koristiti Angular direktive, interpolacije <span ngNonBindable><b>{{ }}</b></span>, uslovi <b>ngIf</b>, iteracije <b>ngFor</b>, event binding, two-way binding, kao i pozivanje metoda definisanih u TypeScript kodu komponente.</p><br>
+        <info-panel [isLink]="false" [link]="'/security'" [text]="'Da bi se eliminisao rizik od napada ubacivanjem skriptova, Angular ne podržava korišćenje <script> elementa unutar svojih predložaka. Angular jednostavno ignoriše <script> oznaku i upozorava korisnika putem konzole pregledača. Više informacija o sigurnosti možete pronaći na stranici posvećenoj sigurnosti.'"></info-panel>
+        <br>
+        <h1 class="content-title">Korišćenje Angular direktive NgIf za Dinamičko Upravljanje Prikazom</h1>
         <p class="content-text">U Angularu, <b>ngIf</b> je strukturna direktiva koja se koristi za prikazivanje ili skrivanje elemenata na osnovu uslova. Evo primera koda i opisa: </p>
         <code-display [type]="'html'" code='&lt;div *ngIf="isLoggedIn"&gt;
         &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Dobrodošli! Prijavljeni ste.&lt;/p&gt;
@@ -18,6 +21,46 @@
             <li class="content-text"><b>*ngIf</b> je strukturna direktiva u Angularu koja prikazuje ili skriva HTML elemente na osnovu uslova koji se postavi./li>
             <li class="content-text"><b>isLoggedIn</b> je varijabla ili izraz koji se evaluira. Ako je vrednost true, prvi div (sa porukom "Dobrodošli! Prijavljeni ste.") će biti prikazan, u suprotnom će biti prikazan drugi div (sa porukom "Molimo vas da se prijavite.").</li>
             <li class="content-text">Ako je vrednost promenljive <b>isLoggedIn</b> tačna (<b>true</b>), prvi blok unutar div-a će biti prikazan, inače će se prikazati drugi blok unutar div-a.</li>
-        </ul>
+        </ul><br>
+        <h1 class="content-title">Angular Interpolacija: Dinamičko Umetanje Podataka </h1>
+        <p class="content-text">Interpolacija se koristi za umetanje dinamičkih vrednosti unutar HTML-a. To omogućava prikazivanje promenljivih ili izraza unutar HTML strukture.</p>
+        <code-display [type]="'typescript'" code='export class ExampleComponent {
+            &nbsp;&nbsp;&nbsp;username: string = "Igor";
+        }
+        '></code-display>
+        <code-display [type]="'html'" code='&lt;div&gt;&nbsp;Dobrodošli, {&nbsp;{ username }&nbsp;}&nbsp;&lt;/div&gt;'></code-display>
+        <p class="content-text">Opis:</p>
+        <ul>
+            <li class="content-text">U ovom primeru, korišćenje dvostrukih vitičastih zagrada  omogućava umetanje vrednosti promenljive username unutar paragrafa.</li>
+        </ul><br>
+        <h1 class="content-title">Angular Interpolacija: Dinamičko Umetanje Podataka </h1>
+        <p class="content-text">Interpolacija se koristi za umetanje dinamičkih vrednosti unutar HTML-a. To omogućava prikazivanje promenljivih ili izraza unutar HTML strukture.</p>
+        <code-display [type]="'typescript'" code="export class ExampleComponent {
+            &nbsp;&nbsp;&nbsp;items: string[] = ['First', 'Second', 'Third'];
+          }
+        "></code-display>
+        <code-display [type]="'html'" code='&lt;ul&gt;
+            &nbsp;&nbsp;&nbsp;&lt;li *ngFor="let item of items"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ { item } }
+            &nbsp;&nbsp;&nbsp;&lt;/li&gt;
+            &lt;/ul>
+        '></code-display>
+        <p class="content-text">Opis:</p>
+        <ul>
+            <li class="content-text">U TypeScript delu komponente, definiše se niz items sa vrednostima.</li>
+            <li class="content-text">U HTML delu, <b>ngFor</b> se koristi za iteriranje kroz niz items i prikazivanje svakog elementa niza unutar liste korišćenjem interpolacije</li>
+        </ul><br>
+        <h1 class="content-title">Korišćenje izjava za akcije korisnika u Angularu</h1>
+        <p class="content-text">Izjave sablona su metode ili osobine koje možete koristiti u vašem HTML-u kako biste reagovali na korisničke događaje. Pomoću izjava sablona, vaša aplikacija može angažovati korisnike kroz radnje poput prikazivanja dinamičkog sadržaja ili slanja formi.</p>
+        <br>
+        <p class="content-text">U sledećem primeru, izjava sablona deleteHero() se pojavljuje unutar navodnika desno od znaka jednakosti =, kao u (event)="izjava".</p>
+        <code-display [type]="'html'" code='&lt;button type="button" (click)=`deleteHero()`&gt;
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Delete Hero
+        &lt;/button&gt;'></code-display>
+        <p class="content-text">Opis:</p>
+        <ul>
+            <li class="content-text">Kada korisnik klikne na dugme Izbriši junaka, Angular poziva metod deleteHero() u klasi komponente.</li>
+            <li class="content-text">Koristite izjave sablona s elementima, komponentama ili direktivama kao odgovor na događaje.</li>
+        </ul><br>
     </div>
 </section>

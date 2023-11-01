@@ -1,0 +1,9 @@
+<div class="info-panel">
+    <ng-container class="info-content">
+        <p>{{ text }}</p>
+        <div *ngIf="link">
+            <a *ngIf="isLink" [href]="link" target="_blank">Show more</a>
+            <a *ngIf="!isLink" [routerLink]="link" (click)="scrollToTop()">Prikaži više</a>
+        </div>
+    </ng-container>
+</div>
