@@ -43,11 +43,15 @@
             <li class="content-text">bypassSecurityTrustResourceUrl</li>
         </ul><br>
         <p class="content-text">Obično, Angular automatski vrši sanitizaciju URL-a, onemogućava opasan kod i u režimu razvoja, beleži ovu akciju u konzoli. Da biste sprečili ovo, označite vrednost URL-a kao pouzdani URL koristeći poziv bypassSecurityTrustUrl:</p>
-        <code-display [type]="'typescript'" code="constructor(private sanitizer: DomSanitizer) {
+        <code-display [type]="'typescript'" code="constructor(
+            &nbsp;&nbsp;&nbsp;&nbsp;private sanitizer: DomSanitizer
+            ) {
             &nbsp;&nbsp;&nbsp;&nbsp;this.dangerousUrl = 
             &nbsp;&nbsp;&nbsp;&nbsp;'javascript:alert('Hi there')';
             &nbsp;&nbsp;&nbsp;&nbsp;this.trustedUrl = sanitizer.
-            &nbsp;&nbsp;&nbsp;&nbsp;bypassSecurityTrustUrl(this.dangerousUrl);
+            &nbsp;&nbsp;&nbsp;&nbsp;bypassSecurityTrustUrl(
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.dangerousUrl
+            &nbsp;&nbsp;&nbsp;&nbsp;);
         }"></code-display>
         <p class="content-text">Ako treba da pretvorite korisnički unos u pouzdanu vrednost, koristite metod komponente. Sledeći predložak omogućava korisnicima da unesu ID YouTube videa i učita odgovarajući video u <b>iframe</b>. Atribut <b>iframe src</b> je kontekst 
             sigurnosnog resursnog URL-a, jer nepoverljiv izvor može, na primer, ušvercovati preuzimanja datoteka koje neoprezni korisnici mogu pokrenuti. Da biste to sprečili, pozovite metod na komponenti da konstruiše pouzdan URL za video, što uzrokuje
