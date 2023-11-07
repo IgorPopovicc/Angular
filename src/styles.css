@@ -61,6 +61,11 @@ body {
     line-height: 20px !important;
   }
 
+  .content-title {
+    font-size: 28px !important;
+  }
+  
+
   .content-center {
     position: relative;
     width: 80%;
