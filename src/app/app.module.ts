@@ -22,6 +22,9 @@ import { ComponentsPreviewComponent } from './pages/angular-basic/components-pre
 import { DirectivesPreviewComponent } from './pages/angular-basic/directives-preview/directives-preview.component';
 import { TemplatesComponent } from './pages/angular-basic/templates/templates.component';
 import { InfoPanelComponent } from './components/info-panel/info-panel.component';
+import { DependencyInjectionPreviewComponent } from './pages/angular-basic/dependency-injection-preview/dependency-injection-preview.component';
+import { SecurityComponent } from './pages/best-practice/security/security.component';
+import { AccessibilityComponent } from './pages/best-practice/accessibility/accessibility.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { InfoPanelComponent } from './components/info-panel/info-panel.component
     ComponentsPreviewComponent,
     DirectivesPreviewComponent,
     TemplatesComponent,
-    InfoPanelComponent
+    InfoPanelComponent,
+    DependencyInjectionPreviewComponent,
+    SecurityComponent,
+    AccessibilityComponent
   ],
   imports: [
     BrowserModule,

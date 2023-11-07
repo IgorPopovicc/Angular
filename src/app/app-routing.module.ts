@@ -7,6 +7,9 @@ import { HowToStartComponent } from './pages/how-to-start/how-to-start.component
 import { ComponentsPreviewComponent } from './pages/angular-basic/components-preview/components-preview.component';
 import { TemplatesComponent } from './pages/angular-basic/templates/templates.component';
 import { DirectivesPreviewComponent } from './pages/angular-basic/directives-preview/directives-preview.component';
+import { DependencyInjectionPreviewComponent } from './pages/angular-basic/dependency-injection-preview/dependency-injection-preview.component';
+import { SecurityComponent } from './pages/best-practice/security/security.component';
+import { AccessibilityComponent } from './pages/best-practice/accessibility/accessibility.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +19,10 @@ const routes: Routes = [
   { path: 'how-to-start', component: HowToStartComponent },
   { path: 'components', component: ComponentsPreviewComponent },
   { path: 'templates', component: TemplatesComponent},
-  { path: 'directive', component: DirectivesPreviewComponent }
+  { path: 'directive', component: DirectivesPreviewComponent },
+  { path: 'dependency-injection', component: DependencyInjectionPreviewComponent },
+  { path: 'security', component: SecurityComponent },
+  { path: 'accessibility', component: AccessibilityComponent }
 ];
 
 @NgModule({
