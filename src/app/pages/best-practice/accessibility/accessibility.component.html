@@ -1,0 +1,18 @@
+<section class="page">
+    <div class="content">
+        <h1 class="content-main-title">Pristupačnost u Angularu</h1>
+        <p class="content-text">Veb koriste različite grupe ljudi, uključujući osobe sa vizuelnim ili motoričkim oštećenjima. 
+            Postoji raznolikost pomoćnih tehnologija koje značajno olakšavaju ovim grupama interakciju sa 
+            softverskim aplikacijama zasnovanim na vebu. Takođe, dizajniranje aplikacije tako da bude pristupačnija 
+            generalno poboljšava korisničko iskustvo za sve korisnike.</p><br>
+        <p class="content-text">Za detaljnije upoznavanje sa problemima i tehnikama dizajniranja pristupačnih aplikacija, 
+            pogledajte sekciju o Pristupačnosti u Google-ovim Osnovama veba (Web Fundamentals).</p><br>
+        <p class="content-text">Ova stranica razmatra najbolje prakse za dizajniranje Angular aplikacija koje dobro funkcionišu 
+            za sve korisnike, uključujući one koji se oslanjaju na pomoćne tehnologije.</p><br>
+        <info-panel [isLink]="true" link="https://stackblitz.com/run?file=src%2Fapp%2Fapp.component.html" text="Za primer aplikacije o kojoj ova stranica opisuje, pogledajte primer na linku ispod"></info-panel>
+        <h1 class="content-title">Atributi pristupačnosti</h1>
+        <p class="content-text">Izgradnja pristupačnog web iskustva često podrazumeva postavljanje <a href="https://web.dev/articles/semantics-aria" target="_blank">Accessible Rich Internet Applications (ARIA) attributes</a>  kako bi se obezbedio semantički značaj gde bi inače mogao nedostajati. Koristite sintaksu vezivanja atributa u šablonima kako biste kontrolisali vrednosti atributa koji se odnose na pristupačnost.</p>
+        <p class="content-text">Kada se vezuje za ARIA atribute u Angularu, morate koristiti prefiks attr.. Specifikacija ARIA se zasniva specifično na HTML atributima umesto na svojstvima DOM elemenata.</p>
+        <code-display  type="html" code="&lt;button [attr.aria-label]='myActionLabel'>&lt;/button&gt;"></code-display>
+    </div>
+</section>

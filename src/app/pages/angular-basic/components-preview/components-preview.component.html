@@ -14,7 +14,7 @@
             <li class="content-text"><b>Ručno</b> putem kreiranja novih datoteka i ručnog dodavanja potrebnog koda za HTML predložak, TypeScript klasu i CSS stilove.</li>
             <li class="content-text"><b>Korišćenjem Angular-ovog CLI alata</b> pomoću komande ng generate component ime-komponente, što automatski generiše sve potrebne datoteke za novu komponentu sa osnovnom strukturom.</li>
         </ul><br><br>
-        <h1 class="content-main-title">Kako kreirati komponentu ručno?</h1>
+        <h1 class="content-title">Kako kreirati komponentu ručno?</h1>
         <p class="content-text">Iako je Angular CLI najjednostavniji način za kreiranje Angular komponenti, takođe možete ručno napraviti komponentu. Ova sekcija opisuje kako kreirati osnovnu datoteku komponente unutar postojećeg Angular projekta.
         </p><br>
         <p class="content-text">Da biste ručno kreirali novu komponentu:</p>
@@ -44,8 +44,7 @@
         </ul>
         <p class="content-text">Nakon sprovođenja gore navedenih koraka, Angular komponenta će biti uspješno kreirana i spremna za upotrebu u vašoj aplikaciji.</p>
         <br>
-        <hr color="grey">
-        <h1 class="content-main-title">kako kreirati Angular komponentu koristeći Angular CLI?</h1>
+        <h1 class="content-title">kako kreirati Angular komponentu koristeći Angular CLI?</h1>
         <p class="content-text">Iako je Angular CLI najjednostavniji način za kreiranje Angular komponenti, takođe možete ručno napraviti komponentu. Ova sekcija opisuje kako kreirati osnovnu datoteku komponente unutar postojećeg Angular projekta.
         </p>
         <ul>
@@ -60,7 +59,7 @@
         </ul><br>
         <p class="content-text">Korišćenjem Angular CLI, ovi koraci automatski generišu osnovne datoteke potrebne za komponentu, uključujući HTML templejt, TypeScript klasu i CSS datoteku. Ovo ubrzava proces kreiranja komponenti i održava konzistentnost u strukturi projekta.</p>
         <br>
-        <h1 class="content-main-title">Životni ciklus komponente</h1>
+        <h1 class="content-title">Životni ciklus komponente</h1>
         <p class="content-text">Instanca komponente ima životni ciklus koji počinje kada Angular instancira klasu komponente i prikazuje prikaz komponente zajedno sa njenim pod-prikazima. 
             Životni ciklus se nastavlja sa detekcijom promena, dok Angular proverava kada se svojstva povezana sa podacima promene, ažurira kako prikaz, tako i instanca komponente po potrebi. 
             Životni ciklus se završava kada Angular uništi instancu komponente i ukloni njen prikazani predložak iz DOM-a.
@@ -73,11 +72,11 @@
         <p class="content-text">Ispod se nalazi tabela sa sadržajem svih metoda za životni ciklus (<b>lifecycle hook methods</b>):</p><br>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="hookMethod">
-              <th mat-header-cell *matHeaderCellDef> Hook Method </th>
+              <th mat-header-cell *matHeaderCellDef> Hook Metode </th>
               <td mat-cell *matCellDef="let element"> {{ element.hookMethod }} </td>
             </ng-container>
             <ng-container matColumnDef="details">
-              <th mat-header-cell *matHeaderCellDef> Details </th>
+              <th mat-header-cell *matHeaderCellDef> Detaljno </th>
               <td mat-cell *matCellDef="let element"> {{ element.details }} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
