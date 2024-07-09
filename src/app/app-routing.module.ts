@@ -10,6 +10,8 @@ import { DirectivesPreviewComponent } from './pages/angular-basic/directives-pre
 import { DependencyInjectionPreviewComponent } from './pages/angular-basic/dependency-injection-preview/dependency-injection-preview.component';
 import { SecurityComponent } from './pages/best-practice/security/security.component';
 import { AccessibilityComponent } from './pages/best-practice/accessibility/accessibility.component';
+import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-loading.component';
+import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,11 +24,13 @@ const routes: Routes = [
   { path: 'directive', component: DirectivesPreviewComponent },
   { path: 'dependency-injection', component: DependencyInjectionPreviewComponent },
   { path: 'security', component: SecurityComponent },
-  { path: 'accessibility', component: AccessibilityComponent }
+  { path: 'accessibility', component: AccessibilityComponent },
+  { path: 'lazy-loading', component: LazyLoadingComponent }, 
+  { path: 'developer-guides', component: OverviewDeveloperGuidesComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

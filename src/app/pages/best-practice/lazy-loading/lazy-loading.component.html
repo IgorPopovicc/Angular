@@ -1,0 +1,65 @@
+<section class="page">
+    <div class="content">
+        <h1 class="content-main-title">Lazy-loading funkcionalni moduli</h1>
+        <p class="content-text">Podrazumevano, NgModuli se učitavaju odmah. To znači da se, čim se aplikacija učita, učitavaju i svi NgModuli, bez obzira da li su odmah potrebni ili ne. Za velike aplikacije sa mnogo ruta, razmotrite lazy loading—dizajn obrazac koji učitava NgModule po potrebi. Lazy loading pomaže da se početne veličine paketa smanje, što zauzvrat pomaže u smanjenju vremena učitavanja.</p><br>
+        <info-panel [isLink]="true" link="https://v17.angular.io/generated/live-examples/lazy-loading-ngmodules/stackblitz.html" text="Za završnu uzorak aplikaciju sa dva lazy-loaded modula koju ova stranica opisuje, pogledajte uživo primer"></info-panel><br>
+        <h1 class="content-title">Osnovi lazy loading-a</h1>
+        <p class="content-text">Ovaj deo uvodi osnovnu proceduru za postavljanje rute sa lazy loading-om. Za primer koji se prikazuje korak po korak, pogledajte deo za postavljanje na ovoj stranici.</p><br>
+        <p class="content-text">Da biste koristili lazy loading za Angular module, koristite loadChildren (umesto component) u konfiguraciji ruta u vašem AppRoutingModule-u, kao što je prikazano ispod.</p><br>
+        <code-display  type="typescript" code="const routes: Routes = [{
+          &nbsp;&nbsp;&nbsp;&nbsp;path: 'items',
+          &nbsp;&nbsp;&nbsp;&nbsp;loadChildren: () => import('./items/items.module')
+          &nbsp;&nbsp;&nbsp;&nbsp;.then(m => m.ItemsModule)
+        }];"></code-display>
+        <p class="content-text">U routing modulu lazy-loaded modula, dodaj rutu za komponentu.</p><br>
+        <code-display  type="typescript" code="const routes: Routes = [{
+          &nbsp;&nbsp;&nbsp;&nbsp;path: '',
+          &nbsp;&nbsp;&nbsp;&nbsp;component: ItemsComponent
+        }];"></code-display>
+        <p class="content-text">Takođe, obavezno ukloni <b>ItemsModule</b> iz <b>AppModule-a</b>. Za detaljna uputstva o lazy loading-u modula, nastavi sa sledećim delovima ove stranice.</p><br>
+        <hr>
+        <h1 class="content-main-title">Postupno podešavanje</h1>
+        <p class="content-text">Postavljanje lazy-loaded funkcionalnog modula zahteva dva glavna koraka:</p><br>
+        <ul>
+          <li class="content-text">Kreiraj funkcionalni modul koristeći Angular CLI, uz --route zastavicu.</li>
+          <li class="content-text">Konfiguriši rute.</li>
+        </ul>
+        <h1 class="content-title">Postavi aplikaciju</h1>
+        <p class="content-text">Ako već nemaš aplikaciju, prati sledeće korake da je kreiraš pomoću Angular CLI. Ako već imaš aplikaciju, preskoči na deo <a [routerLink]="[]" fragment="routeConfig">Konfiguriši rute.</a></p><br>
+        <code-display [type]="'console'" code="ng new customer-app --no-standalone"></code-display>
+        <p class="content-text">Ovo kreira aplikaciju pod nazivom customer-app sa fajlom pod imenom app-routing.module.ts. Ovo je jedan od fajlova koji su ti potrebni za postavljanje lazy loading-a za tvoj funkcionalni modul. Uđi u projekat izdavanjem komande cd customer-app.</p><br>   
+        <h1 class="content-title">Kreiraj funkcionalni modul sa rutingom</h1>
+        <p class="content-text">Sledeće, potreban ti je funkcionalni modul sa komponentom na koju ćeš rutirati. Da bi ga napravio, unesi sledeću komandu u komandni alat, gde je customers ime funkcionalnog modula. Putanja za učitavanje customers funkcionalnih modula je takođe customers, jer je specificirana sa --route opcijom:</p><br>
+        <code-display [type]="'console'" code="ng generate module customers --route customers --module app.module"></code-display>
+        <p class="content-text">Ovo kreira customers direktorijum koji sadrži novi lazy-loadable funkcionalni modul CustomersModule definisan u fajlu customers.module.ts i ruting modul CustomersRoutingModule definisan u fajlu customers-routing.module.ts. Komanda automatski deklariše CustomersComponent i importuje CustomersRoutingModule unutar novog funkcionalnog modula.</p><br>
+        <p class="content-text">Pošto je novi modul namenjen za lazy-loading, komanda ne dodaje referencu na njega u root modul aplikacije, app.module.ts. Umesto toga, dodaje deklarisanu rutu, customers, u niz ruta deklarisan u modulu navedenom kao --module opcija.</p><br>
+        <code-display  type="typescript" code="const routes: Routes = [{
+          &nbsp;&nbsp;&nbsp;&nbsp;path: 'customers',
+          &nbsp;&nbsp;&nbsp;&nbsp;loadChildren: () => import('./customers/customers.module')
+          &nbsp;&nbsp;&nbsp;&nbsp;.then(m => m.CustomersModule)
+        };"></code-display>
+        <p class="content-text">Primeti da lazy-loading sintaksa koristi loadChildren praćeno funkcijom koja koristi ugrađenu browser-ovu import('...') sintaksu za dinamičke importe. Putanja za import je relativna putanja do modula.</p><br>
+        <info-panel [isLink]="false" text="U Angular verziji 8, string sintaksa za loadChildren specifikaciju ruta je zastarela u korist import() sintakse. Možeš se odlučiti za korišćenje string-based lazy loading-a (loadChildren: './path/to/module#Module') tako što ćeš uključiti lazy-loaded rute u svoj tsconfig fajl, što uključuje lazy-loaded fajlove u kompilaciju. Podrazumevano, Angular CLI generiše projekte sa strožijim uključivanjem fajlova koji su namenjeni za korišćenje sa import() sintaksom."></info-panel><br>
+        <hr>
+        <h1 id="routeConfig" class="content-title">Importi i konfiguracija ruta</h1>
+        <p class="content-text">Angular CLI je automatski dodao svaki funkcionalni modul u mapu ruta na nivou aplikacije. Završite ovo dodavanjem podrazumevane rute. U fajlu app-routing.module.ts, ažurirajte niz ruta sa sledećim:</p><br>
+        <code-display  type="typescript" code="const routes: Routes = [{
+          &nbsp;&nbsp;&nbsp;&nbsp;path: 'customers',
+          &nbsp;&nbsp;&nbsp;&nbsp;loadChildren: () => import('./customers/customers.module')
+          &nbsp;&nbsp;&nbsp;&nbsp;.then(m => m.CustomersModule)
+        },
+        {
+          &nbsp;&nbsp;&nbsp;&nbsp;path: 'orders',
+          &nbsp;&nbsp;&nbsp;&nbsp;loadChildren: () => import('./orders/orders.module')
+          &nbsp;&nbsp;&nbsp;&nbsp;.then(m => m.OrdersModule)
+        },
+        {
+          &nbsp;&nbsp;&nbsp;&nbsp;path: '',
+          &nbsp;&nbsp;&nbsp;&nbsp;redirectTo: '',
+          &nbsp;&nbsp;&nbsp;&nbsp;pathMatch: 'full'
+        }];"></code-display>
+        <p class="content-text">Prve dve putanje su rute ka CustomersModule i OrdersModule. Poslednji unos definiše podrazumevanu rutu. Prazna putanja odgovara svemu što se ne poklapa sa prethodnim putanjama.</p><br>
+        <h1 class="content-title">Proveri lazy loading</h1>
+        <p class="content-text">Možeš proveriti da li je modul zaista lazy loaded koristeći Chrome developer alate. U Chrome-u, otvori developer alate pritiskom na Cmd+Option+i na Mac-u ili Ctrl+Shift+j na PC-ju i idi na Network Tab.<br>Klikni na dugme Orders ili Customers. Ako vidiš da se pojavljuje chunk, sve je pravilno povezano i funkcionalni modul se lazy load-uje. Chunk bi trebalo da se pojavi za Orders i za Customers, ali samo jednom za svaki.<br>Da bi to ponovo video, ili da testiraš nakon pravljenja izmena, klikni na kružić sa linijom kroz njega u gornjem levom delu Network Taba<br>Zatim osveži sa Cmd+r ili Ctrl+r, u zavisnosti od platforme.</p><br>
+      </div>
+</section>

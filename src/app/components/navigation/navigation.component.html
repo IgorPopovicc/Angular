@@ -62,8 +62,8 @@
         <ul>
           <li><a (click)="scrollToTop()" routerLink="security" (click)="drawer.toggle()">Sigurnost</a></li>
           <li><a (click)="scrollToTop()" routerLink="accessibility" (click)="drawer.toggle()">Pristupacnost</a></li>
-          <li><a (click)="scrollToTop()" routerLink="version-supporting" (click)="drawer.toggle()">Održavanje verzije</a></li>
-          <li><a (click)="scrollToTop()" routerLink="lazy=loading" (click)="drawer.toggle()">Lazy Loading</a></li>
+          <!-- <li><a (click)="scrollToTop()" routerLink="version-supporting" (click)="drawer.toggle()">Održavanje verzije</a></li> -->
+          <li><a (click)="scrollToTop()" routerLink="lazy-loading" (click)="drawer.toggle()">Lazy Loading</a></li>
         </ul>
       </div>
     </div>
@@ -74,7 +74,7 @@
     <div class="sidenav-dropdown-content" [hidden]="!isOpen['vodicZaProgramere'].isOpen">
       <div class="dropdown-content-menu">
         <ul>
-          <li><a (click)="scrollToTop()" routerLink="introduction-developers" (click)="drawer.toggle()">Uvod</a></li>
+          <li><a (click)="scrollToTop()" routerLink="developer-guides" (click)="drawer.toggle()">Uvod</a></li>
           <li><a (click)="scrollToTop()" routerLink="change-detection" (click)="drawer.toggle()">Detektovanje promena</a></li>
           <li><a (click)="scrollToTop()" routerLink="routing" (click)="drawer.toggle()">Rutiranje i navigacija</a></li>
           <li><a (click)="scrollToTop()" routerLink="forms" (click)="drawer.toggle()">Forme</a></li>

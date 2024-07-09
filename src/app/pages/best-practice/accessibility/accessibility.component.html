@@ -14,5 +14,19 @@
         <p class="content-text">Izgradnja pristupačnog web iskustva često podrazumeva postavljanje <a href="https://web.dev/articles/semantics-aria" target="_blank">Accessible Rich Internet Applications (ARIA) attributes</a>  kako bi se obezbedio semantički značaj gde bi inače mogao nedostajati. Koristite sintaksu vezivanja atributa u šablonima kako biste kontrolisali vrednosti atributa koji se odnose na pristupačnost.</p>
         <p class="content-text">Kada se vezuje za ARIA atribute u Angularu, morate koristiti prefiks attr.. Specifikacija ARIA se zasniva specifično na HTML atributima umesto na svojstvima DOM elemenata.</p>
         <code-display  type="html" code="&lt;button [attr.aria-label]='myActionLabel'>&lt;/button&gt;"></code-display>
+        <info-panel [isLink]="false" text="Ova sintaksa je potrebna samo za vezivanje atributa. Statički ARIA atributi ne zahtevaju dodatnu sintaksu. Prema konvenciji, HTML atributi koriste imena malim slovima (tabindex), dok svojstva koriste camelCase imena (tabIndex)"></info-panel><br>
+        <hr>
+        <h1 class="content-main-title">Angular UI komponente</h1>
+        <p class="content-text">Angular Material biblioteka, koju održava Angular tim, je skup ponovno upotrebljivih UI komponenti koje su potpuno pristupačne. Component Development Kit (CDK) uključuje a11y paket koji pruža alate za podršku različitim oblastima pristupačnosti. Na primer:</p>
+        <ul>
+            <li class="content-text"><b>LiveAnnouncer</b> se koristi za objavljivanje poruka za korisnike čitača ekrana pomoću aria-live regiona. Pogledajte W3C dokumentaciju za više informacija o aria-live regionima.</li>
+            <li class="content-text"><b>cdkTrapFocus</b> direktiva zarobljava fokus Tab-tastera unutar elementa. Koristite je za kreiranje pristupačnog iskustva za komponente kao što su modalni dijalozi, gde fokus mora biti ograničen.</li>
+        </ul>
+        <h1 class="content-title">Korišćenje nativnih elemenata</h1>
+        <p class="content-text">Nativni HTML elementi obuhvataju nekoliko standardnih obrazaca interakcije koji su važni za pristupačnost. Kada kreirate Angular komponente, trebalo bi direktno da koristite ove nativne elemente kad god je to moguće, umesto da ponovo implementirate dobro podržane funkcionalnosti.</p>
+        <p class="content-text">Na primer, umesto da kreirate prilagođeni element za novu vrstu dugmeta, kreirajte komponentu koja koristi selektor atributa sa nativnim <b>&lt;button&gt;</b> elementom. Ovo se najčešće odnosi na <b>&lt;button&gt;</b> i <b>&lt;a&gt;</b>, ali se može koristiti sa mnogim drugim vrstama elemenata.</p>
+        <h1 class="content-title">Korišćenje kontejnera za nativne elemente</h1>
+        <p class="content-text">Ponekad korišćenje odgovarajućeg nativnog elementa zahteva kontejnerski element. Na primer, nativni <b>&lt;input&gt;</b> element ne može imati decu, tako da bilo koji prilagođeni tekstualni unos mora obuhvatiti <b>&lt;input&gt;</b> sa dodatnim elementima. Samim uključivanjem <b>&lt;input&gt;</b> u šablon prilagođene komponente, korisnici vaše komponente ne mogu postaviti proizvoljna svojstva i atribute na <b>&lt;input&gt;</b> element. Umesto toga, kreirajte kontejnersku komponentu koja koristi projekciju sadržaja da uključi nativnu kontrolu u API komponente.</p><br>
+        <p class="content-text">Možete videti <a href="https://material.angular.io/components/form-field/overview" target="_blank">MatFormField</a> kao primer ovog obrasca.</p><br>
     </div>
 </section>

@@ -25,6 +25,8 @@ import { InfoPanelComponent } from './components/info-panel/info-panel.component
 import { DependencyInjectionPreviewComponent } from './pages/angular-basic/dependency-injection-preview/dependency-injection-preview.component';
 import { SecurityComponent } from './pages/best-practice/security/security.component';
 import { AccessibilityComponent } from './pages/best-practice/accessibility/accessibility.component';
+import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-loading.component';
+import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { AccessibilityComponent } from './pages/best-practice/accessibility/acce
     InfoPanelComponent,
     DependencyInjectionPreviewComponent,
     SecurityComponent,
-    AccessibilityComponent
+    AccessibilityComponent,
+    LazyLoadingComponent,
+    OverviewDeveloperGuidesComponent
   ],
   imports: [
     BrowserModule,
