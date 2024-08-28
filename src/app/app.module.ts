@@ -27,6 +27,7 @@ import { SecurityComponent } from './pages/best-practice/security/security.compo
 import { AccessibilityComponent } from './pages/best-practice/accessibility/accessibility.component';
 import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-loading.component';
 import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
+import { ChangeDetectionComponent } from './pages/developer-guides/change-detection/change-detection.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overv
     SecurityComponent,
     AccessibilityComponent,
     LazyLoadingComponent,
-    OverviewDeveloperGuidesComponent
+    OverviewDeveloperGuidesComponent,
+    ChangeDetectionComponent
   ],
   imports: [
     BrowserModule,

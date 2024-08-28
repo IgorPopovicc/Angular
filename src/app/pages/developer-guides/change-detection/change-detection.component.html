@@ -1,0 +1,98 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Detekcija promena i optimizacija vremena rada</h1>
+    <p class="content-text">Otkrivanje promena je proces kroz koji Angular proverava da li se stanje vaše aplikacije promenilo
+      i da li neki DOM treba da se ažurira. Na visokom nivou, Angular šeta vašim komponentama od vrha do dna, tražeći promene.
+      Angular povremeno pokreće mehanizam za otkrivanje promena tako da se promene modela podataka odražavaju u prikazu aplikacije.
+      Otkrivanje promena može da se pokrene bilo ručno ili kroz asinhroni događaj (na primer, interakcija korisnika ili
+      završetak KSMLHttpRekuest).</p><br>
+    <p class="content-text">Otkrivanje promena je veoma optimizovano i efikasno, ali i dalje može da izazove usporavanje ako je aplikacija pokreće prečesto.</p><br>
+    <hr>
+    <h1 class="content-title">Rešavanje zagađenja zone</h1>
+    <p class="content-text"><b>Zone.js</b> je mehanizam signalizacije koji Angular koristi da otkrije kada se stanje aplikacije moglo promeniti.
+      Snima asinhrone operacije kao što su setTimeout, mrežni zahtevi i slušaoci događaja. Otkrivanje promene ugaonih rasporeda na
+      osnovu signala iz <b>Zone.js</b>.</p><br>
+    <p class="content-text">U nekim slučajevima zakazani zadaci ili mikrozadaci ne unose nikakve promene u model podataka,
+      što detekciju promena u pokretanju čini nepotrebnim. Uobičajeni primeri su:</p><br>
+    <ul>
+      <li class="content-text"><b>requestAnimationFrame</b>, <b>setTimeout</b> ili <b>setInterval</b></li>
+      <li class="content-text">Zadataka ili mikrozadataka od strane biblioteka treće strane</li>
+    </ul><br>
+    <p class="content-text">Ovaj odeljak pokriva kako da identifikujete takve uslove i kako da pokrenete kod van ugaone
+      zone da biste izbegli nepotrebne pozive za otkrivanje promena.</p>
+    <hr>
+    <h1 class="content-title">Identifikacija nepotrebnih promena detekcije</h1>
+    <p class="content-text">Možete detektovati nepotrebne pozive promene detekcije pomoću <b>Angular DevTools</b>. Često se pojavljuju
+      kao uzastopne trake na vremenskoj liniji profilera sa izvorima kao što su <b>setTimeout</b>, <b>setInterval</b>, <b>requestAnimationFrame</b> ili
+      <b>event handler</b>. Kada imate ograničen broj poziva ovih API-ja unutar vaše aplikacije, poziv promene detekcije obično je izazvan
+      od strane treće strane biblioteke.</p><br>
+    <div class="content-image">
+      <img src="./assets/images/images/change-detection/zone-pollution.png" alt="Angular logo banner">
+    </div><br>
+    <p class="content-text">Na gornjoj slici, postoji niz poziva promene detekcije pokrenutih od strane event handlera povezanih sa
+      nekim elementom. To je uobičajen problem kada koristite komponente treće strane koje nisu nativne za Angular i koje ne
+      menjaju podrazumevano ponašanje <b>NgZone</b>.</p><br>
+    <hr>
+    <h1 class="content-title">Pokretanje zadataka izvan NgZone</h1>
+    <p class="content-text">U takvim slučajevima, možete uputiti Angular da izbegne pozivanje promene detekcije za zadatke zakazane
+      od strane određenog dela koda koristeći <b>NgZone</b>.</p><br>
+    <code-display type="typescript" code="
+    import { Component, NgZone, OnInit } from '@angular/core';
+
+    @Component({
+      &nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-root',
+      &nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './app.component.html',
+      &nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./app.component.css']
+    })
+    class AppComponent implements OnInit {
+      &nbsp;&nbsp;&nbsp;&nbsp;constructor(private ngZone: NgZone) {}
+
+      &nbsp;&nbsp;&nbsp;&nbsp;ngOnInit() {
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.ngZone.runOutsideAngular(() => setInterval(pollForUpdates, 500));
+      &nbsp;&nbsp;&nbsp;&nbsp;}
+    }
+    "></code-display><br>
+    <p class="content-text">Gornji primer uputstva Angular-u da pozove setInterval izvan Angular Zone i preskoči pokretanje promene
+      detekcije nakon što se izvrši <b>pollForUpdates</b>.</p><br>
+    <p class="content-text">Biblioteke treće strane često pokreću nepotrebne cikluse promene detekcije jer nisu napisane sa <b>Zone.js</b>
+      na umu. Izbegnite ove dodatne cikluse pozivajući API-je biblioteke izvan Angular zone:</p><br>
+    <code-display type="typescript" code="
+    import { Component, NgZone, OnInit } from '@angular/core';
+    import * as Plotly from 'plotly.js-dist-min';
+
+    @Component({
+      &nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-root',
+      &nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './app.component.html',
+      &nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./app.component.css']
+    })
+    class AppComponent implements OnInit {
+      &nbsp;&nbsp;&nbsp;&nbsp;constructor(private ngZone: NgZone) {}
+
+      &nbsp;&nbsp;&nbsp;&nbsp;ngOnInit() {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.ngZone.runOutsideAngular(() => {
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plotly.newPlot('chart', data);
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+      &nbsp;&nbsp;&nbsp;&nbsp;}
+    }
+    "></code-display><br>
+    <p class="content-text">Pokretanje <b>Plotly.newPlot('chart', data);</b> unutar <b>runOutsideAngular</b> upućuje okvir da ne treba da pokrene
+      promenu detekcije nakon izvršenja zadataka zakazanih logikom inicijalizacije.</p><br>
+    <p class="content-text">Na primer, ako <b>Plotly.newPlot('chart', data)</b> dodaje event listener-e na neki DOM element, Angular
+      neće pokrenuti promenu detekcije nakon izvršenja njihovih handler-a.</p><br>
+    <hr>
+    <h1 class="content-title">Identifikacija sporih računanja</h1>
+    <p class="content-text">Možete identifikovati teška računanja pomoću profilera u Angular DevTools. Na vremenskoj liniji
+      performansi, kliknite na traku da biste pregledali određeni ciklus detekcije promena. Ovo prikazuje grafikon koji pokazuje
+      koliko je vremena okvir proveo u detekciji promena za svaki komponent. Kada kliknete na komponent, možete pregledati koliko
+      je vremena Angular proveo u evaluaciji njenog šablona i lifecycle hook-ova.</p><br>
+    <div class="content-image">
+      <img src="./assets/images/images/change-detection/slow-computations.png" alt="Angular logo banner">
+    </div><br>
+    <p class="content-text">Angular DevTools profilerski pregled prikazuje sporo računanje
+      Na primer, u prethodnom snimku ekrana, drugi zabeleženi ciklus detekcije promena je odabran. Angular je proveo preko 573 ms
+      na ovom ciklusu, pri čemu je najviše vremena potrošeno u EmployeeListComponent. U panelu sa detaljima, možete videti da je
+      Angular proveo preko 297 ms evaluirajući šablon EmployeeListComponent.</p><br>
+  </div><br>
+</section>
+
+
