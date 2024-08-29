@@ -28,6 +28,7 @@ import { AccessibilityComponent } from './pages/best-practice/accessibility/acce
 import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-loading.component';
 import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
 import { ChangeDetectionComponent } from './pages/developer-guides/change-detection/change-detection.component';
+import { RoutingComponent } from './pages/developer-guides/routing/routing.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ChangeDetectionComponent } from './pages/developer-guides/change-detect
     AccessibilityComponent,
     LazyLoadingComponent,
     OverviewDeveloperGuidesComponent,
-    ChangeDetectionComponent
+    ChangeDetectionComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,7 @@ import { ChangeDetectionComponent } from './pages/developer-guides/change-detect
         languages: {
           javascript: () => import('highlight.js/lib/languages/javascript'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
-          html: () => import('highlight.js/lib/languages/gml'),
+          html: () => import('highlight.js/lib/languages/xml'),
         },
         theme: 'monokai-sublime'
       },
@@ -80,6 +82,6 @@ import { ChangeDetectionComponent } from './pages/developer-guides/change-detect
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 }

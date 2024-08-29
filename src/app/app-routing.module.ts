@@ -13,6 +13,7 @@ import { AccessibilityComponent } from './pages/best-practice/accessibility/acce
 import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-loading.component';
 import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
 import {ChangeDetectionComponent} from "./pages/developer-guides/change-detection/change-detection.component";
+import {RoutingComponent} from "./pages/developer-guides/routing/routing.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'accessibility', component: AccessibilityComponent },
   { path: 'lazy-loading', component: LazyLoadingComponent },
   { path: 'developer-guides', component: OverviewDeveloperGuidesComponent },
-  { path: 'change-detection', component: ChangeDetectionComponent }
+  { path: 'change-detection', component: ChangeDetectionComponent },
+  { path: 'routing', component: RoutingComponent }
 ];
 
 @NgModule({

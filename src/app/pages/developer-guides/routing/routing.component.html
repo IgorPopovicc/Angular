@@ -1,0 +1,158 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Angular rutiranje</h1>
+    <p class="content-text">U aplikacijama sa jedinstvenom stranom, menjate ono što korisnik vidi prikazivanjem ili sakrivanjem
+      delova ekrana koji odgovaraju određenim komponentama, umesto da se odlazi na server po novu stranicu. Kako korisnici
+      obavljaju zadatke u aplikaciji, potrebno je da prelaze između različitih prikaza koje ste definisali.</p><br>
+    <p class="content-text">Da biste upravljali navigacijom između prikaza, koristite Angular Router. Router omogućava
+      navigaciju interpretiranjem URL-a u pregledaču kao instrukciju za promenu prikaza.</p><br>
+    <p class="content-text">Za istraživanje uzorak aplikacije koja prikazuje osnovne funkcionalnosti routera, pogledajte
+      uživo primer / preuzmite primer.</p><br>
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">Pre nego što kreirate rutu, trebalo bi da budete upoznati sa sledećim:</p><br>
+    <ul>
+      <li class="content-text"><a (click)="scrollToTop()" routerLink="/components">Osnove komponenti</a></li>
+      <li class="content-text"><a (click)="scrollToTop()" routerLink="/templates">Osnove šablona</a></li>
+      <li class="content-text">Angular aplikacija — možete generisati osnovnu Angular aplikaciju koristeći <a (click)="scrollToTop()" routerLink="/angular-cli">Angular CLI.</a></li>
+    </ul><br>
+    <hr>
+    <h1 class="content-title">Definisanje osnovne rute</h1>
+    <p class="content-text">Postoje tri osnovna koraka za kreiranje rute. Importujte rute u datoteku <b>app.config.ts</b> i dodajte
+      ih u <b>provideRouter</b> funkciju.</p><br>
+    <p class="content-text">Angular CLI automatski obavlja ovaj korak za vas. Međutim, ako ručno kreirate aplikaciju ili radite
+      na postojećoj aplikaciji koja nije kreirana uz pomoć CLI-a, proverite da li su importi i konfiguracija ispravni. Sledeći
+      primer prikazuje podrazumevanu <b>ApplicationConfig</b> konfiguraciju korišćenjem CLI-a.</p><br>
+    <code-display type="typescript" code="export const appConfig: ApplicationConfig = {
+      &nbsp;&nbsp;&nbsp;&nbsp;providers: [provideRouter(routes)]
+      };">
+    </code-display><br>
+    <ol>
+      <li class="content-text">Postavite niz <b>Routes</b> za vaše rute. Angular CLI automatski obavlja ovaj korak.</li>
+      <code-display type="typescript" code="
+        import { Routes } from '@angular/router';
+
+        export const routes: Routes = [];">
+      </code-display><br>
+      <li class="content-text">Definišite svoje rute u nizu <b>Routes</b>.
+        Svaka ruta u ovom nizu je JavaScript objekat koji sadrži dve osobine. Prva osobina, path, definiše URL putanju za rutu.
+        Druga osobina, component, definiše komponentu koju Angular treba da koristi za odgovarajuću putanju.</li>
+      <code-display type="typescript" code="
+        const routes: Routes = [
+        &nbsp;&nbsp;&nbsp;&nbsp;{ path: 'first-component', component: FirstComponent },
+        &nbsp;&nbsp;&nbsp;&nbsp;{ path: 'second-component', component: SecondComponent },
+        ;];">
+      </code-display><br>
+      <li class="content-text">Sada kada ste definisali svoje rute, dodajte ih u aplikaciju. Prvo, dodajte linkove ka dvema
+        komponentama. Dodelite routerLink atribut oznaci a (anchor tag) koju želite povezati sa rutom. Postavite vrednost
+        atributa na komponentu koja će biti prikazana kada korisnik klikne na link. Zatim, ažurirajte šablon svoje komponente da
+        uključuje <b>&lt;router-outlet&gt;</b>. Ovaj element obaveštava Angular da ažurira prikaz aplikacije komponentom za izabranu rutu.</li>
+      <code-display type="html" code="
+        &lt;h1&gt;Angular Router App&lt;/h1&gt;
+        &lt;nav&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a routerLink=&quot;/first-component&quot; routerLinkActive=&quot;active&quot; ariaCurrentWhenActive=&quot;page&quot;&gt;First Component&lt;/a&gt;&lt;/li&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a routerLink=&quot;/second-component&quot; routerLinkActive=&quot;active&quot; ariaCurrentWhenActive=&quot;page&quot;&gt;Second Component&lt;/a&gt;&lt;/li&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+        &lt;/nav&gt;
+
+        &lt;!-- The routed views render in the &lt;router-outlet&gt;--&gt;
+        &lt;router-outlet&gt;&lt;/router-outlet&gt;
+        ">
+      </code-display><br>
+    </ol><br>
+    <p class="content-text">Takođe, potrebno je dodati <b>RouterLink</b>, <b>RouterLinkActive</b>, i <b>RouterOutlet</b> u imports niz unutar <b>AppComponent-a</b>.</p>
+    <code-display type="typescript" code="
+      &nbsp;&nbsp;&nbsp;&nbsp;import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+      &nbsp;&nbsp;&nbsp;&nbsp;@Component({
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-root',
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './app.component.html',
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./app.component.css'],
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imports: [RouterLink, RouterLinkActive, RouterOutlet]
+      &nbsp;&nbsp;&nbsp;&nbsp;})
+      &nbsp;&nbsp;&nbsp;&nbsp;export class AppComponent { }
+      ">
+    </code-display><br>
+    <h1 class="content-title">Redosled ruta</h1>
+    <p class="content-text">Redosled ruta je važan jer Router koristi strategiju "prvi meč pobeđuje" pri usklađivanju ruta,
+      tako da specifičnije rute treba postaviti iznad manje specifičnih. Prvo navedite rute sa statičnom putanjom, zatim rutu
+      sa praznom putanjom koja se podudara sa podrazumevanom rutom. <a (click)="scrollToTop()" routerLink="/templates">Wildcard</a>
+      ruta se postavlja na kraju jer se podudara sa svakim URL-om, a <b>Router</b> je bira samo ako nijedna druga ruta ne odgovara.</p><br>
+    <hr>
+    <h1 class="content-title">Dobijanje informacija o ruti</h1>
+    <p class="content-text">Često, dok korisnik navigira vašom aplikacijom, želite da prenesete informacije iz jedne komponente u drugu.
+      Na primer, zamislite aplikaciju koja prikazuje spisak namirnica. Svaka stavka na spisku ima jedinstveni <b>ID</b>. Da bi uredili stavku,
+      korisnici kliknu na dugme Edit, koje otvara komponentu <b>EditGroceryItem</b>. Želite da ta komponenta preuzme <b>ID</b> stavke kako bi mogla da
+      prikaže odgovarajuće informacije korisniku.</p><br>
+    <p class="content-text">Koristite rutu za prenos ovakvih informacija vašim komponentama aplikacije. Da biste to uradili, koristite
+      funkciju withComponentInputBinding sa provideRouter ili opciju bindToComponentInputs u RouterModule.forRoot.</p><br>
+    <p class="content-text">Da biste dobili informacije sa rute:</p><br>
+    <ol>
+      <li class="content-text">Dodajte funkciju <b>withComponentInputBinding</b> u metodu <b>provideRouter</b>.</li>
+      <code-display type="typescript" code="
+        providers: [
+        &nbsp;&nbsp;&nbsp;&nbsp;provideRouter(appRoutes, withComponentInputBinding()),
+        ]
+        ">
+      </code-display><br>
+
+      <li class="content-text">Update the component to have an <b>Input</b> matching the name of the parameter.</li>
+      <code-display type="typescript" code="
+        @Input()
+        set id(heroId: string) {
+
+        &nbsp;&nbsp;&nbsp;&nbsp;this.hero$ = this.service.getHero(heroId);
+
+        }
+        ">
+      </code-display><br>
+    </ol>
+    <info-panel [isLink]="false" [text]="'Napomena: Možete vezati sve podatke rute sa ključem i vrednostima' +
+     'na ulaze komponente: statične ili rešene podatke rute, parametre putanje, matrične parametre i upitne parametre. Ako želite ' +
+     'da koristite informacije o ruti iz roditeljske komponente, potrebno je da postavite opciju paramsInheritanceStrategy u router' +
+     'konfiguraciji na withRouterConfig({paramsInheritanceStrategy: always}).'"></info-panel><br>
+    <hr>
+    <h1 class="content-title">Postavljanje wildcard ruta</h1>
+    <p class="content-text">Dobro funkcionišuća aplikacija treba da elegantno reši situaciju kada korisnici pokušaju da se navigiraju
+      do dela vaše aplikacije koji ne postoji. Da biste dodali ovu funkcionalnost u svoju aplikaciju, postavite wildcard rutu. Angular
+      router bira ovu rutu svaki put kada traženi URL ne odgovara nijednoj postavljenoj putanji.</p><br>
+    <p class="content-text">Da biste postavili wildcard rutu, dodajte sledeći kod u definiciju vaših ruta:</p><br>
+    <code-display type="typescript" code="{ path: '**', component: PageNotFoundComponent }"></code-display><br>
+    <p class="content-text">Dve zvezdice <b>**</b> označavaju Angular-u da je ova definicija rute wildcard ruta. Za osobinu component
+      možete definisati bilo koju komponentu u vašoj aplikaciji. Uobičajeni izbori uključuju specifičnu komponentu <b>PageNotFoundComponent</b>,
+      koju možete definisati da prikazuje 404 stranicu korisnicima, ili preusmeravanje na glavnu komponentu vaše aplikacije.
+      Wildcard ruta se postavlja kao poslednja ruta jer se podudara sa bilo kojim URL-om. Za više detalja o tome zašto je
+      redosled bitan kod ruta, pogledajte odeljak o redosledu ruta.</p><br>
+    <hr>
+    <h1 class="content-title">Prikazivanje 404 stranice</h1>
+    <p class="content-text">Da biste prikazali 404 stranicu, postavite wildcard rutu sa osobinom <b>component</b> koja je
+      podešena na komponentu koju želite da koristite za vašu 404 stranicu na sledeći način:</p><br>
+    <code-display type="typescript" code="const routes: Routes = [
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: 'first-component', component: FirstComponent },
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: 'second-component', component: SecondComponent },
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
+      ];
+      ">
+    </code-display><br>
+    <p class="content-text">Poslednja ruta sa putanjom <b>**</b> je wildcard ruta. Router bira ovu rutu ako traženi URL ne odgovara
+      nijednoj od putanja ranije navedenih u listi i preusmerava korisnika na <b>PageNotFoundComponent</b>.</p><br>
+    <hr>
+    <h1 class="content-title">Postavljanje preusmeravanja</h1>
+    <p class="content-text">Da biste postavili preusmeravanje, konfigurišite rutu sa putanjom sa koje želite da preusmerite,
+      komponentom na koju želite da preusmerite, i vrednošću <b>pathMatch</b> koja govori routeru kako da uskladi URL.</p><br>
+    <code-display type="typescript" code="const routes: Routes = [
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: 'first-component', component: FirstComponent },
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: 'second-component', component: SecondComponent },
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: '',   redirectTo: '/first-component', pathMatch: 'full' }, // redirect to `first-component`
+      &nbsp;&nbsp;&nbsp;&nbsp;{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
+      ];
+      ">
+    </code-display><br>
+    <p class="content-text">U ovom primeru, treća ruta je preusmeravanje tako da router podrazumevano preusmerava na
+      rutu <b>first-component</b>. Primetite da ovo preusmeravanje dolazi pre wildcard rute. Ovdje, <b>path: ''</b> znači da se koristi početni relativni URL ('').</p><br>
+  </div><br>
+</section>
+
+
+
