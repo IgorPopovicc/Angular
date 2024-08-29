@@ -12,9 +12,9 @@
     <h1 class="content-title">Preduslovi</h1>
     <p class="content-text">Pre nego što kreirate rutu, trebalo bi da budete upoznati sa sledećim:</p><br>
     <ul>
-      <li class="content-text"><a (click)="scrollToTop()" routerLink="/components">Osnove komponenti</a></li>
-      <li class="content-text"><a (click)="scrollToTop()" routerLink="/templates">Osnove šablona</a></li>
-      <li class="content-text">Angular aplikacija — možete generisati osnovnu Angular aplikaciju koristeći <a (click)="scrollToTop()" routerLink="/angular-cli">Angular CLI.</a></li>
+      <li class="content-text"><a (click)="scrollToTop()" routerLink="/components">Osnove komponenti</a></li><br>
+      <li class="content-text"><a (click)="scrollToTop()" routerLink="/templates">Osnove šablona</a></li><br>
+      <li class="content-text">Angular aplikacija — možete generisati osnovnu Angular aplikaciju koristeći <a (click)="scrollToTop()" routerLink="/angular-cli">Angular CLI.</a></li><br>
     </ul><br>
     <hr>
     <h1 class="content-title">Definisanje osnovne rute</h1>
@@ -89,7 +89,7 @@
       funkciju withComponentInputBinding sa provideRouter ili opciju bindToComponentInputs u RouterModule.forRoot.</p><br>
     <p class="content-text">Da biste dobili informacije sa rute:</p><br>
     <ol>
-      <li class="content-text">Dodajte funkciju <b>withComponentInputBinding</b> u metodu <b>provideRouter</b>.</li>
+      <li class="content-text">Dodajte funkciju <b>withComponentInputBinding</b> u metodu <b>provideRouter</b>.</li><br>
       <code-display type="typescript" code="
         providers: [
         &nbsp;&nbsp;&nbsp;&nbsp;provideRouter(appRoutes, withComponentInputBinding()),
@@ -97,7 +97,7 @@
         ">
       </code-display><br>
 
-      <li class="content-text">Update the component to have an <b>Input</b> matching the name of the parameter.</li>
+      <li class="content-text">Update the component to have an <b>Input</b> matching the name of the parameter.</li><br>
       <code-display type="typescript" code="
         @Input()
         set id(heroId: string) {

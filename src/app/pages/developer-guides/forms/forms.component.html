@@ -1,0 +1,138 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Uvod u forme u Angularu</h1>
+    <p class="content-text">Rukovanje korisničkim unosom putem formi je osnova mnogih uobičajenih aplikacija. Aplikacije
+      koriste forme da omoguće korisnicima prijavu, ažuriranje profila, unos osjetljivih informacija i obavljanje mnogih
+      drugih zadataka unosa podataka.</p><br>
+    <p class="content-text">Angular nudi dva različita pristupa za rukovanje korisničkim unosom putem formi: reaktivni i
+      na bazi šablona. Oba pristupa beleže događaje korisničkog unosa iz prikaza, validiraju korisnički unos, kreiraju
+       model forme i model podataka za ažuriranje, i pružaju način za praćenje promena.</p><br>
+    <p class="content-text">Ovaj vodič pruža informacije koje vam mogu pomoći da odlučite koji tip forme najbolje odgovara
+      vašoj situaciji. On uvodi zajedničke građevinske blokove koje koriste oba pristupa. Takođe, sažima ključne razlike
+      između ova dva pristupa i prikazuje te razlike u kontekstu postavki, toka podataka i testiranja.</p><br>
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">Ovaj vodič pretpostavlja da imate osnovno razumevanje sledećeg:</p><br>
+    <ul>
+      <li class="content-text">Programiranje u TypeScriptu i HTML5</li><br>
+      <li class="content-text">Osnovni principi dizajna Angular aplikacija, kao što je opisano u <a (click)="scrollToTop()" routerLink="/templates">Angular konceptima</a>.</li><br>
+      <li class="content-text">Osnove <a (click)="scrollToTop()" routerLink="/templates">Angular šablonske sintakse</a></li><br>
+    </ul><br>
+    <hr>
+    <h1 class="content-title">Biranje pristupa</h1>
+    <p class="content-text">Reaktivne forme i forme zasnovane na šablonu obrađuju i upravljaju podacima iz forme na različite
+      načine. Svaki pristup nudi različite prednosti.</p><br>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="form">
+        <th mat-header-cell *matHeaderCellDef> Forme </th>
+        <td mat-cell *matCellDef="let element"> {{ element.form }} </td>
+      </ng-container>
+      <ng-container matColumnDef="detail">
+        <th mat-header-cell *matHeaderCellDef> Detalji </th>
+        <td mat-cell *matCellDef="let element"> {{ element.detail }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table><br><br>
+    <h1 class="content-main-title">Reaktivne forme</h1>
+    <p class="content-text">Reaktivne forme pružaju pristup vođen modelom za rukovanje unosima u formu čije vrednosti se
+      menjaju tokom vremena. Ovaj vodič pokazuje kako da kreirate i ažurirate osnovnu kontrolu forme, pređete na
+      korišćenje više kontrola u grupi, validirate vrednosti forme, i kreirate dinamične forme u kojima možete dodavati
+      ili uklanjati kontrole tokom rada aplikacije.</p><br>
+    <p class="content-text">Reaktivne forme koriste eksplicitan i nepromenljiv pristup upravljanju stanjem forme u određenom
+      trenutku. Svaka promena stanja forme vraća novo stanje, što održava integritet modela između promena. Reaktivne forme
+      su izgrađene oko posmatračkih tokova (observable streams), gde se unosi u formu i vrednosti pružaju kao tokovi ulaznih
+      vrednosti, koje se mogu pristupiti sinhrono.</p><br>
+    <p class="content-text">Reaktivne forme takođe pružaju jednostavan put ka testiranju, jer imate sigurnost da su vaši
+      podaci dosledni i predvidljivi kada se zatraže. Svaki korisnik tokova (consumers) ima pristup da bezbedno manipuliše tim podacima.</p><br>
+    <p class="content-text">Reaktivne forme se razlikuju od formi zasnovanih na šablonu na različite načine.
+      Reaktivne forme pružaju sinhroni pristup modelu podataka, nepromenljivost sa posmatračkim operatorima i praćenje promena kroz posmatračke tokove.</p><br>
+    <p class="content-text">Forme zasnovane na šablonu omogućavaju direktan pristup za modifikaciju podataka u vašem šablonu,
+      ali su manje eksplicitne od reaktivnih formi, jer se oslanjaju na direktive ugrađene u šablon, zajedno sa promenljivim
+      podacima za praćenje promena asinhrono. Pogledajte pregled formi za detaljna poređenja između ova dva pristupa.</p><br>
+    <h1 class="content-title">Dodavanje osnovne kontrole forme</h1>
+    <p class="content-text">Postoje tri koraka za korišćenje kontrola forme.</p><br>
+    <ul>
+      <li class="content-text">Generišite novu komponentu da biste uvezli modul reaktivnih formi i instancirali novu <b>FormControl</b>.</li><br>
+      <li class="content-text">Registrujte <b>FormControl</b> u šablonu.</li><br>
+      <li class="content-text">Zatim možete prikazati formu dodavanjem komponente u šablon.</li><br>
+    </ul><br>
+    <p class="content-text">Sledeći primeri pokazuju kako dodati jednu kontrolu forme. U ovom primeru, korisnik unosi svoje
+      ime u polje za unos, hvata se ta vrednost unosa i prikazuje trenutna vrednost elementa kontrole forme.</p><br>
+    <code-display type="typescript" code="
+      { Component } from '@angular/core';
+      import { FormControl, ReactiveFormsModule } from '@angular/forms';
+
+      @Component({
+      &nbsp;&nbsp;&nbsp;&nbsp;standalone: true,
+      &nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-name-editor',
+      &nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './name-editor.component.html',
+      &nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./name-editor.component.css'],
+      &nbsp;&nbsp;&nbsp;&nbsp;imports: [ReactiveFormsModule],
+      })
+      export class NameEditorComponent {
+      &nbsp;&nbsp;&nbsp;&nbsp;name = new FormControl('');
+      }
+      ">
+    </code-display><br>
+    <p class="content-text">Koristite konstruktor <b>FormControl</b> da postavite njegovu početnu vrednost, koja je u ovom slučaju
+      prazan string. Kreiranjem ovih kontrola u vašoj klasi komponente, dobijate trenutni pristup za osluškivanje,
+      ažuriranje i validaciju stanja unosa u formi.</p><br>
+    <p class="content-text">Nakon što kreirate kontrolu u klasi komponente, morate je povezati sa elementom kontrole forme u šablonu.
+      Ažurirajte šablon koristeći <b>formControl</b> vezivanje koje obezbeđuje <b>FormControlDirective</b>, a koja je
+      takođe uključena u <b>ReactiveFormsModule</b>.</p><br>
+    <code-display type="html" code="
+      &lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
+
+      &lt;input id=&quot;name&quot; type=&quot;text&quot; [formControl]=&quot;name&quot;&gt;
+      ">
+    </code-display><br>
+    <p class="content-text">Koristeći sintaksu vezivanja u šablonu, kontrola forme je sada registrovana za unos elementa
+      sa imenom u šablonu. Kontrola forme i DOM element komuniciraju međusobno: prikaz odražava promene u modelu,
+      a model odražava promene u prikazu.</p><br>
+    <p class="content-text">FormControl dodeljen svojstvu name se prikazuje kada je komponenta domaćin tog svojstva dodata u šablon.</p><br>
+    <code-display type="html" code="&lt;app-name-editor&gt;&lt;/app-name-editor&gt;"></code-display><br>
+    <div class="content-image">
+      <img src="./assets/images/images/forms/reactive-form-1.png" alt="Reactive form 1">
+    </div><br>
+    <h1 class="content-title">Prikazivanje vrednosti kontrole forme</h1>
+    <p class="content-text">Prikazivanje vrednosti kontrole forme može se ostvariti na nekoliko načina. Jedan od načina
+      je korišćenje <b>valueChanges</b> observable-a, koji vam omogućava da pratite promene u vrednosti forme. To možete uraditi
+      direktno u šablonu koristeći <b>AsyncPipe</b>, ili u klasi komponente koristeći metodu <b>subscribe()</b>. Ovaj pristup omogućava
+      vam da reagujete na svaku promenu vrednosti forme dok se ona dešava.</p><br>
+    <p class="content-text">Drugi način za prikazivanje vrednosti kontrole forme je korišćenje svojstva <b>value</b>. Ovo svojstvo vam
+      daje trenutni snimak trenutne vrednosti kontrole forme. Za razliku od <b>valueChanges</b>, koji prati promene u realnom vremenu,
+      svojstvo <b>value</b> omogućava vam da dobijete samo trenutnu vrednost forme u trenutku kada je pozovete.</p><br>
+    <p class="content-text">Na primer, možete prikazati trenutnu vrednost kontrole forme u šablonu pomoću interpolacije.
+      Interpolacija vam omogućava da direktno u šablonu prikažete vrednost varijable iz klase komponente. Na ovaj način,
+      kada korisnik unosi podatke u formu, vrednost te kontrole forme se automatski prikazuje u interfejsu, reflektujući
+      poslednju unetu vrednost. Ovaj metod je jednostavan za implementaciju i daje trenutnu vizuelnu povratnu informaciju
+      korisniku o onome što je uneo u formu.</p><br>
+    <p class="content-text">Na ovaj način, imate potpunu kontrolu nad prikazivanjem i upravljanjem vrednostima u vašim formama,
+      bilo da se oslanjate na praćenje promena u realnom vremenu ili na jednostavno dobijanje trenutne vrednosti forme kada je to potrebno.</p><br>
+    <code-display type="html" code="&lt;p&gt;Value: {{ '{' + '{' }} name.value {{ '}' + '}' }}&lt;/p&gt;"></code-display><br>
+    <h1 class="content-title">Zamenjivanje vrednosti kontrole forme</h1>
+    <p class="content-text">Reaktivne forme imaju metode koje vam omogućavaju da promenite vrednost kontrole forme programskim
+      putem, što vam daje fleksibilnost da ažurirate vrednost bez interakcije korisnika. Instanca kontrole forme pruža metodu
+      <b>setValue()</b>, koja ažurira vrednost kontrole forme i proverava da li struktura unete vrednosti odgovara strukturi definisanoj
+      za tu kontrolu. Na primer, kada preuzimate podatke forme sa backend API-ja ili servisa, koristite metodu <b>setValue()</b> da
+      ažurirate kontrolu njenom novom vrednošću, potpuno zamenjujući staru vrednost.</p><br>
+    <p class="content-text">Sledeći primer dodaje metodu u klasu komponente koja ažurira vrednost kontrole na <b>"Nancy"</b> koristeći metodu <b>setValue()</b>:</p><br>
+    <code-display type="typescript" code="updateName() {
+      &nbsp;&nbsp;&nbsp;&nbsp;this.name.setValue('Nancy');
+      }
+    ">
+    </code-display><br>
+    <p class="content-text">Ova metoda <b>updateName</b> zamenjuje trenutnu vrednost kontrole forme sa vrednošću <b>"Nancy"</b>,
+      osiguravajući da se nova vrednost primeni i da se struktura podataka validira prema definisanoj kontroli.
+      Ovaj način ažuriranja vrednosti forme je koristan kada želite da preuzmete podatke iz spoljnog izvora i automatski
+      ažurirate formu bez potrebe za ručnom intervencijom korisnika.</p><br>
+    <code-display type="html" code="&lt;button type='button' (click)='updateName()'&gt;Update Name&lt;/button&gt;">
+    </code-display><br>
+    <div class="content-image">
+      <img src="./assets/images/images/forms/reactive-form-2.png" alt="Reactive form 1">
+    </div><br>
+    <info-panel [isLink]="false" [text]="'U ovom primeru koristite jednu kontrolu. Kada koristite metodu `setValue()` ' +
+     'sa instancom form grupe (`FormGroup`) ili form niza (`FormArray`), vrednost mora odgovarati strukturi grupe ili niza.'"></info-panel><br>
+  </div><br>
+</section>

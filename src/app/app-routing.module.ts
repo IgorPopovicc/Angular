@@ -14,6 +14,7 @@ import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-lo
 import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
 import {ChangeDetectionComponent} from "./pages/developer-guides/change-detection/change-detection.component";
 import {RoutingComponent} from "./pages/developer-guides/routing/routing.component";
+import {FormsComponent} from "./pages/developer-guides/forms/forms.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'lazy-loading', component: LazyLoadingComponent },
   { path: 'developer-guides', component: OverviewDeveloperGuidesComponent },
   { path: 'change-detection', component: ChangeDetectionComponent },
-  { path: 'routing', component: RoutingComponent }
+  { path: 'routing', component: RoutingComponent },
+  { path: 'forms', component: FormsComponent }
 ];
 
 @NgModule({

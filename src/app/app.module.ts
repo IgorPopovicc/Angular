@@ -29,6 +29,7 @@ import { LazyLoadingComponent } from './pages/best-practice/lazy-loading/lazy-lo
 import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overview-developer-guides/overview-developer-guides.component';
 import { ChangeDetectionComponent } from './pages/developer-guides/change-detection/change-detection.component';
 import { RoutingComponent } from './pages/developer-guides/routing/routing.component';
+import { FormsComponent } from './pages/developer-guides/forms/forms.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { RoutingComponent } from './pages/developer-guides/routing/routing.compo
     LazyLoadingComponent,
     OverviewDeveloperGuidesComponent,
     ChangeDetectionComponent,
-    RoutingComponent
+    RoutingComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
