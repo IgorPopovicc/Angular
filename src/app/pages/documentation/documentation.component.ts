@@ -7,7 +7,7 @@ import {Component, HostListener} from '@angular/core';
 })
 export class DocumentationComponent {
 
-   pdf = '/assets/files/Igor_Popovic_CV.pdf';
+  pdf = 'Angular/assets/files/Igor_Popovic_CV.pdf';
   zoom: number = 1; // Početni nivo zumiranja
 
   ngOnInit() {
