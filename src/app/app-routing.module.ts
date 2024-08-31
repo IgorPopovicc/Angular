@@ -15,6 +15,10 @@ import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overv
 import {ChangeDetectionComponent} from "./pages/developer-guides/change-detection/change-detection.component";
 import {RoutingComponent} from "./pages/developer-guides/routing/routing.component";
 import {FormsComponent} from "./pages/developer-guides/forms/forms.component";
+import {HttpClientComponent} from "./pages/developer-guides/http-client/http-client.component";
+import {
+  ServerSideRenderingComponent
+} from "./pages/developer-guides/server-side-rendering/server-side-rendering.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,7 +36,9 @@ const routes: Routes = [
   { path: 'developer-guides', component: OverviewDeveloperGuidesComponent },
   { path: 'change-detection', component: ChangeDetectionComponent },
   { path: 'routing', component: RoutingComponent },
-  { path: 'forms', component: FormsComponent }
+  { path: 'forms', component: FormsComponent },
+  { path: 'http-client', component: HttpClientComponent },
+  { path: 'server-side-rendering', component: ServerSideRenderingComponent }
 ];
 
 @NgModule({

@@ -134,5 +134,137 @@
     </div><br>
     <info-panel [isLink]="false" [text]="'U ovom primeru koristite jednu kontrolu. Kada koristite metodu `setValue()` ' +
      'sa instancom form grupe (`FormGroup`) ili form niza (`FormArray`), vrednost mora odgovarati strukturi grupe ili niza.'"></info-panel><br>
+    <hr>
+    <h1 class="content-main-title">Forme zasnovane na šablonu</h1>
+    <p class="content-text">
+      Forme zasnovane na šablonu omogućavaju upravljanje formama direktno u HTML
+      šablonu koristeći Angular direktive. Ovaj pristup je manje striktan u poređenju
+      sa reaktivnim formama, ali pruža intuitivan i brz način za rukovanje prostim
+      formama, posebno kada želite da ostanete što bliže vašem HTML šablonu.
+    </p><br>
+
+    <h1 class="content-title">
+      Dodavanje osnovne kontrole forme u formama zasnovanim na šablonu
+    </h1>
+    <p class="content-text">
+      Da biste koristili forme zasnovane na šablonu, potrebno je da uključite
+      `FormsModule` u vašu aplikaciju. Kada je modul uključen, možete početi
+      dodavanje kontrola forme koristeći Angular direktive poput `ngModel` direktive.
+    </p><br>
+
+    <p class="content-text">
+      Sledeći primer pokazuje kako dodati jednostavnu kontrolu forme za unos
+      imena koristeći `ngModel` direktivu:
+    </p><br>
+
+    <code-display type="html" code="
+    &lt;input [(ngModel)]='name' name='name'&gt;
+    "></code-display><br>
+
+    <p class="content-text">
+      Ovaj kod povezuje polje za unos direktno sa svojstvom `name` u vašoj klasi
+      komponente. Svaka promena unosa automatski ažurira `name` svojstvo i obratno,
+      pružajući jednostavan način za sinhronizaciju između modela i prikaza.
+    </p><br>
+
+    <h1 class="content-title">
+      Validacija forme zasnovane na šablonu
+    </h1>
+    <p class="content-text">
+      Forme zasnovane na šablonu omogućavaju vam da koristite ugrađene Angular
+      direktive za jednostavnu validaciju. Na primer, možete koristiti `required`
+      atribut u HTML-u da označite obavezna polja, i Angular će automatski primeniti
+      odgovarajuću klasu za prikaz grešaka kada je polje nevažeće.
+    </p><br>
+
+    <code-display type="html" code="
+    &lt;input [(ngModel)]='name' name='name' required&gt;
+    &lt;div *ngIf='name.errors?.required'&gt;Name is required.&lt;/div&gt;
+    "></code-display><br>
+
+    <p class="content-text">
+      Ovaj primer prikazuje poruku greške ako korisnik pokuša da podnese formu bez
+      unosa imena. Direktiva `ngModel` omogućava automatsko upravljanje stanjem
+      validacije i povezivanje sa HTML elementima.
+    </p><br>
+
+    <h1 class="content-title">
+      Grupisanje kontrola forme
+    </h1>
+    <p class="content-text">
+      Za složenije forme, možete grupisati više kontrola zajedno koristeći
+      `ngModelGroup` direktivu. Ovo omogućava logičko grupisanje kontrola forme i
+      olakšava upravljanje validacijom na nivou grupe.
+    </p><br>
+
+    <code-display type="html" code="
+    &lt;form #userForm='ngForm'&gt;
+      &lt;div ngModelGroup='credentials'&gt;
+        &lt;input [(ngModel)]='user.username' name='username' required&gt;
+        &lt;input [(ngModel)]='user.password' name='password' type='password' required&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+    "></code-display><br>
+
+    <p class="content-text">
+      U ovom primeru, polja `username` i `password` su grupisana zajedno, omogućavajući
+      vam da validirate celu grupu ili pristupite njenim podacima kao celini.
+    </p><br>
+
+    <h1 class="content-title">
+      Prikazivanje vrednosti i stanja kontrole forme
+    </h1>
+    <p class="content-text">
+      Da biste prikazali vrednosti i stanje kontrole forme, možete koristiti ugrađene
+      Angular direktive. Na primer, možete prikazati trenutnu vrednost kontrole koristeći
+      interpolaciju, kao i prikazati stanje validacije koristeći klasu `ng-valid` ili
+      `ng-invalid`.
+    </p><br>
+
+    <code-display type="html" code="
+    &lt;p&gt;Username: {{ '{' + '{' }} userForm.controls['username'].value {{ '}' + '}' }}&lt;/p&gt;
+    &lt;div [class.ng-valid]='userForm.controls['username'].valid'&gt;Valid username&lt;/div&gt;
+    "></code-display><br>
+
+    <p class="content-text">
+      Ovaj pristup omogućava vam da dinamički pratite i prikazujete vrednosti i
+      validacione statuse vaših formi direktno u šablonu.
+    </p><br>
+
+    <h1 class="content-title">
+      Zamenjivanje vrednosti kontrole forme
+    </h1>
+    <p class="content-text">
+      U formama zasnovanim na šablonu, zamena vrednosti kontrole forme može se
+      jednostavno uraditi direktnim ažuriranjem svojstva povezanog sa kontrolom forme
+      u klasi komponente. Na primer:
+    </p><br>
+
+    <code-display type="typescript" code="
+    this.user.username = 'JohnDoe';
+    "></code-display><br>
+
+    <p class="content-text">
+      Ovaj pristup automatski osvežava vrednost prikazanu u formi, omogućavajući vam
+      da dinamički manipulišete podacima u formama zasnovanim na šablonu.
+    </p><br>
+    <h1 class="content-main-title">Primeri za forme</h1>
+    <p class="content-text">
+      Ispod se nalazi jednostavan primer reaktivne forme u Angularu, koja omogućava unos teksta i prikaz unete vrednosti
+      u realnom vremenu. Ova forma uključuje osnovnu validaciju, koja zahteva da uneseni tekst bude minimalne dužine
+      od 5 karaktera. Kada korisnik popuni formu ispravno i pritisne dugme za potvrdu, uneti tekst će biti prikazan
+      ispod forme. Stilizovana je prema principima Material dizajna, sa responsivnim CSS-om, tako da se prilagođava
+      svim uređajima, od desktop računara do mobilnih telefona.
+    </p><br>
+    <app-simple-interactive-form></app-simple-interactive-form><br><br>
+    <p class="content-text">
+      Forma ispod je složeniji primer reaktivne forme u Angularu, koja uključuje više polja sa različitim validacijama.
+      Korisnik može uneti svoje ime, prezime, starost, broj proizvoda, kao i cenu po proizvodu. Forma automatski sabira
+      ukupnu cenu na osnovu unetog broja proizvoda i cene po proizvodu. Validacija osigurava da su sva polja pravilno
+      popunjena pre nego što se podaci obrade. Na primer, starost mora biti broj veći od 0, dok cena po proizvodu mora
+      biti pozitivna vrednost. Ako su sva polja ispravno popunjena, korisnik može videti ukupan iznos kao rezultat sabiranja
+      unetih vrednosti.
+    </p><br><br>
+    <app-complex-form></app-complex-form><br>
   </div><br>
 </section>

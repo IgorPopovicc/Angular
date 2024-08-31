@@ -1,0 +1,22 @@
+<form [formGroup]="simpleForm" (ngSubmit)="onSubmit()" class="simple-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Unesite tekst</mat-label>
+    <input
+      matInput
+      formControlName="userInput"
+      placeholder="Upisite nesta..."
+    />
+    <mat-error *ngIf="simpleForm.get('userInput')?.hasError('required')">
+      Ovo polje je obavezno!
+    </mat-error>
+    <mat-error *ngIf="simpleForm.get('userInput')?.hasError('minlength')">
+      Minimalno unesite 5 karaktera!
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+
+  <div class="result" *ngIf="displayedText">
+    <p>Uneli ste: {{ displayedText }}</p>
+  </div>
+</form>

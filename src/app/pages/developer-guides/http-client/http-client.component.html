@@ -1,0 +1,189 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Uvod u HTTP Client</h1>
+    <p class="content-text">
+      Angular pruža moćan alat za rad sa HTTP zahtevima putem ugrađenog <b>HttpClient</b> modula. Korišćenjem <b>HttpClient</b>
+      modula, možete komunicirati sa serverima, preuzimati ili slati podatke, i rukovati raznim vrstama odgovora, kao
+      što su <b>JSON</b>, tekst, ili binarni podaci. Ovaj vodič će vas provesti kroz osnovne korake za korišćenje <b>HttpClient</b>
+      modula, uključujući podešavanje, slanje različitih vrsta HTTP zahteva, kao i obradu odgovora. Cilj je da početnici
+      lako razumeju kako koristiti ovaj modul u svojim Angular aplikacijama.
+    </p><br>
+
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">Ovaj vodič pretpostavlja da imate osnovno razumevanje sledećeg:</p><br>
+    <ul>
+      <li class="content-text">Programiranje u <b>TypeScriptu</b> i osnovno poznavanje <b>Angular-a</b>.</li><br>
+      <li class="content-text">Razumevanje osnovnih koncepata <b>HTTP</b> protokola.</li><br>
+    </ul><br>
+    <hr>
+
+    <h1 class="content-title">Podešavanje HttpClient modula</h1>
+    <p class="content-text">
+      Da biste koristili <b>HttpClient</b>, prvo morate da uvezete <b>HttpClientModule</b> u svoj Angular modul. <b>HttpClientModule</b>
+      pruža sve osnovne funkcionalnosti potrebne za rad sa HTTP zahtevima unutar Angular aplikacije. Ovaj korak je obavezan
+      pre nego što možete slati zahteve ka serverima i primati odgovore. <b>HttpClientModule</b> se uvozi u vaš glavni modul,
+      obično u <b>AppModule</b>, kako bi funkcionalnosti bile dostupne celom projektu.
+    </p><br>
+
+    <code-display type="typescript" code="
+      import { HttpClientModule } from '@angular/common/http';
+      import { NgModule } from '@angular/core';
+      import { BrowserModule } from '@angular/platform-browser';
+      import { AppComponent } from './app.component';
+
+      @NgModule({
+       &nbsp;&nbsp;&nbsp;&nbsp;declarations: [AppComponent],
+       &nbsp;&nbsp;&nbsp;&nbsp;imports: [
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BrowserModule,
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpClientModule // Uvođenje HttpClientModule-a
+        &nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;providers: [],
+       &nbsp;&nbsp;&nbsp;&nbsp; bootstrap: [AppComponent]
+      })
+      export class AppModule { }
+    "></code-display><br>
+
+    <p class="content-text">
+      Nakon što uvezete <b>HttpClientModule</b>, možete ga koristiti u bilo kojoj komponenti ili servisu unutar vaše aplikacije.
+      Ovaj modul pruža moćne metode za slanje zahteva kao što su <b>GET</b>, <b>POST</b>, <b>PUT</b>, <b>DELETE</b> i druge, koje su
+      potrebne za interakciju sa RESTful API-jevima.
+    </p><br>
+
+    <h1 class="content-title">Slanje GET zahteva</h1>
+    <p class="content-text">
+      <b>GET</b> je najosnovniji i najčešće korišćen tip HTTP zahteva. Koristi se za preuzimanje podataka sa servera, bez
+      promene stanja na serveru. Korišćenjem metode <b>get()</b> iz <b>HttpClient</b> modula, možete poslati <b>GET</b> zahtev
+      na određeni URL i dobiti odgovor koji obično dolazi u formatu kao što je <b>JSON</b>. Metoda <b>get()</b> vratiće podatke
+      kao observabl, što znači da se možete pretplatiti (<b>subscribe()</b>) na taj observabl i obraditi podatke kada stignu.
+    </p><br>
+
+    <code-display type="typescript" code="
+      import { HttpClient } from '@angular/common/http';
+      import { Component, OnInit } from '@angular/core';
+
+      @Component({
+        &nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-data-fetch',
+        &nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './data-fetch.component.html',
+        &nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./data-fetch.component.css']
+      })
+      export class DataFetchComponent implements OnInit {
+        &nbsp;&nbsp;&nbsp;&nbsp;data: any;
+
+        &nbsp;&nbsp;&nbsp;&nbsp;constructor(private http: HttpClient) {}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;ngOnInit() {
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.http.get('https://api.example.com/data')
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe(response => {
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.data = response;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+        &nbsp;&nbsp;&nbsp;&nbsp;}
+      }
+    "></code-display><br>
+
+    <p class="content-text">
+      U ovom primeru, <b>HttpClient</b> koristi <b>get()</b> metodu da pošalje <b>GET</b> zahtev na URL <b>https://api.example.com/data</b>.
+      Odgovor se obrađuje pomoću <b>subscribe()</b> metode, koja omogućava reagovanje na dobijene podatke. Kada se podaci uspešno
+      preuzmu sa servera, oni se dodeljuju promenljivoj <b>data</b>, koja se može koristiti u šablonu komponente za prikaz tih
+      podataka. Pretplata na observabl pomoću <b>subscribe()</b> je ključna jer omogućava aplikaciji da asinkrono reaguje na
+      podatke kada oni stignu sa servera.
+    </p><br>
+
+    <h1 class="content-title">Slanje POST zahteva</h1>
+    <p class="content-text">
+      <b>POST</b> zahtev se koristi za slanje podataka na server, obično prilikom kreiranja novih resursa. Korišćenjem
+      <b>post()</b> metode iz <b>HttpClient</b> modula, možete poslati podatke, kao što je <b>JSON</b> objekat, na određeni URL.
+      Server zatim obrađuje te podatke i često vraća potvrdu o uspešnom kreiranju resursa ili vraća sam resurs u odgovoru.
+      <b>POST</b> zahtevi se najčešće koriste u scenarijima kao što su prijava korisnika, kreiranje novih zapisa u bazi
+      podataka, ili slanje formulara.
+    </p><br>
+
+    <code-display type="typescript" code="
+      import { HttpClient } from '@angular/common/http';
+      import { Component } from '@angular/core';
+
+      @Component({
+        &nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-data-submit',
+        &nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './data-submit.component.html',
+        &nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./data-submit.component.css']
+      })
+      export class DataSubmitComponent {
+        &nbsp;&nbsp;&nbsp;&nbsp;constructor(private http: HttpClient) {}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;submitData() {
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const postData = { name: 'John', age: 30 };
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.http.post('https://api.example.com/submit', postData)
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe(response => {
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Response:', response);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+       &nbsp;&nbsp;&nbsp;&nbsp; }
+      }
+    "></code-display><br>
+
+    <p class="content-text">
+      U ovom primeru, <b>HttpClient</b> koristi <b>post()</b> metodu da pošalje <b>POST</b> zahtev na URL <b>https://api.example.com/data</b>,
+      sa <b>JSON</b> objektom koji sadrži ime i starost. Kada server obradi zahtev, odgovor se vraća nazad, a rezultat se loguje u
+      konzolu pomoću <b>console.log()</b>. Ovaj pristup omogućava jednostavno slanje podataka na server, dok je metodologija
+      slična onoj kod <b>GET</b> zahteva. Važno je napomenuti da <b>POST</b> zahtevi obično izazivaju promenu stanja na serveru,
+      za razliku od <b>GET</b> zahteva koji služe samo za preuzimanje podataka.
+    </p><br>
+
+    <h1 class="content-title">Rukovanje greškama</h1>
+    <p class="content-text">
+      Korišćenje HTTP zahteva često može dovesti do grešaka, posebno kada se radi o mrežnoj komunikaciji. Mogući problemi
+      uključuju nedostupnost servera, neispravne URL adrese, greške na serveru, ili nevažeće podatke. Angular <b>HttpClient</b>
+      modul omogućava jednostavno rukovanje greškama korišćenjem <b>catchError</b> operatora iz RxJS biblioteke. <b>catchError</b>
+      se koristi da bi se uhvatile greške koje se mogu dogoditi tokom HTTP zahteva, a zatim se te greške mogu obraditi na način
+      koji je smislen za korisnika aplikacije, kao što je prikazivanje odgovarajuće poruke o grešci ili ponovno pokušavanje zahteva.
+    </p><br>
+
+    <code-display type="typescript" code="
+      import { HttpClient } from '@angular/common/http';
+      import { Component, OnInit } from '@angular/core';
+      import { catchError } from 'rxjs/operators';
+      import { throwError } from 'rxjs';
+
+      @Component({
+        &nbsp;&nbsp;&nbsp;&nbsp;selector: 'app-data-fetch',
+        &nbsp;&nbsp;&nbsp;&nbsp;templateUrl: './data-fetch.component.html',
+        &nbsp;&nbsp;&nbsp;&nbsp;styleUrls: ['./data-fetch.component.css']
+      })
+      export class DataFetchComponent implements OnInit {
+        &nbsp;&nbsp;&nbsp;&nbsp;data: any;
+        &nbsp;&nbsp;&nbsp;&nbsp;error: string | undefined;
+
+        &nbsp;&nbsp;&nbsp;&nbsp;constructor(private http: HttpClient) {}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;ngOnInit() {
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.http.get('https://api.example.com/data')
+            .&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipe(
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catchError(error => {
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.error = 'Failed to fetch data';
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return throwError(error);
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.subscribe(response => {
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.data = response;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+      }
+    "></code-display><br>
+
+    <p class="content-text">
+      U ovom primeru, <b>catchError</b> operator hvata grešku koja može nastati tokom izvršenja <b>GET</b> zahteva i postavlja
+      poruku o grešci u svojstvo <b>error</b>, koje se kasnije može koristiti u šablonu komponente za prikaz korisniku. Na primer,
+      ako server nije dostupan ili ako je došlo do mrežne greške, korisnik će dobiti jasnu poruku o tome da podaci nisu mogli
+      biti preuzeti. <b>throwError</b> se koristi za ponovno bacanje greške, kako bi se omogućilo daljnje rukovanje greškom
+      (npr. logovanje greške ili pokušaj ponovnog slanja zahteva). Na ovaj način, aplikacija postaje otpornija na nepredviđene
+      situacije i pruža bolji korisnički doživljaj.
+    </p><br>
+
+    <h1 class="content-title">Zaključak</h1>
+    <p class="content-text">
+      Angular <b>HttpClient</b> modul je snažan alat za rad sa HTTP zahtevima, omogućavajući vam da lako komunicirate sa serverima,
+      rukujete podacima i obradite greške. Bilo da preuzimate podatke ili šaljete podatke na server, <b>HttpClient</b> pruža
+      jednostavan i moćan API za rad sa HTTP protokolom. Razumevanje ovih osnovnih operacija omogućava vam da razvijate bogate
+      web aplikacije koje efikasno komuniciraju sa backend serverima i pružaju korisnicima interaktivno i prijatno iskustvo.
+    </p><br>
+  </div><br>
+</section>

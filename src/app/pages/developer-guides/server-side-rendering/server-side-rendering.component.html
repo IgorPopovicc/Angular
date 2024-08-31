@@ -1,0 +1,121 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Uvod u renderovanje na serverskoj strani (SSR)</h1>
+    <p class="content-text">
+      Renderovanje na serverskoj strani (SSR) je tehnika koja omogućava renderovanje Angular aplikacija na serveru,
+      pre nego što se sadržaj dostavi klijentu (pregledaču). SSR omogućava brže učitavanje stranica, bolju SEO optimizaciju
+      i poboljšano korisničko iskustvo, posebno na sporim mrežama ili uređajima sa ograničenim resursima. Ovaj vodič će
+      vas provesti kroz osnovne korake za postavljanje SSR-a u Angularu koristeći <b>Angular Universal</b>, kao i objašnjenje
+      prednosti i izazova koji dolaze s ovom tehnikom.
+    </p><br>
+
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">
+      Ovaj vodič pretpostavlja da imate osnovno razumevanje sledećeg:
+    </p><br>
+    <ul>
+      <li class="content-text">Rad sa <b>Angular CLI</b> za kreiranje i upravljanje Angular projektima.</li><br>
+      <li class="content-text">Osnovno poznavanje <b>Node.js</b> i <b>Express</b> okruženja.</li><br>
+      <li class="content-text">Razumevanje kako <b>Angular</b> radi sa komponentama i rutama.</li><br>
+    </ul><br>
+    <hr>
+
+    <h1 class="content-title">Šta je Angular Universal?</h1>
+    <p class="content-text">
+      <b>Angular Universal</b> je tehnologija koja omogućava serverima da izvrše Angular aplikacije i renderuju HTML koji
+      se potom šalje klijentu. Umesto da se čitava aplikacija renderuje na strani klijenta nakon što se preuzme JavaScript
+      kôd, SSR omogućava da server prethodno generiše statički HTML. Ovaj pristup omogućava korisnicima da vide sadržaj
+      stranice mnogo brže, jer ne moraju čekati da se JavaScript učita i izvrši.
+    </p><br>
+
+    <p class="content-text">
+      Angular Universal se najčešće koristi za:
+    </p><br>
+    <ul>
+      <li class="content-text"><b>Brže vreme učitavanja:</b> Sadržaj stranice se prikazuje pre nego što Angular aplikacija
+        bude potpuno učitana na klijentskoj strani, što poboljšava percepciju brzine.</li><br>
+      <li class="content-text"><b>SEO optimizacija:</b> Pretraživači mogu lakše indeksirati sadržaj koji je već renderovan
+        na serveru, što može poboljšati rangiranje u pretragama.</li><br>
+      <li class="content-text"><b>Poboljšano korisničko iskustvo:</b> Korisnici na sporim mrežama ili sa slabijim uređajima
+        mogu brže dobiti osnovni sadržaj stranice.</li><br>
+    </ul><br>
+
+    <h1 class="content-title">Postavljanje Angular Universal-a</h1>
+    <p class="content-text">
+      Da biste postavili SSR u Angular aplikaciji, potrebno je da dodate <b>Angular Universal</b> u vaš projekat. Ovo se
+      može uraditi koristeći <b>Angular CLI</b>, koji će automatski generisati potrebne fajlove i konfiguraciju.
+    </p><br>
+
+    <p class="content-text">
+      Prvi korak je instalacija Angular Universal schematics-a, koji se koristi za automatsko generisanje SSR podrške
+      u vašem projektu:
+    </p><br>
+
+    <code-display type="typescript" code="ng add @nguniversal/express-engine"></code-display><br>
+
+    <p class="content-text">
+      Ova komanda će dodati potrebne pakete, kao što su <b>@nguniversal/express-engine</b> i <b>express</b>, i generisati
+      nove fajlove, uključujući <b>server.ts</b> koji sadrži Express server konfiguraciju. Takođe će ažurirati vaš
+      <b>angular.json</b> fajl da podrži SSR build opcije.
+    </p><br>
+
+    <h1 class="content-title">Razumevanje strukture SSR projekta</h1>
+    <p class="content-text">
+      Nakon instalacije Angular Universal-a, struktura vašeg projekta će se promeniti kako bi uključila fajlove i konfiguracije
+      potrebne za SSR. Evo kratkog pregleda ključnih fajlova:
+    </p><br>
+    <ul>
+      <li class="content-text"><b>server.ts:</b> Ovo je glavni fajl za SSR server. Sadrži konfiguraciju za Express server koji
+        renderuje Angular aplikaciju na serverskoj strani i vraća statički HTML kao odgovor na HTTP zahteve.</li><br>
+      <li class="content-text"><b>main.server.ts:</b> Ovaj fajl sadrži glavni ulazni kôd za serversku stranu aplikacije.
+        On učitava root modul aplikacije (<b>AppServerModule</b>) i omogućava serveru da izvršava Angular aplikaciju.</li><br>
+      <li class="content-text"><b>tsconfig.server.json:</b> Ovaj fajl je posebna TypeScript konfiguracija za serverski
+        build. On obezbeđuje specifične postavke za kompajliranje aplikacije za izvršavanje na Node.js serveru.</li><br>
+    </ul><br>
+
+    <h1 class="content-title">Pokretanje SSR aplikacije</h1>
+    <p class="content-text">
+      Nakon što je Angular Universal pravilno postavljen, možete pokrenuti SSR aplikaciju koristeći sledeće komande.
+      Prvo, kompajlirajte projekat za proizvodnju i renderovanje na serverskoj strani:
+    </p><br>
+
+    <code-display type="typescript" code="npm run build:ssr"></code-display><br>
+
+    <p class="content-text">
+      Ova komanda generiše datoteke za serversku i klijentsku stranu u direktorijumu <b>dist/</b>. Nakon što je aplikacija
+      kompajlirana, možete je pokrenuti koristeći sledeću komandu:
+    </p><br>
+
+    <code-display type="typescript" code="npm run serve:ssr"></code-display><br>
+
+    <p class="content-text">
+      Ova komanda pokreće Express server i vaša Angular aplikacija se sada renderuje na serverskoj strani. Kada posetite
+      URL u pregledaču, prvo će se prikazati statički HTML sadržaj koji je server renderovao, a zatim će Angular preuzeti
+      kontrolu i omogućiti dinamične funkcionalnosti aplikacije.
+    </p><br>
+
+    <h1 class="content-title">Izazovi i najbolje prakse</h1>
+    <p class="content-text">
+      Iako SSR donosi mnoge prednosti, postoje i određeni izazovi koje treba imati na umu. Na primer, nije svaki Angular kôd
+      kompatibilan sa SSR-om. Angular aplikacije često koriste API-je pregledača kao što su <b>window</b> ili <b>document</b>,
+      koji nisu dostupni na serverskoj strani. Da biste rešili ove probleme, možete koristiti Angular-ove <b>platform-specific</b>
+      servise ili obaviti proveru na kojoj se platformi aplikacija izvršava pre nego što pristupite ovim API-jima.
+    </p><br>
+
+    <p class="content-text">
+      Takođe, SSR može povećati složenost postavljanja i održavanja aplikacije, posebno kada je u pitanju podešavanje
+      serverske infrastrukture za skaliranje i rukovanje velikim brojem zahteva. Međutim, uz pažljivo planiranje i
+      implementaciju, prednosti SSR-a često nadmašuju ove izazove.
+    </p><br>
+
+    <h1 class="content-title">Zaključak</h1>
+    <p class="content-text">
+      Angular Universal pruža moćan alat za poboljšanje performansi i SEO optimizacije vaših Angular aplikacija. Renderovanje
+      na serverskoj strani omogućava korisnicima da vide sadržaj brže i poboljšava indeksiranje od strane pretraživača. Iako
+      postoje izazovi u implementaciji, prednosti SSR-a čine ga vrednim dodatkom za mnoge Angular projekte. Razumevanje
+      kako pravilno postaviti i optimizovati SSR omogućava vam da kreirate moderne web aplikacije koje pružaju brzo i
+      efikasno korisničko iskustvo.
+    </p><br>
+  </div><br>
+</section>

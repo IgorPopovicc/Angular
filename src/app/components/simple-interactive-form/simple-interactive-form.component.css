@@ -1,0 +1,61 @@
+.simple-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #0d1117;
+  padding: 20px;
+  border-radius: 8px;
+  color: white !important;
+  box-sizing: border-box;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  background-color: #ff4081;
+  color: white;
+  margin-top: 20px;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+/* Media query za manje ekrane */
+@media (max-width: 600px) {
+  .simple-form {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .result {
+    font-size: 16px;
+  }
+}
+
+/* Media query za veoma male ekrane */
+@media (max-width: 400px) {
+  .simple-form {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .result {
+    font-size: 14px;
+  }
+}
+
+
+
+
+

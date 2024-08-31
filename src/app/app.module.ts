@@ -30,6 +30,12 @@ import { OverviewDeveloperGuidesComponent } from './pages/developer-guides/overv
 import { ChangeDetectionComponent } from './pages/developer-guides/change-detection/change-detection.component';
 import { RoutingComponent } from './pages/developer-guides/routing/routing.component';
 import { FormsComponent } from './pages/developer-guides/forms/forms.component';
+import { SimpleInteractiveFormComponent } from './components/simple-interactive-form/simple-interactive-form.component';
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import { ComplexFormComponent } from './components/complex-form/complex-form.component';
+import { HttpClientComponent } from './pages/developer-guides/http-client/http-client.component';
+import { ServerSideRenderingComponent } from './pages/developer-guides/server-side-rendering/server-side-rendering.component';
 
 
 @NgModule({
@@ -53,7 +59,11 @@ import { FormsComponent } from './pages/developer-guides/forms/forms.component';
     OverviewDeveloperGuidesComponent,
     ChangeDetectionComponent,
     RoutingComponent,
-    FormsComponent
+    FormsComponent,
+    SimpleInteractiveFormComponent,
+    ComplexFormComponent,
+    HttpClientComponent,
+    ServerSideRenderingComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,9 @@ import { FormsComponent } from './pages/developer-guides/forms/forms.component';
     MatCardModule,
     HighlightModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

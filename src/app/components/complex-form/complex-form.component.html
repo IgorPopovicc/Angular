@@ -1,0 +1,62 @@
+<form [formGroup]="complexForm" (ngSubmit)="onSubmit()" class="complex-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Ime</mat-label>
+    <input matInput formControlName="firstName" placeholder="Unesite vase ime." />
+    <mat-error *ngIf="complexForm.get('firstName')?.hasError('required')">
+      Ime je obavezno!
+    </mat-error>
+    <mat-error *ngIf="complexForm.get('firstName')?.hasError('minlength')">
+      Morate da unesete minimalno 2 karaktera.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Prezime</mat-label>
+    <input matInput formControlName="lastName" placeholder="Unesite vase prezime" />
+    <mat-error *ngIf="complexForm.get('lastName')?.hasError('required')">
+      Prezime je obavezno!
+    </mat-error>
+    <mat-error *ngIf="complexForm.get('lastName')?.hasError('minlength')">
+      Morate da unesete minimalno 2 karaktera.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Godine</mat-label>
+    <input matInput formControlName="age" placeholder="Unesite vase godine" type="number" />
+    <mat-error *ngIf="complexForm.get('age')?.hasError('required')">
+      Godine su obavezne!
+    </mat-error>
+    <mat-error *ngIf="complexForm.get('age')?.hasError('min')">
+      Broj godina mora biti veci od 0!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Kolicina proizvoda</mat-label>
+    <input matInput formControlName="productQuantity" placeholder="Unesite kolicinu." type="number" />
+    <mat-error *ngIf="complexForm.get('productQuantity')?.hasError('required')">
+      Kolicina je obavezna!
+    </mat-error>
+    <mat-error *ngIf="complexForm.get('productQuantity')?.hasError('min')">
+      Kolicina mora biti veca od 0!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Cena proizvoda</mat-label>
+    <input matInput formControlName="productPrice" placeholder="Unesite cenu proizvoda" type="number" />
+    <mat-error *ngIf="complexForm.get('productPrice')?.hasError('required')">
+      Cena proizvoda je obavezna!
+    </mat-error>
+    <mat-error *ngIf="complexForm.get('productPrice')?.hasError('min')">
+      Cena mora biti veca od 0!
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Izracunajte ukupnu cenu</button>
+
+  <div class="result" *ngIf="totalPrice > 0">
+    <p>Ukupna cena: {{ totalPrice }} RSD</p>
+  </div>
+</form>
