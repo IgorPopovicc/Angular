@@ -19,6 +19,8 @@ import {HttpClientComponent} from "./pages/developer-guides/http-client/http-cli
 import {
   ServerSideRenderingComponent
 } from "./pages/developer-guides/server-side-rendering/server-side-rendering.component";
+import {TestingComponent} from "./pages/developer-guides/testing/testing.component";
+import {DocumentationComponent} from "./pages/documentation/documentation.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +40,9 @@ const routes: Routes = [
   { path: 'routing', component: RoutingComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'http-client', component: HttpClientComponent },
-  { path: 'server-side-rendering', component: ServerSideRenderingComponent }
+  { path: 'server-side-rendering', component: ServerSideRenderingComponent },
+  { path: 'testing', component: TestingComponent },
+  { path: 'documentation', component: DocumentationComponent }
 ];
 
 @NgModule({

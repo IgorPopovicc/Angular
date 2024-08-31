@@ -1,0 +1,224 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Uvod u testiranje u Angularu</h1>
+    <p class="content-text">
+      Testiranje je ključni deo razvoja softvera, koji osigurava da vaša aplikacija funkcioniše ispravno i da se ponaša
+      prema očekivanjima. Angular pruža robusni skup alata za testiranje, uključujući podršku za <b>jedinično testiranje</b>,
+      <b>testiranje komponenti</b> i <b>end-to-end (E2E) testiranje</b>. Ovaj vodič će vas provesti kroz osnove testiranja
+      u Angularu, kako da postavite svoje okruženje za testiranje, i kako da pišete i pokrećete testove u vašim Angular projektima.
+    </p><br>
+
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">
+      Ovaj vodič pretpostavlja da imate osnovno razumevanje sledećeg:
+    </p><br>
+    <ul>
+      <li class="content-text">Rad sa <b>Angular CLI</b> za kreiranje i upravljanje Angular projektima.</li><br>
+      <li class="content-text">Osnovno poznavanje <b>TypeScript-a</b> i <b>JavaScript-a</b>.</li><br>
+      <li class="content-text">Razumevanje kako <b>Angular</b> radi sa komponentama, servisima i modulima.</li><br>
+    </ul><br>
+    <hr>
+
+    <h1 class="content-title">Osnove testiranja u Angularu</h1>
+    <p class="content-text">
+      Angular koristi <b>Jasmine</b> kao test framework i <b>Karma</b> kao test runner za izvršavanje testova u pregledaču.
+      <b>Jasmine</b> je popularan test framework za JavaScript koji omogućava pisanje testova koristeći sintaksu nalik prirodnom
+      jeziku, dok <b>Karma</b> omogućava automatsko pokretanje testova u različitim pregledačima i prati rezultate testova u realnom vremenu.
+    </p><br>
+
+    <p class="content-text">
+      Testiranje u Angularu može se podeliti u nekoliko glavnih kategorija:
+    </p><br>
+    <ul>
+      <li class="content-text"><b>Jedinično testiranje:</b> Testiranje pojedinačnih delova koda, kao što su funkcije, servisi,
+        i komponente, kako bi se osiguralo da rade ispravno izolovano od ostatka aplikacije.</li><br>
+      <li class="content-text"><b>Testiranje komponenti:</b> Fokusira se na testiranje Angular komponenti u izolaciji ili u
+        kontekstu gde komuniciraju sa drugim komponentama i servisima.</li><br>
+      <li class="content-text"><b>End-to-end (E2E) testiranje:</b> Testiranje kompletne aplikacije, simulirajući korisničke
+        interakcije kako bi se osiguralo da cela aplikacija funkcioniše prema očekivanjima.</li><br>
+    </ul><br>
+
+    <h1 class="content-title">Postavljanje okruženja za testiranje</h1>
+    <p class="content-text">
+      Angular projekti kreirani pomoću <b>Angular CLI</b> dolaze sa već podešenim okruženjem za testiranje. Ovo uključuje
+      konfiguraciju za <b>Jasmine</b> i <b>Karma</b>, kao i osnovne testove generisane za svaku komponentu, servis ili modul
+      koji kreirate. Da biste pokrenuli testove, jednostavno koristite sledeću komandu:
+    </p><br>
+
+    <code-display type="typescript" code="ng test"></code-display><br>
+
+    <p class="content-text">
+      Ova komanda će pokrenuti <b>Karma</b> test runner, otvoriti pregledač, i izvršiti sve jedinične testove u projektu.
+      Rezultati testova će biti prikazani u konzoli, kao i u samom pregledaču.
+    </p><br>
+
+    <h1 class="content-title">Pisanje jediničnih testova</h1>
+    <p class="content-text">
+      Jedinični testovi u Angularu pišu se koristeći <b>Jasmine</b> sintaksu. Tipični test obuhvata <b>describe</b> blok, koji
+      grupiše srodne testove, i <b>it</b> blokove, koji predstavljaju individualne testove. Svaki <b>it</b> blok sadrži jednu
+      ili više <b>expect</b> izjava koje proveravaju da li je određeni deo koda radio prema očekivanjima.
+    </p><br>
+
+    <code-display type="typescript" code="import { TestBed } from '@angular/core/testing';
+    import { MyService } from './my-service.service';
+
+    describe('MyService', () => {
+        &nbsp;&nbsp;&nbsp;&nbsp;let service: MyService;
+
+        &nbsp;&nbsp;&nbsp;&nbsp;beforeEach(() => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestBed.configureTestingModule({});
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service = TestBed.inject(MyService);
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should be created', () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(service).toBeTruthy();
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should return correct value from add method', () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const result = service.add(2, 3);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(result).toBe(5);
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+    });
+    "></code-display><br>
+
+    <p class="content-text">
+      U ovom primeru, testiramo servis <b>MyService</b>. Prvo se postavlja test okruženje pomoću <b>TestBed.configureTestingModule</b>,
+      a zatim se instancira servis. Testovi proveravaju da li je servis pravilno kreiran i da li njegova <b>add</b> metoda ispravno
+      vraća zbir dva broja.
+    </p><br>
+
+    <h1 class="content-title">Testiranje komponenti</h1>
+    <p class="content-text">
+      Testiranje Angular komponenti je ključni deo testiranja aplikacije. Komponente često imaju složenu logiku i interakcije
+      sa drugim komponentama ili servisima, pa je važno da ih testiramo u izolaciji. Angular pruža <b>TestBed</b> modul koji
+      omogućava lako testiranje komponenti u kontrolisanom okruženju.
+    </p><br>
+
+    <code-display type="typescript" code="import { ComponentFixture, TestBed } from '@angular/core/testing';
+    import { MyComponent } from './my-component.component';
+
+    describe('MyComponent', () => {
+        &nbsp;&nbsp;&nbsp;&nbsp;let component: MyComponent;
+        &nbsp;&nbsp;&nbsp;&nbsp;let fixture: ComponentFixture<MyComponent>;
+
+        &nbsp;&nbsp;&nbsp;&nbsp;beforeEach(async () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;await TestBed.configureTestingModule({
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;declarations: [ MyComponent ]
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.compileComponents();
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;beforeEach(() => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixture = TestBed.createComponent(MyComponent);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component = fixture.componentInstance;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixture.detectChanges();
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should create', () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(component).toBeTruthy();
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should render title', () => {
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; const compiled = fixture.nativeElement;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect( compiled.querySelector('h1').textContent ).toContain('My Component Title');
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+    });
+    "></code-display><br>
+
+    <p class="content-text">
+      Ovaj primer prikazuje kako testirati Angular komponentu <b>MyComponent</b>. <b>TestBed</b> se koristi za konfiguraciju
+      testnog modula koji deklarira komponentu. Zatim se komponenta kreira pomoću <b>TestBed.createComponent</b>, i proverava
+      se da li je pravilno kreirana i da li pravilno renderuje naslov u HTML šablonu.
+    </p><br>
+
+    <h1 class="content-title">Testiranje servisa sa zavisnostima</h1>
+    <p class="content-text">
+      Kada servisi imaju zavisnosti od drugih servisa ili modula, važno je testirati kako te zavisnosti utiču na funkcionisanje
+      servisa. Angular pruža alate za lako "mockovanje" zavisnosti, što omogućava izolovano testiranje servisa.
+    </p><br>
+
+    <code-display type="typescript" code="import { TestBed } from '@angular/core/testing';
+    import { MyService } from './my-service.service';
+    import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+    describe('MyService', () => {
+        &nbsp;&nbsp;&nbsp;&nbsp;let service: MyService;
+        &nbsp;&nbsp;&nbsp;&nbsp;let httpMock: HttpTestingController;
+
+        &nbsp;&nbsp;&nbsp;&nbsp;beforeEach(() => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TestBed.configureTestingModule({
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imports: [HttpClientTestingModule],
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;providers: [MyService]
+            &nbsp;&nbsp;&nbsp;&nbsp;});
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service = TestBed.inject(MyService);
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpMock = TestBed.inject(HttpTestingController);
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should fetch data from API', () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const mockData = { name: 'John' };
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service.getData().subscribe(data => {
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(data.name).toEqual('John');
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const req = httpMock.expectOne( 'https://api.example.com/data' );
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(req.request.method).toBe('GET');
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;req.flush(mockData);
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;afterEach(() => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpMock.verify();
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+    });
+    "></code-display><br>
+
+    <p class="content-text">
+      U ovom primeru, servis <b>MyService</b> ima zavisnost od <b>HttpClient</b> modula, koji se koristi za slanje HTTP zahteva.
+      Koristimo <b>HttpClientTestingModule</b> i <b>HttpTestingController</b> za "mockovanje" HTTP zahteva i odgovora.
+      Test proverava da li servis ispravno šalje <b>GET</b> zahtev i da li vraća očekivane podatke.
+    </p><br>
+
+    <h1 class="content-title">End-to-end (E2E) testiranje</h1>
+    <p class="content-text">
+      End-to-end (E2E) testiranje simulira korisničke interakcije sa aplikacijom kako bi se osiguralo da cela aplikacija
+      funkcioniše prema očekivanjima. Angular koristi <b>Protractor</b> kao alat za E2E testiranje, koji omogućava
+      automatizovano testiranje aplikacije u stvarnom pregledaču.
+    </p><br>
+
+    <p class="content-text">
+      E2E testovi se pišu u <b>TypeScript-u</b> koristeći Protractor API, koji omogućava definisanje testnih slučajeva koji
+      simuliraju interakcije korisnika, kao što su klikanje na dugmad, popunjavanje formi, ili navigacija između stranica.
+    </p><br>
+
+    <code-display type="typescript" code="import { browser, by, element } from 'protractor';
+
+    describe('My Angular App', () => {
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should display the correct title', () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;browser.get('/');
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(browser.getTitle()).toEqual('My Angular App');
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+
+        &nbsp;&nbsp;&nbsp;&nbsp;it('should navigate to About page', () => {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element(by.css('a[href=\'about\']')).click();
+        &nbsp;&nbsp;&nbsp;&nbsp;expect( element(by.css('h1')).getText() ).toEqual('About');
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+    });
+    "></code-display><br>
+
+    <p class="content-text">
+      Ovaj E2E test proverava da li aplikacija ispravno prikazuje naslov stranice i da li navigacija do "About" stranice
+      funkcioniše kako treba. <b>browser.get</b> se koristi za otvaranje URL-a aplikacije, dok <b>element</b> i <b>by</b>
+      služe za selektovanje i interakciju sa elementima na stranici.
+    </p><br>
+
+    <h1 class="content-title">Zaključak</h1>
+    <p class="content-text">
+      Testiranje je esencijalni deo razvoja svake Angular aplikacije. Angular pruža bogat set alata i biblioteka za
+      jednostavno i efikasno pisanje jediničnih, komponentnih i E2E testova. Razumevanje i primena testiranja pomaže u
+      održavanju kvaliteta koda, smanjenju broja grešaka, i osiguravanju da aplikacija funkcioniše prema očekivanjima.
+      Sa pravim pristupom i alatom, testiranje postaje prirodni deo razvojnog procesa koji doprinosi boljoj, stabilnijoj
+      i skalabilnijoj aplikaciji.
+    </p><br>
+  </div><br>
+</section>

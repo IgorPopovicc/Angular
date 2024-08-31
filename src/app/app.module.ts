@@ -36,6 +36,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ComplexFormComponent } from './components/complex-form/complex-form.component';
 import { HttpClientComponent } from './pages/developer-guides/http-client/http-client.component';
 import { ServerSideRenderingComponent } from './pages/developer-guides/server-side-rendering/server-side-rendering.component';
+import { TestingComponent } from './pages/developer-guides/testing/testing.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DocumentationComponent } from './pages/documentation/documentation.component';
 
 
 @NgModule({
@@ -63,7 +66,9 @@ import { ServerSideRenderingComponent } from './pages/developer-guides/server-si
     SimpleInteractiveFormComponent,
     ComplexFormComponent,
     HttpClientComponent,
-    ServerSideRenderingComponent
+    ServerSideRenderingComponent,
+    TestingComponent,
+    DocumentationComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,8 @@ import { ServerSideRenderingComponent } from './pages/developer-guides/server-si
     MatSnackBarModule,
     MatTableModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
   ],
   providers: [
     {

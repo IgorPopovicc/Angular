@@ -1,6 +1,6 @@
 <section class="page">
   <div class="content">
-    <h1 class="content-main-title">Uvod u forme u Angularu</h1>
+    <h1 class="content-main-title">Uvod u Angular forme</h1>
     <p class="content-text">Rukovanje korisničkim unosom putem formi je osnova mnogih uobičajenih aplikacija. Aplikacije
       koriste forme da omoguće korisnicima prijavu, ažuriranje profila, unos osjetljivih informacija i obavljanje mnogih
       drugih zadataka unosa podataka.</p><br>
@@ -59,8 +59,7 @@
     </ul><br>
     <p class="content-text">Sledeći primeri pokazuju kako dodati jednu kontrolu forme. U ovom primeru, korisnik unosi svoje
       ime u polje za unos, hvata se ta vrednost unosa i prikazuje trenutna vrednost elementa kontrole forme.</p><br>
-    <code-display type="typescript" code="
-      { Component } from '@angular/core';
+    <code-display type="typescript" code="import{ Component } from '@angular/core';
       import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
       @Component({
@@ -81,8 +80,7 @@
     <p class="content-text">Nakon što kreirate kontrolu u klasi komponente, morate je povezati sa elementom kontrole forme u šablonu.
       Ažurirajte šablon koristeći <b>formControl</b> vezivanje koje obezbeđuje <b>FormControlDirective</b>, a koja je
       takođe uključena u <b>ReactiveFormsModule</b>.</p><br>
-    <code-display type="html" code="
-      &lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
+    <code-display type="html" code="&lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
 
       &lt;input id=&quot;name&quot; type=&quot;text&quot; [formControl]=&quot;name&quot;&gt;
       ">
@@ -127,8 +125,7 @@
       osiguravajući da se nova vrednost primeni i da se struktura podataka validira prema definisanoj kontroli.
       Ovaj način ažuriranja vrednosti forme je koristan kada želite da preuzmete podatke iz spoljnog izvora i automatski
       ažurirate formu bez potrebe za ručnom intervencijom korisnika.</p><br>
-    <code-display type="html" code="&lt;button type='button' (click)='updateName()'&gt;Update Name&lt;/button&gt;">
-    </code-display><br>
+    <code-display type="html" code="&lt;button type='button' (click)='updateName()'&gt;Update Name&lt;/button&gt;"></code-display><br>
     <div class="content-image">
       <img src="./assets/images/images/forms/reactive-form-2.png" alt="Reactive form 1">
     </div><br>
@@ -157,9 +154,7 @@
       imena koristeći `ngModel` direktivu:
     </p><br>
 
-    <code-display type="html" code="
-    &lt;input [(ngModel)]='name' name='name'&gt;
-    "></code-display><br>
+    <code-display type="html" code="&lt;input [(ngModel)]='name' name='name'&gt;"></code-display><br>
 
     <p class="content-text">
       Ovaj kod povezuje polje za unos direktno sa svojstvom `name` u vašoj klasi
@@ -177,8 +172,7 @@
       odgovarajuću klasu za prikaz grešaka kada je polje nevažeće.
     </p><br>
 
-    <code-display type="html" code="
-    &lt;input [(ngModel)]='name' name='name' required&gt;
+    <code-display type="html" code="&lt;input [(ngModel)]='name' name='name' required&gt;
     &lt;div *ngIf='name.errors?.required'&gt;Name is required.&lt;/div&gt;
     "></code-display><br>
 
@@ -197,8 +191,7 @@
       olakšava upravljanje validacijom na nivou grupe.
     </p><br>
 
-    <code-display type="html" code="
-    &lt;form #userForm='ngForm'&gt;
+    <code-display type="html" code="&lt;form #userForm='ngForm'&gt;
       &lt;div ngModelGroup='credentials'&gt;
         &lt;input [(ngModel)]='user.username' name='username' required&gt;
         &lt;input [(ngModel)]='user.password' name='password' type='password' required&gt;
@@ -221,9 +214,8 @@
       `ng-invalid`.
     </p><br>
 
-    <code-display type="html" code="
-    &lt;p&gt;Username: {{ '{' + '{' }} userForm.controls['username'].value {{ '}' + '}' }}&lt;/p&gt;
-    &lt;div [class.ng-valid]='userForm.controls['username'].valid'&gt;Valid username&lt;/div&gt;
+    <code-display type="html" code="&lt;p&gt;Username: {{ '{' + '{' }} userForm.controls['username'].value {{ '}' + '}' }}&lt;/p&gt;
+    &lt;div [class.ng-valid] = 'userForm.controls['username'].valid'&gt; Valid username &lt;/div&gt;
     "></code-display><br>
 
     <p class="content-text">
@@ -240,9 +232,7 @@
       u klasi komponente. Na primer:
     </p><br>
 
-    <code-display type="typescript" code="
-    this.user.username = 'JohnDoe';
-    "></code-display><br>
+    <code-display type="typescript" code="this.user.username = 'JohnDoe';"></code-display><br>
 
     <p class="content-text">
       Ovaj pristup automatski osvežava vrednost prikazanu u formi, omogućavajući vam

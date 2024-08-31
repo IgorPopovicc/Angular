@@ -1,0 +1,17 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Prikaz PDF dokumenta</h1>
+    <div class="pdf-container">
+      <pdf-viewer
+        [src]="pdf"
+        [render-text]="true"
+        [zoom]="zoom"
+        class="pdf-viewer"
+      ></pdf-viewer>
+    </div><br><br>
+    <div class="pdf-actions">
+      <a [href]="pdf" download="document.pdf" class="download-button">Preuzmi PDF</a>
+      <button (click)="openInNewTab()">Otvori u novom prozoru</button>
+    </div><br><br>
+  </div>
+</section>
