@@ -2,20 +2,20 @@
     <div class="content">
         <h1 class="content-main-title">Sigurnost</h1>
         <h1 class="content-title">Prevencija Cross-site Scripting (XSS)</h1>
-        <p class="content-text">Cross-site scripting (XSS) omogućava napadačima da ubace zlonamerni kod u veb stranice. Takav kod može, na primer, ukrasti korisničke podatke i 
+        <p class="content-text">Cross-site scripting (XSS) omogućava napadačima da ubace zlonamerni kod u veb stranice. Takav kod može, na primer, ukrasti korisničke podatke i
             podatke za prijavljivanje ili izvršiti radnje koje se predstavljaju kao korisnik. Ovo je jedan od najčešćih napada na vebu.</p><br>
-        <p class="content-text">Da biste blokirali XSS napade, morate sprečiti zlonamerni kod da uđe u Document Object Model (DOM). Na primer, ako napadači uspeju da vas prevare da umetnete 
-            <b>script</b> tag u DOM, oni mogu pokrenuti proizvoljan kod na vašem veb sajtu. Napad nije ograničen na 
+        <p class="content-text">Da biste blokirali XSS napade, morate sprečiti zlonamerni kod da uđe u Document Object Model (DOM). Na primer, ako napadači uspeju da vas prevare da umetnete
+            <b>script</b> tag u DOM, oni mogu pokrenuti proizvoljan kod na vašem veb sajtu. Napad nije ograničen na
             <b>script></b> tagove - mnogi elementi i svojstva u DOM-u omogućavaju izvršenje koda, na primer, <b>img</b> i <b>a</b>. Ako podaci pod kontrolom napadača uđu u DOM, očekujte sigurnosne ranjivosti.</p>
         <h1 class="content-title">Angular-ov model sigurnosti protiv cross-site scripting (XSS)</h1>
         <p class="content-text">Da bi sistematično blokirao XSS greške, Angular podrazumevano tretira sve vrednosti kao neverifikovane. Kada se vrednost umetne u DOM putem vezivanja template-a ili interpolacije,
              Angular sanitizuje i eskapira neverifikovane vrednosti. Ako je vrednost već prethodno sanitizovana izvan Angulara i smatra se bezbednom, to treba komunicirati Angularu označavanjem te vrednosti kao pouzdanu.</p><br>
-        <p class="content-text">Za razliku od vrednosti koje se koriste za prikaz, Angular-ovi template-i se podrazumevano smatraju pouzdanim i trebaju se tretirati kao izvršivi kod. Nikada ne kreirajte template-e spajanjem korisničkog 
+        <p class="content-text">Za razliku od vrednosti koje se koriste za prikaz, Angular-ovi template-i se podrazumevano smatraju pouzdanim i trebaju se tretirati kao izvršivi kod. Nikada ne kreirajte template-e spajanjem korisničkog
             unosa i sintakse template-a. To bi omogućilo napadačima da ubace proizvoljan kod u vašu aplikaciju. Kako biste sprečili ove ranjivosti, uvek koristite podrazumevani Ahead-Of-Time (AOT) kompajler template-a u produkcijskim implementacijama.</p><br>
-        <p class="content-text">Dodatni sloj zaštite može se obezbediti korišćenjem Content Security Policy i Trusted Types. Ove funkcionalnosti web platforme operišu na nivou DOM-a, što je najefikasnije mesto za sprečavanje XSS problema. Ovde ih nije moguće 
+        <p class="content-text">Dodatni sloj zaštite može se obezbediti korišćenjem Content Security Policy i Trusted Types. Ove funkcionalnosti web platforme operišu na nivou DOM-a, što je najefikasnije mesto za sprečavanje XSS problema. Ovde ih nije moguće
             zaobići korišćenjem drugih, nižih nivoa API-ja. Iz ovog razloga, snažno se preporučuje iskoristiti ove mogućnosti. Da biste to postigli, konfigurišite content security policy za aplikaciju i omogućite primenu trusted types-a.</p>
         <h1 class="content-main-title">Sanitizacija i sigurnosni konteksti</h1>
-        <p class="content-text">Sanitizacija je inspekcija nepoverljive vrednosti, pretvarajući je u vrednost koja je sigurna za umetanje u DOM. U mnogim slučajevima, sanitizacija uopšte ne menja vrednost. Sanitizacija zavisi od konteksta: 
+        <p class="content-text">Sanitizacija je inspekcija nepoverljive vrednosti, pretvarajući je u vrednost koja je sigurna za umetanje u DOM. U mnogim slučajevima, sanitizacija uopšte ne menja vrednost. Sanitizacija zavisi od konteksta:
             Vrednost koja je bezopasna u CSS-u može biti potencijalno opasna u URL-u.</p><br>
         <p class="content-text">Angular definiše sledeće sigurnosne kontekste:</p>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -36,20 +36,20 @@
              proverili kako je kreirana i osigurali da je bezbedna. Budite oprezni. Ako verujete vrednosti koja može biti zlonamerna, uvodite sigurnosnu ranjivost u vašu aplikaciju. Ako imate sumnje, potražite profesionalnog revizora sigurnosti.</p>
         <p class="content-text">Da biste označili vrednost kao pouzdanu, ubacite DomSanitizer i pozovite jednu od sledećih metoda:</p>
         <ul>
-            <li class="content-text">bypassSecurityTrustHtml</li>
-            <li class="content-text">bypassSecurityTrustScript</li>
-            <li class="content-text">bypassSecurityTrustStyle</li>
-            <li class="content-text">bypassSecurityTrustUrl</li>
-            <li class="content-text">bypassSecurityTrustResourceUrl</li>
+            <li class="content-text"><b>bypassSecurityTrustHtml</b></li>
+            <li class="content-text"><b>bypassSecurityTrustScript</b></li>
+            <li class="content-text"><b>bypassSecurityTrustStyle</b></li>
+            <li class="content-text"><b>bypassSecurityTrustUrl</b></li>
+            <li class="content-text"><b>bypassSecurityTrustResourceUrl</b></li>
         </ul><br>
         <p class="content-text">Obično, Angular automatski vrši sanitizaciju URL-a, onemogućava opasan kod i u režimu razvoja, beleži ovu akciju u konzoli. Da biste sprečili ovo, označite vrednost URL-a kao pouzdani URL koristeći poziv bypassSecurityTrustUrl:</p>
         <code-display [type]="'typescript'" code="constructor(private sanitizer: DomSanitizer) {
-            &nbsp;&nbsp;&nbsp;&nbsp;this.dangerousUrl = 
+            &nbsp;&nbsp;&nbsp;&nbsp;this.dangerousUrl =
             &nbsp;&nbsp;&nbsp;&nbsp;'javascript:alert('Hi there')';
             &nbsp;&nbsp;&nbsp;&nbsp;this.trustedUrl = sanitizer.
             &nbsp;&nbsp;&nbsp;&nbsp;bypassSecurityTrustUrl(this.dangerousUrl);
         }"></code-display>
-        <p class="content-text">Ako treba da pretvorite korisnički unos u pouzdanu vrednost, koristite metod komponente. Sledeći predložak omogućava korisnicima da unesu ID YouTube videa i učita odgovarajući video u <b>iframe</b>. Atribut <b>iframe src</b> je kontekst 
+        <p class="content-text">Ako treba da pretvorite korisnički unos u pouzdanu vrednost, koristite metod komponente. Sledeći predložak omogućava korisnicima da unesu ID YouTube videa i učita odgovarajući video u <b>iframe</b>. Atribut <b>iframe src</b> je kontekst
             sigurnosnog resursnog URL-a, jer nepoverljiv izvor može, na primer, ušvercovati preuzimanja datoteka koje neoprezni korisnici mogu pokrenuti. Da biste to sprečili, pozovite metod na komponenti da konstruiše pouzdan URL za video, što uzrokuje
              da Angular omogući vezivanje u <b>iframe src</b>.</p><br>
     </div>

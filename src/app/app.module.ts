@@ -39,6 +39,10 @@ import { ServerSideRenderingComponent } from './pages/developer-guides/server-si
 import { TestingComponent } from './pages/developer-guides/testing/testing.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DocumentationComponent } from './pages/documentation/documentation.component';
+import { AngularIdeComponent } from './pages/angular-ide/angular-ide.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UpdateNotificationComponent } from './components/update-notification/update-notification.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -68,7 +72,10 @@ import { DocumentationComponent } from './pages/documentation/documentation.comp
     HttpClientComponent,
     ServerSideRenderingComponent,
     TestingComponent,
-    DocumentationComponent
+    DocumentationComponent,
+    AngularIdeComponent,
+    PageNotFoundComponent,
+    UpdateNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +90,8 @@ import { DocumentationComponent } from './pages/documentation/documentation.comp
     MatTableModule,
     MatInputModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatDialogModule
   ],
   providers: [
     {

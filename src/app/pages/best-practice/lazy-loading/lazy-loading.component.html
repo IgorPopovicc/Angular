@@ -18,7 +18,7 @@
         }];"></code-display>
         <p class="content-text">Takođe, obavezno ukloni <b>ItemsModule</b> iz <b>AppModule-a</b>. Za detaljna uputstva o lazy loading-u modula, nastavi sa sledećim delovima ove stranice.</p><br>
         <hr>
-        <h1 class="content-main-title">Postupno podešavanje</h1>
+        <h1 class="content-main-title">Postepeno podešavanje</h1>
         <p class="content-text">Postavljanje lazy-loaded funkcionalnog modula zahteva dva glavna koraka:</p><br>
         <ul>
           <li class="content-text">Kreiraj funkcionalni modul koristeći Angular CLI, uz --route zastavicu.</li>
@@ -27,7 +27,7 @@
         <h1 class="content-title">Postavi aplikaciju</h1>
         <p class="content-text">Ako već nemaš aplikaciju, prati sledeće korake da je kreiraš pomoću Angular CLI. Ako već imaš aplikaciju, preskoči na deo <a [routerLink]="[]" fragment="routeConfig">Konfiguriši rute.</a></p><br>
         <code-display [type]="'console'" code="ng new customer-app --no-standalone"></code-display>
-        <p class="content-text">Ovo kreira aplikaciju pod nazivom customer-app sa fajlom pod imenom app-routing.module.ts. Ovo je jedan od fajlova koji su ti potrebni za postavljanje lazy loading-a za tvoj funkcionalni modul. Uđi u projekat izdavanjem komande cd customer-app.</p><br>   
+        <p class="content-text">Ovo kreira aplikaciju pod nazivom customer-app sa fajlom pod imenom app-routing.module.ts. Ovo je jedan od fajlova koji su ti potrebni za postavljanje lazy loading-a za tvoj funkcionalni modul. Uđi u projekat izdavanjem komande cd customer-app.</p><br>
         <h1 class="content-title">Kreiraj funkcionalni modul sa rutingom</h1>
         <p class="content-text">Sledeće, potreban ti je funkcionalni modul sa komponentom na koju ćeš rutirati. Da bi ga napravio, unesi sledeću komandu u komandni alat, gde je customers ime funkcionalnog modula. Putanja za učitavanje customers funkcionalnih modula je takođe customers, jer je specificirana sa --route opcijom:</p><br>
         <code-display [type]="'console'" code="ng generate module customers --route customers --module app.module"></code-display>

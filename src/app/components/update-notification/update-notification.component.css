@@ -1,0 +1,68 @@
+.notification-container {
+  background: linear-gradient(135deg, #3f51b5 40%, #e91e63 60%);
+  padding: 40px;
+  border-radius: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.notification-content {
+  color: white;
+  text-align: center;
+}
+
+.notification-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.notification-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.logo-container {
+  margin-bottom: 30px;
+}
+
+.logo-container img {
+  width: 100px;
+  height: auto;
+}
+
+.close-button {
+  padding: 14px 35px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #303f9f;
+}
+
+.mat-dialog-container {
+  width: 700px; /* Povećana širina dialog-a */
+  max-width: 90%;
+  height: auto;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: popupAnimation 0.3s ease-out;
+}
+
+@keyframes popupAnimation {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

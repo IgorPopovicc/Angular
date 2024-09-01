@@ -21,9 +21,11 @@ import {
 } from "./pages/developer-guides/server-side-rendering/server-side-rendering.component";
 import {TestingComponent} from "./pages/developer-guides/testing/testing.component";
 import {DocumentationComponent} from "./pages/documentation/documentation.component";
+import {AngularIdeComponent} from "./pages/angular-ide/angular-ide.component";
+import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'introduction', component: IntroductionComponent },
   { path: 'angular-cli', component: AngularCliComponent },
@@ -42,7 +44,9 @@ const routes: Routes = [
   { path: 'http-client', component: HttpClientComponent },
   { path: 'server-side-rendering', component: ServerSideRenderingComponent },
   { path: 'testing', component: TestingComponent },
-  { path: 'documentation', component: DocumentationComponent }
+  { path: 'documentation', component: DocumentationComponent },
+  { path: 'angular-integrated-development-environment', component: AngularIdeComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

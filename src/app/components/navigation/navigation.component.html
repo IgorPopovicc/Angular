@@ -49,7 +49,7 @@
           <li><a (click)="scrollToTop()" routerLink="templates" (click)="drawer.toggle()">Templates (Šabloni)</a></li>
           <li><a (click)="scrollToTop()" routerLink="directive" (click)="drawer.toggle()">Direktive</a></li>
           <li><a (click)="scrollToTop()" routerLink="dependency-injection" (click)="drawer.toggle()">Dependency injection</a></li>
-          <li><a (click)="scrollToTop()" routerLink="first-angular-app" (click)="drawer.toggle()">Kreiranje prve Angular aplikacije</a></li>
+<!--          <li><a (click)="scrollToTop()" routerLink="first-angular-app" (click)="drawer.toggle()">Kreiranje prve Angular aplikacije</a></li>-->
         </ul>
       </div>
     </div>
@@ -85,20 +85,23 @@
         </ul>
       </div>
     </div>
-    <div class="sidenav-dropdown" (click)="toggleDropdown('tutorijali')">
-      <span class="sidenav-dropdown-text">Tutorijali</span>
-      <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['tutorijali'].icon"></fa-icon>
+<!--    <div class="sidenav-dropdown" (click)="toggleDropdown('tutorijali')">-->
+<!--      <span class="sidenav-dropdown-text">Tutorijali</span>-->
+<!--      <fa-icon class="sidenav-drowpdown-icon" [icon]="isOpen['tutorijali'].icon"></fa-icon>-->
+<!--    </div>-->
+<!--    <div class="sidenav-dropdown-content" [hidden]="!isOpen['tutorijali'].isOpen">-->
+<!--      <div class="dropdown-content-menu">-->
+<!--        <ul>-->
+<!--          <li><a (click)="scrollToTop()" routerLink="tutorial-one" (click)="drawer.toggle()">Tutorijal: Vaša prva aplikacija</a></li>-->
+<!--          <li><a (click)="scrollToTop()" routerLink="tutorial-two" (click)="drawer.toggle()">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>-->
+<!--          <li><a (click)="scrollToTop()" routerLink="tutorial-three" (click)="drawer.toggle()">Tutorijal: Pokretanje Vaše aplikacije</a></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div (click)="scrollToTop()" routerLink="angular-integrated-development-environment" (click)="drawer.toggle()" class="sidenav-dropdown">
+      <span class="sidenav-dropdown-text">Angular IDE</span>
     </div>
-    <div class="sidenav-dropdown-content" [hidden]="!isOpen['tutorijali'].isOpen">
-      <div class="dropdown-content-menu">
-        <ul>
-          <li><a (click)="scrollToTop()" routerLink="tutorial-one" (click)="drawer.toggle()">Tutorijal: Vaša prva aplikacija</a></li>
-          <li><a (click)="scrollToTop()" routerLink="tutorial-two" (click)="drawer.toggle()">Tutorijal: Kreiranje osnovnih komponenti i servisa</a></li>
-          <li><a (click)="scrollToTop()" routerLink="tutorial-three" (click)="drawer.toggle()">Tutorijal: Pokretanje Vaše aplikacije</a></li>
-        </ul>
-      </div>
-    </div>
-    <div routerLink="documentation" class="sidenav-dropdown">
+    <div (click)="scrollToTop()" routerLink="documentation" (click)="drawer.toggle()" class="sidenav-dropdown">
       <span class="sidenav-dropdown-text">Dokumentacija</span>
     </div>
   </mat-drawer>
