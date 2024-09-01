@@ -1,0 +1,90 @@
+.content {
+  font-family: "Arial Nova", sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.contact-info {
+  width: 48%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.contact-info h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.contact-info p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.contact-map {
+  width: 48%;
+  margin: 0 auto;
+}
+
+.contact-form-container {
+  background-color: #d1d2da;
+  color: #0d1117;
+  width: 50%;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #0d1117;
+}
+
+.complex-form mat-form-field,
+.complex-form mat-checkbox {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.custom-checkbox .mat-checkbox-label,
+.custom-checkbox .mat-checkbox-inner-container {
+  color: #0d1117 !important;
+}
+
+.complex-form button {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto 0;
+  background-color: #3f51b5;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .contact-info, .contact-map {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contact-form-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .contact-form-container h2 {
+    font-size: 24px;
+  }
+}

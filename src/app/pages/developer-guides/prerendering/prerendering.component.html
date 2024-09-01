@@ -1,0 +1,146 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Uvod u statički generisane sajtove (SSG)</h1>
+    <p class="content-text">
+      Statički generisani sajtovi (SSG) predstavljaju tehniku gde se HTML stranice generišu unapred, tokom build procesa,
+      umesto dinamičkog renderovanja sadržaja na klijentu ili serveru. Ovaj pristup omogućava brzo učitavanje stranica,
+      odlične performanse, i poboljšanu SEO optimizaciju, jer pretraživači lako indeksiraju unapred generisan sadržaj.
+      Ovaj vodič će vas provesti kroz osnovne korake za postavljanje SSG u Angularu koristeći <b>Angular Universal</b>
+      i alate za statičku generaciju, kao i objašnjenje prednosti i izazova koje ovaj pristup donosi.
+    </p><br>
+
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">
+      Ovaj vodič pretpostavlja da imate osnovno razumevanje sledećeg:
+    </p><br>
+    <ul>
+      <li class="content-text">Rad sa <b>Angular CLI</b> za kreiranje i upravljanje Angular projektima.</li><br>
+      <li class="content-text">Osnovno poznavanje <b>Node.js</b> okruženja i alata za build.</li><br>
+      <li class="content-text">Razumevanje kako <b>Angular</b> radi sa komponentama, rutama i modulima.</li><br>
+    </ul><br>
+    <hr>
+
+    <h1 class="content-title">Šta je SSG?</h1>
+    <p class="content-text">
+      Statički generisani sajtovi su unapred generisani HTML fajlovi koji su spremni za distribuciju na CDN-ovima (mrežama za
+      distribuciju sadržaja) ili web serverima. Za razliku od SSR-a, gde se sadržaj generiše na serveru pri svakom zahtevu,
+      SSG generiše sve potrebne stranice unapred, tokom procesa build-a, što omogućava ekstremno brzo serviranje sadržaja.
+    </p><br>
+
+    <p class="content-text">
+      Angular omogućava statičku generaciju stranica putem alata <b>Angular Universal</b>, koji se koristi i za SSR.
+      Kada koristite SSG, aplikacija se generiše jednom i zatim se distribuiše kao statički HTML, CSS, i JavaScript fajlovi,
+      bez potrebe za dodatnim renderovanjem na serveru. Ovo je idealno za blogove, dokumentaciju i marketinške sajtove gde se
+      sadržaj ne menja često ili gde su potrebne brze performanse.
+    </p><br>
+
+    <h1 class="content-title">Prednosti SSG-a</h1>
+    <p class="content-text">
+      Korišćenje SSG-a donosi mnoge prednosti, uključujući:
+    </p><br>
+    <ul>
+      <li class="content-text"><b>Ekstremno brze performanse:</b> Unapred generisane stranice mogu se servirati direktno iz
+        CDN-a, smanjujući vreme potrebno za učitavanje.</li><br>
+      <li class="content-text"><b>SEO optimizacija:</b> Statički HTML je lakše indeksirati, što može poboljšati rangiranje
+        u pretraživačima.</li><br>
+      <li class="content-text"><b>Pojednostavljeno održavanje:</b> Nema potrebe za složenom serverskom infrastrukturom ili
+        optimizacijom servera.</li><br>
+      <li class="content-text"><b>Bezbednost:</b> Pošto se sve servira kao statički sadržaj, nema dinamičkih interakcija
+        koje bi mogle otvoriti prostor za napade na server.</li><br>
+    </ul><br>
+
+    <h1 class="content-title">Postavljanje SSG u Angular aplikaciji</h1>
+    <p class="content-text">
+      Da biste omogućili statičku generaciju stranica u vašoj Angular aplikaciji, potrebno je koristiti Angular Universal
+      zajedno sa alatima za generisanje statičkog sadržaja. Angular Universal će generisati HTML za svaku rutu tokom
+      build procesa, koji se zatim distribuira kao statički sadržaj.
+    </p><br>
+
+    <p class="content-text">
+      Prvi korak je instalacija Angular Universal-a u vaš projekat koristeći <b>Angular CLI</b>:
+    </p><br>
+
+    <code-display type="typescript" code="ng add @nguniversal/express-engine"></code-display><br>
+
+    <p class="content-text">
+      Nakon instalacije, možete koristiti komandu <b>ng run your-project:prerender</b> da generišete statičke HTML stranice
+      za sve rute definisane u vašoj Angular aplikaciji. Ova komanda će kreirati HTML fajlove za svaku rutu, koje možete
+      zatim direktno servirati sa vašeg web servera ili CDN-a.
+    </p><br>
+
+    <h1 class="content-title">Konfiguracija Angular projekta za SSG</h1>
+    <p class="content-text">
+      Nakon dodavanja Angular Universal-a, struktura vašeg projekta će se proširiti, uključujući fajlove i konfiguracije
+      potrebne za statičku generaciju. Da bi sve funkcionisalo pravilno, potrebno je konfigurirati <b>angular.json</b> i
+      <b>tsconfig.json</b> fajlove kako bi podržali prerenderovanje.
+    </p><br>
+
+    <p class="content-text">
+      Na primer, možete prilagoditi svoj <b>angular.json</b> fajl kako biste omogućili prerenderovanje svih ruta koje
+      aplikacija koristi:
+    </p><br>
+
+    <code-display type="json" code="
+      {
+         &nbsp;&nbsp;&nbsp;&nbsp;...
+         &nbsp;&nbsp;&nbsp;&nbsp;'projects': {
+           &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'your-project': {
+             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;...
+             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'architect': {
+               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'prerender': {
+                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'builder': '@nguniversal/builders:prerender',
+                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'options': {
+                   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'routes': [
+                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'/',
+                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'/about',
+                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;'/contact'
+                   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;]
+                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}
+               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}
+             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}
+           &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}
+         &nbsp;&nbsp;&nbsp;&nbsp;}
+      }
+    "></code-display><br>
+
+    <p class="content-text">
+      Ova konfiguracija omogućava Angular-u da generiše statičke HTML fajlove za navedene rute. Nakon build procesa,
+      fajlovi će biti spremni za distribuciju i serviranje kao statički sadržaj.
+    </p><br>
+
+    <h1 class="content-title">Pokretanje SSG aplikacije</h1>
+    <p class="content-text">
+      Kada je Angular Universal pravilno postavljen i konfigurisan za SSG, možete pokrenuti proces generisanja statičkih
+      stranica koristeći sledeće komande:
+    </p><br>
+
+    <code-display type="typescript" code="npm run build:ssg"></code-display><br>
+
+    <p class="content-text">
+      Ova komanda će generisati statičke HTML stranice za sve definisane rute u direktorijumu <b>dist/</b>. Nakon što su
+      stranice generisane, možete ih postaviti na bilo koji statički server ili CDN kako bi bile dostupne korisnicima.
+    </p><br>
+
+    <h1 class="content-title">Izazovi i najbolje prakse</h1>
+    <p class="content-text">
+      Iako SSG donosi mnoge prednosti, postoje i određeni izazovi koje treba imati na umu. Na primer, ako vaša aplikacija
+      sadrži veliki broj dinamičkih stranica, proces prerenderovanja može biti spor. Takođe, ažuriranje sadržaja može biti
+      složenije jer zahteva ponovno generisanje stranica.
+    </p><br>
+
+    <p class="content-text">
+      Preporučuje se da pažljivo planirate koje rute će biti prerenderovane i da koristite alate za automatsko generisanje
+      novih stranica kada se sadržaj promeni. Takođe, redovno testirajte performanse kako biste osigurali da vaša aplikacija
+      ostane brza i efikasna.
+    </p><br>
+
+    <h1 class="content-title">Zaključak</h1>
+    <p class="content-text">
+      Statički generisani sajtovi predstavljaju moćan alat za kreiranje brzih, SEO-optimizovanih Angular aplikacija.
+      Pravilnim korišćenjem Angular Universal-a i alata za SSG, možete kreirati moderne, visoko-performantne web aplikacije
+      koje pružaju odlično korisničko iskustvo. Iako postoje određeni izazovi u implementaciji, prednosti SSG-a čine ga
+      vrednim dodatkom za mnoge projekte.
+    </p><br>
+  </div><br>
+</section>

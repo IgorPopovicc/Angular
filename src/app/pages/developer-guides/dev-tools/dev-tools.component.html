@@ -1,0 +1,96 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Uvod u Angular DevTools</h1>
+    <p class="content-text">
+      Angular DevTools je ekstenzija za pretraživače koja omogućava debagovanje i profilisanje Angular aplikacija.
+      Pomoću ovog alata, developeri mogu da analiziraju performanse svojih aplikacija, prate tok podataka, i otkrivaju
+      potencijalne probleme sa kodom. Angular DevTools podržava verzije Angulara 12 i novije, ali samo ako su
+      kompajlovane sa isključenom opcijom optimizacije (<b> optimization: false </b>).
+    </p><br>
+
+    <hr>
+    <h1 class="content-title">Preduslovi</h1>
+    <p class="content-text">
+      Ovaj vodič pretpostavlja da imate osnovno razumevanje sledećeg:
+    </p><br>
+    <ul>
+      <li class="content-text">Rad sa Angular frameworkom, uključujući osnovne komponente, servise i module.</li><br>
+      <li class="content-text">Poznavanje osnovnih koncepata debagovanja u pretraživačima.</li><br>
+      <li class="content-text">Angular aplikacija koja koristi Angular verziju 12 ili noviju.</li><br>
+    </ul><br>
+    <hr>
+
+    <h1 class="content-title">Instalacija Angular DevTools</h1>
+    <p class="content-text">
+      Da biste koristili Angular DevTools, prvo morate instalirati ekstenziju za vaš pretraživač.
+      Angular DevTools je dostupan za Google Chrome i Microsoft Edge, a može se preuzeti sa zvaničnih prodavnica ekstenzija.
+      Nakon instalacije, ikonica Angular DevTools će se pojaviti pored trake za adresu u vašem pretraživaču.
+    </p><br>
+    <p class="content-text">
+      Nakon instalacije, potrebno je osigurati da vaša Angular aplikacija ne koristi opciju optimizacije
+      pri kompajliranju. U <b>angular.json</b> fajlu, postavite <b>optimization</b> na <b>false</b> za
+      environment konfiguracije koje koristite za debagovanje. Ovo je važno jer Angular DevTools ne funkcioniše
+      pravilno kada je optimizacija uključena.
+    </p><br>
+
+    <code-display type="json" code="{
+        &nbsp;&nbsp;&nbsp;&nbsp;...
+        &nbsp;&nbsp;&nbsp;&nbsp;'configurations': {
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'production': {
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'optimization': false,
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        &nbsp;&nbsp;&nbsp;&nbsp;}
+      }
+    "></code-display><br>
+
+    <h1 class="content-title">Korišćenje Angular DevTools</h1>
+    <p class="content-text">
+      Kada je Angular DevTools instaliran i aplikacija pravilno podešena, možete početi sa analizom i debagovanjem
+      vaše aplikacije. Otvorite aplikaciju u pretraživaču i kliknite na Angular DevTools ikonicu u traci ekstenzija.
+      Ovo će otvoriti poseban panel unutar alata za developere u vašem pretraživaču.
+    </p><br>
+    <p class="content-text">
+      Angular DevTools se sastoji iz dva glavna dela: <b>Component Explorer</b> i <b>Profiler</b>.
+      <b>Component Explorer</b> omogućava pregled i analizu hijerarhije komponenti u vašoj aplikaciji,
+      dok <b>Profiler</b> pruža detaljne informacije o performansama vaše aplikacije, uključujući vreme potrebno
+      za renderovanje komponenti i izvršavanje različitih operacija.
+    </p><br>
+
+    <h1 class="content-title">Component Explorer</h1>
+    <p class="content-text">
+      Component Explorer vam omogućava da pregledate sve komponente koje se trenutno prikazuju u aplikaciji,
+      zajedno sa njihovim podacima i stanjima. Možete kliknuti na bilo koju komponentu u hijerarhiji kako biste
+      videli njene detalje, uključujući vrednosti unutar nje, povezane servise, i tok podataka. Ovaj alat je veoma
+      koristan za pronalaženje problema u propovima i događajima između roditeljskih i dečijih komponenti.
+    </p><br>
+
+    <h1 class="content-title">Profiler</h1>
+    <p class="content-text">
+      Profiler u Angular DevTools omogućava vam da merite performanse vaše aplikacije. Možete započeti profilisanje
+      klikom na dugme "Record" i zatim izvršiti akcije u aplikaciji koje želite analizirati. Kada završite, kliknite
+      na "Stop" i Angular DevTools će prikazati detaljan prikaz vremena potrebnog za renderovanje svake komponente,
+      kao i sve promene u podacima tokom tog perioda. Ove informacije su ključne za optimizaciju aplikacije i
+      identifikovanje uskih grla u performansama.
+    </p><br>
+
+    <h1 class="content-title">Najbolje prakse</h1>
+    <p class="content-text">
+      Da biste maksimalno iskoristili Angular DevTools, preporučuje se da redovno koristite Component Explorer za
+      praćenje stanja vaših komponenti i da često profilirate vašu aplikaciju tokom razvoja. Ovo će vam omogućiti
+      da pravovremeno uočite i otklonite potencijalne probleme, kao i da održavate optimalne performanse aplikacije.
+    </p><br>
+    <p class="content-text">
+      Pored toga, uvek osigurajte da je opcija <b>optimization</b> isključena kada koristite Angular DevTools za
+      debagovanje, kako bi alat mogao pravilno da analizira vaš kod. Kada optimizacija nije potrebna, držite je
+      isključenu kako bi se smanjila složenost analize.
+    </p><br>
+
+    <h1 class="content-title">Zaključak</h1>
+    <p class="content-text">
+      Angular DevTools je moćan alat za svakog Angular developera, omogućavajući dublje razumevanje aplikacije,
+      lakše otkrivanje grešaka i optimizaciju performansi. Redovnom upotrebom ovog alata, možete osigurati da vaša
+      aplikacija radi efikasno i da pruža najbolje moguće korisničko iskustvo.
+    </p><br>
+  </div><br>
+</section>

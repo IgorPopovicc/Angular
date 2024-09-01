@@ -43,6 +43,10 @@ import { AngularIdeComponent } from './pages/angular-ide/angular-ide.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UpdateNotificationComponent } from './components/update-notification/update-notification.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { ContactComponent } from './pages/contact/contact.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { DevToolsComponent } from './pages/developer-guides/dev-tools/dev-tools.component';
+import { PrerenderingComponent } from './pages/developer-guides/prerendering/prerendering.component';
 
 
 @NgModule({
@@ -75,24 +79,28 @@ import {MatDialogModule} from "@angular/material/dialog";
     DocumentationComponent,
     AngularIdeComponent,
     PageNotFoundComponent,
-    UpdateNotificationComponent
+    UpdateNotificationComponent,
+    ContactComponent,
+    DevToolsComponent,
+    PrerenderingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    FontAwesomeModule,
-    MatSidenavModule,
-    MatCardModule,
-    HighlightModule,
-    MatSnackBarModule,
-    MatTableModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    PdfViewerModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        FontAwesomeModule,
+        MatSidenavModule,
+        MatCardModule,
+        HighlightModule,
+        MatSnackBarModule,
+        MatTableModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        PdfViewerModule,
+        MatDialogModule,
+        MatCheckboxModule
+    ],
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,
@@ -103,6 +111,7 @@ import {MatDialogModule} from "@angular/material/dialog";
           javascript: () => import('highlight.js/lib/languages/javascript'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
           html: () => import('highlight.js/lib/languages/xml'),
+          json: () => import('highlight.js/lib/languages/json'),
         },
         theme: 'monokai-sublime'
       },

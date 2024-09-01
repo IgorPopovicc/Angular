@@ -23,6 +23,9 @@ import {TestingComponent} from "./pages/developer-guides/testing/testing.compone
 import {DocumentationComponent} from "./pages/documentation/documentation.component";
 import {AngularIdeComponent} from "./pages/angular-ide/angular-ide.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
+import {ContactComponent} from "./pages/contact/contact.component";
+import {DevToolsComponent} from "./pages/developer-guides/dev-tools/dev-tools.component";
+import {PrerenderingComponent} from "./pages/developer-guides/prerendering/prerendering.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -42,10 +45,13 @@ const routes: Routes = [
   { path: 'routing', component: RoutingComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'http-client', component: HttpClientComponent },
+  { path: 'dev-tools', component: DevToolsComponent },
   { path: 'server-side-rendering', component: ServerSideRenderingComponent },
+  { path: 'prerender', component: PrerenderingComponent },
   { path: 'testing', component: TestingComponent },
   { path: 'documentation', component: DocumentationComponent },
   { path: 'angular-integrated-development-environment', component: AngularIdeComponent },
+  { path: 'contact', component: ContactComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

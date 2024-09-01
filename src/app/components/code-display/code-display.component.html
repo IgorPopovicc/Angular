@@ -17,6 +17,15 @@
       <ngx-highlightjs class="casual-text" [highlight]="code" [languages]="['html']"></ngx-highlightjs>
     </div>
   </div>
+  <div *ngSwitchCase="'json'"  class="code-display">
+    <div class="copy-section">
+      <p>JSON</p>
+      <span (click)="copyToClipboard()"><fa-icon [icon]="iconCopy"></fa-icon> Kopiraj</span>
+    </div>
+    <div class="code-section" style="white-space: pre-line; tab-size: 4; margin-left: 20px;">
+      <ngx-highlightjs class="casual-text" [highlight]="code" [languages]="['json']"></ngx-highlightjs>
+    </div>
+  </div>
   <div *ngSwitchDefault class="code-display">
     <div class="copy-section">
       <p>Konzola</p>

@@ -1,0 +1,56 @@
+<section class="page">
+  <div class="content">
+    <h1 class="content-main-title">Kontakt</h1>
+    <p class="content-text">
+      Ispod se nalazi kontakt forma koja vam omogućava da nas direktno kontaktirate putem emaila.
+      Molimo vas da unesete svoje ime, email adresu i poruku u odgovarajuća polja. Takođe, potrebno
+      je da potvrdite svoju saglasnost kako bismo vam mogli odgovoriti na email. Nakon što popunite
+      formu, kliknite na dugme "Pošalji" kako biste poslali poruku. Vaši podaci će biti sigurni i
+      koristiće se isključivo za svrhu odgovaranja na vaša pitanja.
+    </p><br><br>
+    <div class="contact-form-container">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" class="complex-form">
+        <h2>Pošaljite nam poruku</h2>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ime</mat-label>
+          <input matInput formControlName="name" name="from_name" placeholder="Unesite vaše ime" />
+          <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+            Ime je obavezno!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" name="from_email" placeholder="Unesite vaš email" />
+          <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+            Email je obavezan!
+          </mat-error>
+          <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+            Unesite validan email!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Poruka</mat-label>
+          <textarea matInput formControlName="message" name="message" placeholder="Unesite vašu poruku"></textarea>
+          <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
+            Poruka je obavezna!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="consent" class="custom-checkbox">
+          Saglasan sam da me kontaktirate putem email-a
+        </mat-checkbox>
+        <mat-error *ngIf="contactForm.get('consent')?.hasError('required')">
+          Morate potvrditi saglasnost
+        </mat-error>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">
+          Pošalji
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
