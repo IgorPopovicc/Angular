@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,6 +49,7 @@ import { DevToolsComponent } from './pages/developer-guides/dev-tools/dev-tools.
 import { PrerenderingComponent } from './pages/developer-guides/prerendering/prerendering.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -103,7 +104,13 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     PdfViewerModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {

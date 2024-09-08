@@ -1,0 +1,137 @@
+{
+  "configVersion": 1,
+  "timestamp": 1725829286014,
+  "index": "/Angular/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Angular/266.b9e26f7d0bc01643.js",
+        "/Angular/373.f9e36e523519545e.js",
+        "/Angular/576.12300d60a9908ecb.js",
+        "/Angular/668.98997ca95d2c6702.js",
+        "/Angular/743.66cf80cad3a53a1e.js",
+        "/Angular/favicon.ico",
+        "/Angular/index.html",
+        "/Angular/main.37da766d3c98c37c.js",
+        "/Angular/manifest.webmanifest",
+        "/Angular/polyfills.3d7fe2d59df7cf64.js",
+        "/Angular/runtime.2446195bc524fb5a.js",
+        "/Angular/scripts.a634d4ef1b475504.js",
+        "/Angular/styles.a79b7d47c14a051b.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Angular/assets/files/documentation.pdf",
+        "/Angular/assets/icons/icon-128x128.png",
+        "/Angular/assets/icons/icon-144x144.png",
+        "/Angular/assets/icons/icon-152x152.png",
+        "/Angular/assets/icons/icon-192x192.png",
+        "/Angular/assets/icons/icon-384x384.png",
+        "/Angular/assets/icons/icon-512x512.png",
+        "/Angular/assets/icons/icon-72x72.png",
+        "/Angular/assets/icons/icon-96x96.png",
+        "/Angular/assets/images/graphics/all-platform.png",
+        "/Angular/assets/images/graphics/for-everyone.png",
+        "/Angular/assets/images/graphics/loved.png",
+        "/Angular/assets/images/graphics/milion-loved.png",
+        "/Angular/assets/images/graphics/page-404.png",
+        "/Angular/assets/images/graphics/rocket.png",
+        "/Angular/assets/images/icons/angular-blue.svg",
+        "/Angular/assets/images/icons/angular.png",
+        "/Angular/assets/images/icons/angular.svg",
+        "/Angular/assets/images/images/change-detection/slow-computations.png",
+        "/Angular/assets/images/images/change-detection/zone-pollution.png",
+        "/Angular/assets/images/images/forms/reactive-form-1.png",
+        "/Angular/assets/images/images/forms/reactive-form-2.png",
+        "/Angular/assets/images/logo/angular-logo-banner.svg",
+        "/Angular/assets/images/logo/angular_white-logo.png",
+        "/Angular/assets/images/logo/logo.png",
+        "/Angular/assets/manifest.json",
+        "/Angular/fontawesome-webfont.8a7cb27d142e3e19.ttf",
+        "/Angular/fontawesome-webfont.cf011583fb81df9f.woff",
+        "/Angular/fontawesome-webfont.da909aa098b0ee2d.svg",
+        "/Angular/fontawesome-webfont.e9955780856cf8aa.woff2"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/Angular/266.b9e26f7d0bc01643.js": "df6f59a885a352613f2b9fe3cfac050a7b0e1c9e",
+    "/Angular/373.f9e36e523519545e.js": "018ad43f48baf7725aa4acdc622b7837fd8fdf9b",
+    "/Angular/576.12300d60a9908ecb.js": "c65fa26fb09ac2748e177a9adc510be55c9ac15d",
+    "/Angular/668.98997ca95d2c6702.js": "d8ec2617d3fac6b9bbfbc5533bbf65c6834ac608",
+    "/Angular/743.66cf80cad3a53a1e.js": "8c43f43d664528b62febe0bee075bce7b49beb06",
+    "/Angular/assets/files/documentation.pdf": "9c3b8f13ac21197d6e7a2b9a6547ffdcea0b417d",
+    "/Angular/assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
+    "/Angular/assets/icons/icon-144x144.png": "96a0d629765c1bc85d9263c6bc83094ca776d267",
+    "/Angular/assets/icons/icon-152x152.png": "b1fbbee3902eb96a7658e3bb006f31f78ca5a44c",
+    "/Angular/assets/icons/icon-192x192.png": "e4211163bf0911688fbfb80278d8ff4d2f77691d",
+    "/Angular/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/Angular/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/Angular/assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
+    "/Angular/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
+    "/Angular/assets/images/graphics/all-platform.png": "a5400d227108080e3df67144ba21bf4e071d2af3",
+    "/Angular/assets/images/graphics/for-everyone.png": "c3c27a72d8fb2babb0f97b6d22d62fdebea93cc0",
+    "/Angular/assets/images/graphics/loved.png": "a552c0a67dd3563382abd754e77f8304f7ace27f",
+    "/Angular/assets/images/graphics/milion-loved.png": "5032f39d3d7813c8027c082d63ea5d7c13619ddb",
+    "/Angular/assets/images/graphics/page-404.png": "1a1dad132a773411dfbdbcd01d2a3fcd4c2140f7",
+    "/Angular/assets/images/graphics/rocket.png": "9e15f370403fbcee3536b747126f4f991c844d88",
+    "/Angular/assets/images/icons/angular-blue.svg": "e6df6e3409bf292f1af7f0f2445e173507a84521",
+    "/Angular/assets/images/icons/angular.png": "0ec33c7d59e9310dbd177126bbb2c8725327339d",
+    "/Angular/assets/images/icons/angular.svg": "e43a6aa17a128037b8562069b398163e13e2930c",
+    "/Angular/assets/images/images/change-detection/slow-computations.png": "6dfd3441e19a934abc14e1e66c75fb88b785378e",
+    "/Angular/assets/images/images/change-detection/zone-pollution.png": "971bec06baab11a0dd68d29ec7dc3e7633f53ba0",
+    "/Angular/assets/images/images/forms/reactive-form-1.png": "1c64d7729ee433012d69109e607136dbdb769a3f",
+    "/Angular/assets/images/images/forms/reactive-form-2.png": "e83eab37daca4f970b3735adfdaaf3af852a6bc8",
+    "/Angular/assets/images/logo/angular-logo-banner.svg": "c7b88f04b7a6dba4440b457ba4668dfedbc69cf6",
+    "/Angular/assets/images/logo/angular_white-logo.png": "e2c2667f3134b130a1bf6f5b6b57e8ccdeba3340",
+    "/Angular/assets/images/logo/logo.png": "a6185054815801e1723a229bb0a3342a54bd0e1d",
+    "/Angular/assets/manifest.json": "c36bc77a09f55d8cc09202262341ad3ea3eaeeb4",
+    "/Angular/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/Angular/fontawesome-webfont.8a7cb27d142e3e19.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+    "/Angular/fontawesome-webfont.cf011583fb81df9f.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/Angular/fontawesome-webfont.da909aa098b0ee2d.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+    "/Angular/fontawesome-webfont.e9955780856cf8aa.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+    "/Angular/index.html": "e76c758913af5d8b534269e4393225e76f16dbfa",
+    "/Angular/main.37da766d3c98c37c.js": "54047444bdf84a5df88d6c511fc0a528c7a899ab",
+    "/Angular/manifest.webmanifest": "b593ab374faeb670c0f8da5768ca49d2a86acb94",
+    "/Angular/polyfills.3d7fe2d59df7cf64.js": "47aa069d7ebd619309db2e31236e088bc1325d87",
+    "/Angular/runtime.2446195bc524fb5a.js": "707dd0a3946f9bbf1859c582784d902e2fd53ea8",
+    "/Angular/scripts.a634d4ef1b475504.js": "4c8f51d84e67c235debd390d26f489b4e9a8456a",
+    "/Angular/styles.a79b7d47c14a051b.css": "934bf6ea44760adf1de75907994a2080f90eb969"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

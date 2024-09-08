@@ -1,12 +1,12 @@
 <section class="page">
     <div class="content">
-        <h1 class="content-main-title">Dependency Injection u Angularu</h1>
-        <p class="content-text">Kada razvijate manje delove sistema, kao što su moduli ili klase, možda će vam biti potrebne funkcionalnosti drugih klasa. Na primer, 
-            može biti neophodno koristiti HTTP servis za komunikaciju sa serverskom stranom. Dependency Injection, odnosno DI, 
-            je obrazac dizajna i mehanizam za kreiranje i isporuku delova aplikacije drugim delovima koji ih zahtevaju. Angular 
+        <h1 class="content-main-title">Ubrizgavanje zavisnosti (Dependency Injection) u Angularu</h1>
+        <p class="content-text">Kada razvijate manje delove sistema, kao što su moduli ili klase, možda će vam biti potrebne funkcionalnosti drugih klasa. Na primer,
+            može biti neophodno koristiti HTTP servis za komunikaciju sa serverskom stranom. Dependency Injection, odnosno DI,
+            je obrazac dizajna i mehanizam za kreiranje i isporuku delova aplikacije drugim delovima koji ih zahtevaju. Angular
             podržava ovaj obrazac dizajna i možete ga koristiti u vašim aplikacijama kako biste povećali fleksibilnost i modularnost.</p>
         <br>
-        <p class="content-text">U Angularu, zavisnosti obično predstavljaju servisi, ali takođe mogu biti i vrednosti poput stringova ili funkcija. Injektor za aplikaciju (koji se automatski kreira 
+        <p class="content-text">U Angularu, zavisnosti obično predstavljaju servisi, ali takođe mogu biti i vrednosti poput stringova ili funkcija. Injektor za aplikaciju (koji se automatski kreira
             prilikom pokretanja) instancira zavisnosti kada su potrebne, koristeći konfigurisane providere za servis ili vrednost.</p>
         <br>
         <p class="content-text">Dependency injection, odnosno DI, jedan je od osnovnih koncepata u Angularu. DI je integrisan u Angular okvir i omogućava klasama sa Angular dekoratorima, poput Komponenti,
@@ -14,9 +14,9 @@
         <br>
         <info-panel [isLink]="false" [text]="'Postoje dve glavne uloge u DI sistemu: potrošač zavisnosti i pružalac zavisnosti.'"></info-panel>
         <br>
-        <p class="content-text">Angular olakšava interakciju između potrošača zavisnosti i pružalaca zavisnosti korišćenjem apstrakcije nazvane Injektor. Kada se zatraži zavisnost, injektor proverava svoj 
-            registar da vidi da li je već dostupna instanca tamo. Ako nije, nova instanca se kreira i čuva u registru. Angular kreira injektor na nivou cele aplikacije (takođe poznat kao "koren" injektor) tokom procesa pokretanja aplikacije, 
-            kao i bilo koje druge injektore po potrebi. U većini slučajeva 
+        <p class="content-text">Angular olakšava interakciju između potrošača zavisnosti i pružalaca zavisnosti korišćenjem apstrakcije nazvane Injektor. Kada se zatraži zavisnost, injektor proverava svoj
+            registar da vidi da li je već dostupna instanca tamo. Ako nije, nova instanca se kreira i čuva u registru. Angular kreira injektor na nivou cele aplikacije (takođe poznat kao "koren" injektor) tokom procesa pokretanja aplikacije,
+            kao i bilo koje druge injektore po potrebi. U većini slučajeva
             vam nije potrebno ručno kreirati injektore, ali trebalo bi da znate da postoji sloj koji povezuje pružaoce i potrošače.</p>
         <br>
         <h1 class="content-title">Pravljanje/zadavanje zavisnosti</h1>
@@ -24,11 +24,11 @@
             Prvi korak je dodavanje dekoratora @Injectable kako bi se pokazalo da klasa može biti ubačena kao zavisnost. Na primer:
         </p>
         <code-display [type]="'typescript'" code="@Injectable()
-        class HeroService {}            
+        class HeroService {}
         "></code-display>
         <p class="content-text">Sledeći korak je učiniti ga dostupnim u DI pružanjem. Zavisnost se može obezbediti na više mesta:</p>
         <ul>
-            <li class="content-text">Na nivou komponente, koristeći polje <b>providers</b> dekoratora <b>@Component</b>. U ovom slučaju, HeroService postaje dostupan svim instancama ove komponente i drugim komponentama 
+            <li class="content-text">Na nivou komponente, koristeći polje <b>providers</b> dekoratora <b>@Component</b>. U ovom slučaju, HeroService postaje dostupan svim instancama ove komponente i drugim komponentama
                 i direktivama koje se koriste u šablonu. Na primer:
             </li>
         </ul>
@@ -39,12 +39,12 @@
           })
           class HeroListComponent {}">
         </code-display>
-        <p class="content-text">Na nivou NgModule-a, koristeći polje <b>providers</b> dekoratora <b>@NgModule</b>. U ovom scenariju, HeroService je 
-            dostupan svim komponentama, direktivama i filterima deklarisanim u tom NgModule-u ili 
-            drugim NgModule-ima koji se nalaze unutar istog ModuleInjector-a koji je primenjiv za taj NgModule. Kada registrujete pružaoca sa 
-            određenim NgModule-om, ista instanca servisa je dostupna svim primenjivim komponentama, 
+        <p class="content-text">Na nivou NgModule-a, koristeći polje <b>providers</b> dekoratora <b>@NgModule</b>. U ovom scenariju, HeroService je
+            dostupan svim komponentama, direktivama i filterima deklarisanim u tom NgModule-u ili
+            drugim NgModule-ima koji se nalaze unutar istog ModuleInjector-a koji je primenjiv za taj NgModule. Kada registrujete pružaoca sa
+            određenim NgModule-om, ista instanca servisa je dostupna svim primenjivim komponentama,
             direktivama i filterima. Za razumevanje svih specifičnih slučajeva, pogledajte Hijerarhijske injectore. Na primer:</p>
-        
+
         <code-display [type]="'typescript'" code="@NgModule({
             &nbsp;&nbsp;&nbsp;&nbsp;declarations: [ HeroListComponent ]
             &nbsp;&nbsp;&nbsp;&nbsp;providers: [ HeroService ]
@@ -52,7 +52,7 @@
           class HeroListModule {}">
         </code-display>
         <ul>
-            <li class="content-text">Na nivou korena aplikacije, što omogućava ubacivanje u druge klase u aplikaciji. 
+            <li class="content-text">Na nivou korena aplikacije, što omogućava ubacivanje u druge klase u aplikaciji.
                 Ovo se može postići dodavanjem polja <b>providedIn: 'root'</b> dekoratoru <b>@Injectable</b>:
             </li>
         </ul>
@@ -61,13 +61,13 @@
           })
           class HeroService {}">
         </code-display>
-        <p class="content-text">Kada obezbedite servis na nivou korena, Angular kreira jednu zajedničku instancu HeroService-a i ubacuje je 
-            u bilo koju klasu koja je zatraži. Registrovanje pružaoca u @Injectable metapodacima takođe omogućava Angularu da 
+        <p class="content-text">Kada obezbedite servis na nivou korena, Angular kreira jednu zajedničku instancu HeroService-a i ubacuje je
+            u bilo koju klasu koja je zatraži. Registrovanje pružaoca u @Injectable metapodacima takođe omogućava Angularu da
             optimizuje aplikaciju uklanjanjem servisa iz kompajlirane aplikacije ako se ne koristi, proces poznat kao tree-shaking.</p>
         <br>
         <h1 class="content-title">Ubacivanje zavisnosti</h1>
         <p class="content-text">Najčešći način ubacivanja zavisnosti je deklarisanje istih u konstruktoru klase. Prilikom stvaranja nove i
-            nstance komponente, direktive ili filtera, Angular određuje koje servise ili druge zavisnosti ta klasa zahteva posmatrajući 
+            nstance komponente, direktive ili filtera, Angular određuje koje servise ili druge zavisnosti ta klasa zahteva posmatrajući
             tipove parametara konstruktora. Na primer, ukoliko HeroListComponent zahteva HeroService, konstruktor može izgledati ovako:
         </p>
         <code-display [type]="'typescript'" code="@Component({ … })
@@ -81,8 +81,8 @@
             &nbsp;&nbsp;&nbsp;&nbsp;private service = inject(HeroService);
         }">
         </code-display>
-        <p class="content-text">Kada Angular otkrije da komponenta zavisi od servisa, prvo proverava da li injektor 
-            već ima postojeće instance tog servisa. Ako tražena instanca servisa još ne postoji, injektor kreira jednu koristeći 
+        <p class="content-text">Kada Angular otkrije da komponenta zavisi od servisa, prvo proverava da li injektor
+            već ima postojeće instance tog servisa. Ako tražena instanca servisa još ne postoji, injektor kreira jednu koristeći
             registrovanog pružaoca i dodaje je injektoru pre nego što vrati servis Angularu.</p><br>
         <p class="content-text">Kada su sve tražene usluge razrešene i vraćene, Angular može pozvati konstruktor komponente sa tim uslugama kao argumentima.</p><br>
     </div>
