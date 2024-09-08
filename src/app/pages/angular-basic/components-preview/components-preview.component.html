@@ -44,9 +44,9 @@
         </ul>
         <p class="content-text">Nakon sprovođenja gore navedenih koraka, Angular komponenta će biti uspješno kreirana i spremna za upotrebu u vašoj aplikaciji.</p>
         <br>
-        <h1 class="content-title">kako kreirati Angular komponentu koristeći Angular CLI?</h1>
-        <p class="content-text">Iako je Angular CLI najjednostavniji način za kreiranje Angular komponenti, takođe možete ručno napraviti komponentu. Ova sekcija opisuje kako kreirati osnovnu datoteku komponente unutar postojećeg Angular projekta.
-        </p>
+        <h1 class="content-title">Kako kreirati Angular komponentu koristeći Angular CLI?</h1>
+        <p class="content-text">Ali takođe, Angular CLI ima u sebi ugrađene komande koje sve ove postupke izvršavaju automatski,
+          čime značajno olakšavaju i ubrzavaju proces razvoja. Da biste iskoristili ove mogućnosti, sledite sledeće korake:</p>
         <ul>
             <li class="content-text">Otvorite terminal ili command prompt.</li>
             <li class="content-text">Kreirajte novi Angular projekat. U terminalu, odaberite direktorijum u koji želite da se kreira projekat i unesite komandu. Zamijenite <b>naziv-projekta</b> sa imenom koje želite za vaš projekat:</li>
@@ -60,14 +60,16 @@
         <p class="content-text">Korišćenjem Angular CLI, ovi koraci automatski generišu osnovne datoteke potrebne za komponentu, uključujući HTML templejt, TypeScript klasu i CSS datoteku. Ovo ubrzava proces kreiranja komponenti i održava konzistentnost u strukturi projekta.</p>
         <br>
         <h1 class="content-title">Životni ciklus komponente</h1>
-        <p class="content-text">Instanca komponente ima životni ciklus koji počinje kada Angular instancira klasu komponente i prikazuje prikaz komponente zajedno sa njenim pod-prikazima. 
-            Životni ciklus se nastavlja sa detekcijom promena, dok Angular proverava kada se svojstva povezana sa podacima promene, ažurira kako prikaz, tako i instanca komponente po potrebi. 
-            Životni ciklus se završava kada Angular uništi instancu komponente i ukloni njen prikazani predložak iz DOM-a.
-            Direktive imaju sličan životni ciklus, jer Angular kreira, ažurira i uništava instance tokom izvršavanja.
+        <p class="content-text">Takođe, veoma je bitno naglasiti životni ciklus komponente. Instanca komponente ima svoj
+          životni ciklus koji počinje kada Angular instancira klasu komponente i prikazuje njen prikaz zajedno sa pod-prikazima.
+          Životni ciklus se nastavlja kroz proces detekcije promena, gde Angular prati kada se svojstva povezana sa podacima promene,
+          ažurirajući i prikaz i instancu komponente po potrebi. Životni ciklus se završava kada Angular uništi instancu
+          komponente i ukloni njen šablon iz Document Object Model (DOM). Direktive prate sličan životni ciklus, jer Angular kreira,
+          ažurira i uništava njihove instance tokom izvršavanja.
         </p><br>
-        <p class="content-text">Vaša aplikacija može koristiti metode kuke za životni ciklus (lifecycle hook methods) 
-            kako bi se uključila u ključne događaje u životnom ciklusu komponente ili direktive radi inicijalizacije novih instanci, pokretanja detekcije promena kada je potrebno, 
-            odgovora na ažuriranja tokom detekcije promena i čišćenja pre brisanja instanci.
+        <p class="content-text">Vaša aplikacija može koristiti metode kuke za životni ciklus (lifecycle hook methods) kako bi se uključila
+          u ključne događaje u životnom ciklusu komponente ili direktive, omogućavajući inicijalizaciju novih instanci,
+          pokretanje detekcije promena kada je potrebno, reagovanje na ažuriranja tokom detekcije promena i čišćenje pre nego što se instance uklone.
         </p><br>
         <p class="content-text">Ispod se nalazi tabela sa sadržajem svih metoda za životni ciklus (<b>lifecycle hook methods</b>):</p><br>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

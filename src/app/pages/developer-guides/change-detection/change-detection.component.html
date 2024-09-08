@@ -1,16 +1,17 @@
 <section class="page">
   <div class="content">
     <h1 class="content-main-title">Detekcija promena i optimizacija vremena rada</h1>
-    <p class="content-text">Otkrivanje promena je proces kroz koji Angular proverava da li se stanje vaše aplikacije promenilo
-      i da li neki DOM treba da se ažurira. Na visokom nivou, Angular šeta vašim komponentama od vrha do dna, tražeći promene.
-      Angular povremeno pokreće mehanizam za otkrivanje promena tako da se promene modela podataka odražavaju u prikazu aplikacije.
-      Otkrivanje promena može da se pokrene bilo ručno ili kroz asinhroni događaj (na primer, interakcija korisnika ili
-      završetak KSMLHttpRekuest).</p><br>
-    <p class="content-text">Otkrivanje promena je veoma optimizovano i efikasno, ali i dalje može da izazove usporavanje ako je aplikacija pokreće prečesto.</p><br>
+    <p class="content-text">Detekcija promena i optimizacija rada predstavljaju ključne aspekte koji obezbeđuju da aplikacije
+      funkcionišu efikasno i reaguju na promene u podacima na pravovremen i optimizovan način.
+      Angular periodično pokreće mehanizam za otkrivanje promena kako bi osigurao da se sve izmene u podacima pravilno odraze u prikazu aplikacije.
+      Ovaj proces je dizajniran da bude veoma efikasan, ali u kompleksnim aplikacijama sa velikim brojem komponenti može doći do usporavanja
+      ukoliko se detekcija promena pokreće suviše često ili u nepotrebnim situacijama. Detekcija promena može da se pokrene bilo
+      ručno ili kroz asinhroni događaj (na primer, interakcija korisnika ili završetak <b>KSMLHttpRequest</b>).</p><br>
+    <p class="content-text">Detekcija promena je veoma optimizovano i efikasno, ali i dalje može da izazove usporavanje ako je aplikacija pokreće prečesto.</p><br>
     <hr>
     <h1 class="content-title">Rešavanje zagađenja zone</h1>
     <p class="content-text"><b>Zone.js</b> je mehanizam signalizacije koji Angular koristi da otkrije kada se stanje aplikacije moglo promeniti.
-      Snima asinhrone operacije kao što su setTimeout, mrežni zahtevi i slušaoci događaja. Otkrivanje promene ugaonih rasporeda na
+      Snima asinhrone operacije kao što su <b>setTimeout</b>, mrežni zahtevi i slušaoci događaja. Otkrivanje promene ugaonih rasporeda na
       osnovu signala iz <b>Zone.js</b>.</p><br>
     <p class="content-text">U nekim slučajevima zakazani zadaci ili mikrozadaci ne unose nikakve promene u model podataka,
       što detekciju promena u pokretanju čini nepotrebnim. Uobičajeni primeri su:</p><br>

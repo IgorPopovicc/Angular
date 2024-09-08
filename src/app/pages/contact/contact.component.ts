@@ -21,7 +21,6 @@ export class ContactComponent {
 
   public sendEmail(e: Event): void {
     e.preventDefault();
-
     emailjs.sendForm('service_xy6wx6h', 'template_0it9ycn', e.target as HTMLFormElement, 'Ja3yKh_sHnsOp4yix')
       .then((result: EmailJSResponseStatus) => {
         console.log(result.text);

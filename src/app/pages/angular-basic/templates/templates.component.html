@@ -51,8 +51,14 @@
             <li class="content-text">U HTML delu, <b>ngFor</b> se koristi za iteriranje kroz niz items i prikazivanje svakog elementa niza unutar liste korišćenjem interpolacije</li>
         </ul><br>
         <h1 class="content-title">Korišćenje izjava za akcije korisnika u Angularu</h1>
-        <p class="content-text">Izjave sablona su metode ili osobine koje možete koristiti u vašem HTML-u kako biste reagovali na korisničke događaje. Pomoću izjava sablona, vaša aplikacija može angažovati korisnike kroz radnje poput prikazivanja dinamičkog sadržaja ili slanja formi.</p>
-        <br>
+        <p class="content-text">Korišćenje izjava za akcije korisnika u Angularu omogućava aplikaciji da postane interaktivnija
+          i da reaguje na događaje koje korisnik pokreće. Izjave šablona su metode ili osobine koje možete koristiti u vašem HTML-u
+          kako biste odgovorili na različite korisničke akcije, poput klika, unosa podataka, prelaska miša i drugih događaja.
+          Na ovaj način, aplikacija može angažovati korisnike kroz dinamičke radnje poput prikazivanja ili skrivanja sadržaja,
+          validacije unosa, ili slanja podataka putem forme</p><br>
+        <p class="content-text">Izjave šablona funkcionišu na način da povezuju događaj (event) koji korisnik pokreće sa funkcijom
+          u vašoj klasi komponente. Kada se dogodi određeni događaj, kao što je klik na dugme, Angular izvršava funkciju koja je povezana
+          sa tim događajem. Ovo omogućava jednostavnu i brzu interakciju između korisnika i aplikacije.</p><br>
         <p class="content-text">U sledećem primeru, izjava sablona deleteHero() se pojavljuje unutar navodnika desno od znaka jednakosti =, kao u (event)="izjava".</p>
         <code-display [type]="'html'" code='&lt;button type="button" (click)=`deleteHero()`&gt;
         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Delete Hero

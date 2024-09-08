@@ -1,10 +1,17 @@
 <section class="page">
     <div class="content">
-        <h1 class="content-main-title">Lazy-loading funkcionalni moduli</h1>
-        <p class="content-text">Podrazumevano, NgModuli se učitavaju odmah. To znači da se, čim se aplikacija učita, učitavaju i svi NgModuli, bez obzira da li su odmah potrebni ili ne. Za velike aplikacije sa mnogo ruta, razmotrite lazy loading—dizajn obrazac koji učitava NgModule po potrebi. Lazy loading pomaže da se početne veličine paketa smanje, što zauzvrat pomaže u smanjenju vremena učitavanja.</p><br>
+        <h1 class="content-main-title">Učitavanje po potrebi (Lazy-loading) funkcionalni moduli</h1>
+        <p class="content-text">Učitavanje po potrebi (Lazy loading) je tehnika koja omogućava učitavanje određenih
+          modula ili komponenti aplikacije samo kada su zaista potrebni, a ne odmah pri pokretanju aplikacije.
+          Ovaj pristup značajno umanjuje veličinu početnog paketa aplikacije, što dovodi do bržeg učitavanja i boljeg
+          korisničkog iskustva, naročito kod velikih aplikacija sa brojnim rutinama i funkcionalnostima.</p><br>
         <info-panel [isLink]="true" link="https://v17.angular.io/generated/live-examples/lazy-loading-ngmodules/stackblitz.html" text="Za završnu uzorak aplikaciju sa dva lazy-loaded modula koju ova stranica opisuje, pogledajte uživo primer"></info-panel><br>
         <h1 class="content-title">Osnovi lazy loading-a</h1>
-        <p class="content-text">Ovaj deo uvodi osnovnu proceduru za postavljanje rute sa lazy loading-om. Za primer koji se prikazuje korak po korak, pogledajte deo za postavljanje na ovoj stranici.</p><br>
+        <p class="content-text">Osnovni princip za Lazy loading je da se modul učitava tek kada korisnik pristupi određenoj ruti,
+          što znači da modul nije deo početnog paketa. Na primer, ako aplikacija ima više sekcija koje se retko koriste,
+          ali su ipak važne, te sekcije mogu biti postavljene da se učitavaju samo kada korisnik odluči da ih otvori.
+          Da biste koristili Lazy loading za Angular module, koristi se opcija loadChildren u konfiguraciji ruta u vašem AppRoutingModule fajlu.
+          Ova opcija omogućava da dinamički učitava module tek kada je to neophodno, čime se optimizuje performansa aplikacije.</p><br>
         <p class="content-text">Da biste koristili lazy loading za Angular module, koristite loadChildren (umesto component) u konfiguraciji ruta u vašem AppRoutingModule-u, kao što je prikazano ispod.</p><br>
         <code-display  type="typescript" code="const routes: Routes = [{
           &nbsp;&nbsp;&nbsp;&nbsp;path: 'items',

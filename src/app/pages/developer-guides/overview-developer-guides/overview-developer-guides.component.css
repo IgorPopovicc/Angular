@@ -46,6 +46,11 @@
     background-color: #3f51b5;
   }
 
+  .card-link.disable {
+    background-color: #61657a;
+    color: white;
+  }
+
   .card-link a {
     text-decoration: none;
     color: white;

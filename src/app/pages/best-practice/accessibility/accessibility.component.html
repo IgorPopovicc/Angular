@@ -1,13 +1,27 @@
 <section class="page">
     <div class="content">
         <h1 class="content-main-title">Pristupačnost u Angularu</h1>
-        <p class="content-text">Veb koriste različite grupe ljudi, uključujući osobe sa vizuelnim ili motoričkim oštećenjima. 
-            Postoji raznolikost pomoćnih tehnologija koje značajno olakšavaju ovim grupama interakciju sa 
-            softverskim aplikacijama zasnovanim na vebu. Takođe, dizajniranje aplikacije tako da bude pristupačnija 
-            generalno poboljšava korisničko iskustvo za sve korisnike.</p><br>
-        <p class="content-text">Za detaljnije upoznavanje sa problemima i tehnikama dizajniranja pristupačnih aplikacija, 
+        <p class="content-text">Programeri moraju biti svesni da pristupačnost nije samo opcija već i neophodnost.
+          Veb koriste raznovrsne grupe ljudi, uključujući osobe sa vizuelnim, slušnim ili motoričkim oštećenjima.
+          Zbog toga je od suštinskog značaja da veb aplikacije budu dizajnirane tako da budu dostupne svim korisnicima,
+          bez obzira na njihove mogućnosti. Primenom pristupačnih tehnika ne samo da se poboljšava korisničko iskustvo
+          za osobe sa invaliditetom, već se istovremeno poboljšava korisničko iskustvo za sve korisnike.</p><br>
+        <p class="content-text">Ključ za postizanje ove pristupačnosti leži u korišćenju standarda kao što su
+          ARIA (Accessible Rich Internet Applications) atributi i korišćenju nativnih HTML elemenata koji su već optimizovani za pristupačnost.
+          Angular, sa svojim bogatim setom alata i biblioteka, poput Angular Material i Component Development Kit (CDK),
+          pruža programerima sve neophodne alate za kreiranje pristupačnih veb aplikacija. Ove biblioteke uključuju komponente
+          i alate koji podržavaju različite aspekte pristupačnosti, kao što su LiveAnnouncer i cdkTrapFocus,
+          koji pomažu u upravljanju korisničkim fokusom i dostupnošću sadržaja.</p><br>
+        <p class="content-text">Pored toga, korišćenje nativnih HTML elemenata gde god je to moguće, kao što su 'button' ili 'a',
+          obezbeđuje da se koriste standardi koji su dobro podržani od strane pregledača i alata za pristupačnost.
+          Ovo je posebno važno za kreiranje interaktivnih elemenata i kontrola koji su ključni za korisničko iskustvo.
+          Takođe, u slučajevima kada je potrebno koristiti kontejnere za nativne elemente, važno je osigurati da ovi elementi
+          ostanu dostupni i da podržavaju sve potrebne atribute i svojstva koja su važna za pristupačnost.
+          Ovo se može postići korišćenjem projekcije sadržaja u Angular komponentama, čime se omogućava da nativni elementi budu deo API komponente,
+          što dodatno osigurava pristupačnost.</p><br>
+        <p class="content-text">Za detaljnije upoznavanje sa problemima i tehnikama dizajniranja pristupačnih aplikacija,
             pogledajte sekciju o Pristupačnosti u Google-ovim Osnovama veba (Web Fundamentals).</p><br>
-        <p class="content-text">Ova stranica razmatra najbolje prakse za dizajniranje Angular aplikacija koje dobro funkcionišu 
+        <p class="content-text">Ova stranica razmatra najbolje prakse za dizajniranje Angular aplikacija koje dobro funkcionišu
             za sve korisnike, uključujući one koji se oslanjaju na pomoćne tehnologije.</p><br>
         <info-panel [isLink]="true" link="https://stackblitz.com/run?file=src%2Fapp%2Fapp.component.html" text="Za primer aplikacije o kojoj ova stranica opisuje, pogledajte primer na linku ispod"></info-panel>
         <h1 class="content-title">Atributi pristupačnosti</h1>

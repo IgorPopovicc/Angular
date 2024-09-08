@@ -7,7 +7,7 @@ import {Component, HostListener} from '@angular/core';
 })
 export class DocumentationComponent {
 
-  pdf = '/assets/files/Igor_Popovic_CV.pdf';
+  pdf = '/assets/files/documentation.pdf';
   zoom: number = 1; // Početni nivo zumiranja
 
   ngOnInit() {
@@ -22,11 +22,11 @@ export class DocumentationComponent {
   adjustZoom() {
     const screenWidth = window.innerWidth;
     if (screenWidth < 768) {
-      this.zoom = 0.6; // Smanjivanje zumiranja na manjim ekranima
+      this.zoom = 0.4;
     } else if (screenWidth < 1024) {
-      this.zoom = 0.8; // Srednje zumiranje za tablet uređaje
+      this.zoom = 0.6;
     } else {
-      this.zoom = 1; // Normalno zumiranje na desktop računarima
+      this.zoom = 0.8;
     }
   }
 

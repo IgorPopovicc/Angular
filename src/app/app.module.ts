@@ -31,8 +31,8 @@ import { ChangeDetectionComponent } from './pages/developer-guides/change-detect
 import { RoutingComponent } from './pages/developer-guides/routing/routing.component';
 import { FormsComponent } from './pages/developer-guides/forms/forms.component';
 import { SimpleInteractiveFormComponent } from './components/simple-interactive-form/simple-interactive-form.component';
-import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from "@angular/forms";
 import { ComplexFormComponent } from './components/complex-form/complex-form.component';
 import { HttpClientComponent } from './pages/developer-guides/http-client/http-client.component';
 import { ServerSideRenderingComponent } from './pages/developer-guides/server-side-rendering/server-side-rendering.component';
@@ -42,11 +42,13 @@ import { DocumentationComponent } from './pages/documentation/documentation.comp
 import { AngularIdeComponent } from './pages/angular-ide/angular-ide.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UpdateNotificationComponent } from './components/update-notification/update-notification.component';
-import {MatDialogModule} from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 import { ContactComponent } from './pages/contact/contact.component';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { DevToolsComponent } from './pages/developer-guides/dev-tools/dev-tools.component';
 import { PrerenderingComponent } from './pages/developer-guides/prerendering/prerendering.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -82,25 +84,27 @@ import { PrerenderingComponent } from './pages/developer-guides/prerendering/pre
     UpdateNotificationComponent,
     ContactComponent,
     DevToolsComponent,
-    PrerenderingComponent
+    PrerenderingComponent,
+    LoadingComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        FontAwesomeModule,
-        MatSidenavModule,
-        MatCardModule,
-        HighlightModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        PdfViewerModule,
-        MatDialogModule,
-        MatCheckboxModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    FontAwesomeModule,
+    MatSidenavModule,
+    MatCardModule,
+    HighlightModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    PdfViewerModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule
+  ],
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,
