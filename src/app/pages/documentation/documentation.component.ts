@@ -1,4 +1,5 @@
 import {Component, HostListener} from '@angular/core';
+import {SwUpdate} from "@angular/service-worker";
 
 @Component({
   selector: 'app-documentation',
@@ -10,8 +11,19 @@ export class DocumentationComponent {
   pdf = '/assets/files/documentation.pdf';
   zoom: number = 1; // Početni nivo zumiranja
 
+  constructor(private swUpdate: SwUpdate) {
+  }
+
   ngOnInit() {
     this.adjustZoom();
+
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        if (confirm('New version available. Load new version?')) {
+          window.location.reload();
+        }
+      });
+    }
   }
 
   @HostListener('window:resize', ['$event'])

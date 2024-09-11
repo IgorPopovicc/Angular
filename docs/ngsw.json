@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1725829286014,
+  "timestamp": 1726094392987,
   "index": "/Angular/index.html",
   "assetGroups": [
     {
@@ -18,7 +18,7 @@
         "/Angular/743.66cf80cad3a53a1e.js",
         "/Angular/favicon.ico",
         "/Angular/index.html",
-        "/Angular/main.37da766d3c98c37c.js",
+        "/Angular/main.29e47a2402a15ca9.js",
         "/Angular/manifest.webmanifest",
         "/Angular/polyfills.3d7fe2d59df7cf64.js",
         "/Angular/runtime.2446195bc524fb5a.js",
@@ -67,6 +67,16 @@
         "/Angular/fontawesome-webfont.e9955780856cf8aa.woff2"
       ],
       "patterns": []
+    },
+    {
+      "name": "pdf-files",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [],
+      "patterns": []
     }
   ],
   "dataGroups": [],
@@ -107,8 +117,8 @@
     "/Angular/fontawesome-webfont.cf011583fb81df9f.woff": "28b782240b3e76db824e12c02754a9731a167527",
     "/Angular/fontawesome-webfont.da909aa098b0ee2d.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
     "/Angular/fontawesome-webfont.e9955780856cf8aa.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
-    "/Angular/index.html": "e76c758913af5d8b534269e4393225e76f16dbfa",
-    "/Angular/main.37da766d3c98c37c.js": "54047444bdf84a5df88d6c511fc0a528c7a899ab",
+    "/Angular/index.html": "2d3803e1cbaf89a8ea191cfa358095cd6347a533",
+    "/Angular/main.29e47a2402a15ca9.js": "be1730f90dca801fbc61b1c40d4a9ac2e375209b",
     "/Angular/manifest.webmanifest": "b593ab374faeb670c0f8da5768ca49d2a86acb94",
     "/Angular/polyfills.3d7fe2d59df7cf64.js": "47aa069d7ebd619309db2e31236e088bc1325d87",
     "/Angular/runtime.2446195bc524fb5a.js": "707dd0a3946f9bbf1859c582784d902e2fd53ea8",
