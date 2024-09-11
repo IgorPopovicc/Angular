@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1726094875913,
+  "timestamp": 1726095182540,
   "index": "/Angular/index.html",
   "assetGroups": [
     {
@@ -117,7 +117,7 @@
     "/Angular/fontawesome-webfont.cf011583fb81df9f.woff": "28b782240b3e76db824e12c02754a9731a167527",
     "/Angular/fontawesome-webfont.da909aa098b0ee2d.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
     "/Angular/fontawesome-webfont.e9955780856cf8aa.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
-    "/Angular/index.html": "3acf9c310e850b158e2e4a4c395fb5f03b8c443e",
+    "/Angular/index.html": "830410ff982fb090fcfc11b484764838569b1dfe",
     "/Angular/main.29e47a2402a15ca9.js": "be1730f90dca801fbc61b1c40d4a9ac2e375209b",
     "/Angular/manifest.webmanifest": "b593ab374faeb670c0f8da5768ca49d2a86acb94",
     "/Angular/polyfills.3d7fe2d59df7cf64.js": "47aa069d7ebd619309db2e31236e088bc1325d87",
